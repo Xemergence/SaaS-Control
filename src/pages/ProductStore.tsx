@@ -75,7 +75,7 @@ const ProductStore = () => {
   }
 
   return (
-    <div className="bg-[#121219] text-white pt-4">
+    <div className="bg-black text-white pt-4">
       {/* Hero Section */}
       <section className="py-12 px-4 md:px-8 max-w-6xl mx-auto text-center">
         <div className="mb-2 text-sm text-blue-500 uppercase tracking-wider">

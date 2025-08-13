@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import AuthDialog from "@/components/auth/AuthDialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -33,6 +34,7 @@ interface TeamMember {
   title: string;
   description: string;
   fullDescription: string;
+  linkedinAbout: string;
 }
 
 const HomePage = () => {
@@ -49,6 +51,8 @@ const HomePage = () => {
         "Project creator focusing on PMO, AI integration, cross-domain prototyping, and emerging technologies.",
       fullDescription:
         "Strategic technology leader specializing in PMO, AI integration, and cross-domain prototyping. Expert in blockchain research, emerging technologies, and managing complex technology initiatives that drive digital transformation and innovation.",
+      linkedinAbout:
+        "Experienced technology leader with a passion for innovation and digital transformation. Specializing in project management, AI integration, and cross-domain prototyping to solve complex business challenges. Dedicated to leveraging emerging technologies to create sustainable, scalable solutions that drive business growth and operational excellence.",
     },
     {
       id: "sebastian",
@@ -58,6 +62,8 @@ const HomePage = () => {
         "Consultant providing expertise on security and deployment strategies, leveraging extensive experience to discuss and refine ideas.",
       fullDescription:
         "Security expert with extensive experience in deployment strategies and system architecture. Provides critical insights on secure implementation and scalable infrastructure design for enterprise applications.",
+      linkedinAbout:
+        "Cybersecurity professional with over 15 years of experience in enterprise security architecture and deployment strategies. Focused on helping organizations implement robust security frameworks while maintaining operational efficiency. Expertise in threat assessment, vulnerability management, and secure system design for mission-critical applications.",
     },
     {
       id: "johan",
@@ -67,6 +73,8 @@ const HomePage = () => {
         "Focused on social media strategy, web development, AI research through prompt engineering, and wireframing.",
       fullDescription:
         "Creative technologist specializing in social media strategy and modern web development. Combines AI prompt engineering expertise with strong design sensibilities to create engaging digital experiences and innovative user interfaces.",
+      linkedinAbout:
+        "Creative digital strategist bridging the gap between technology and user experience. Passionate about leveraging AI and modern web development to create meaningful digital experiences. Specialized in social media strategy, prompt engineering, and intuitive interface design that connects brands with their audiences in authentic and innovative ways.",
     },
   ];
 
@@ -90,10 +98,15 @@ const HomePage = () => {
               cost management, and operational efficiency for small businesses,
               individuals, and teams.
             </p>
-            <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <AuthDialog
+              mode="signin"
+              trigger={
+                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200">
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              }
+            />
             <p className="mt-4 text-gray-400 text-sm">
               Designed for innovators, small teams, and growing businesses
             </p>
@@ -134,12 +147,12 @@ const HomePage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-16 md:py-24">
+      <section id="features" className="bg-black">
         <FeatureGrid />
       </section>
 
       {/* AI Tools Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[#2a2f42] to-[#3a3f52]">
+      <section className="py-16 md:py-24 bg-black">
         <div className="container mx-auto px-4 max-w-8xl">
           <div className="grid md:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
             <div>
@@ -276,7 +289,7 @@ const HomePage = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-16 md:py-24 bg-[#131620]">
+      <section id="pricing" className="py-16 md:py-24 bg-black">
         <PricingTiers />
       </section>
 
@@ -293,22 +306,22 @@ const HomePage = () => {
               {teamMembers.map((member, index) => (
                 <div
                   key={index}
-                  className={`bg-gradient-to-r from-[#0d0f1a] to-[#1a1d2a] rounded-xl p-4 cursor-pointer transition-all duration-300 hover:shadow-lg border ${
+                  className={`bg-gradient-to-r from-[#0d0f1a] to-[#1a1d2a] rounded-xl p-5 cursor-pointer transition-all duration-300 hover:shadow-lg border ${
                     selectedTeamMember === member.id
                       ? "border-purple-500 shadow-purple-500/20 shadow-lg"
                       : "border-gray-700/50 hover:border-gray-600"
                   }`}
                   onClick={() => setSelectedTeamMember(member.id)}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-4">
                     <div className="flex-shrink-0">
-                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                      <div className="h-14 w-14 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
                         {member.name.charAt(0)}
                       </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-bold text-white text-sm">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="font-bold text-white text-base">
                           {member.name}
                         </h3>
                         <Badge
@@ -318,7 +331,7 @@ const HomePage = () => {
                           in
                         </Badge>
                       </div>
-                      <p className="text-purple-400 text-xs font-medium mb-2 line-clamp-2">
+                      <p className="text-purple-400 text-sm font-medium mb-3 line-clamp-2">
                         {member.title}
                       </p>
                       <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">
@@ -365,15 +378,13 @@ const HomePage = () => {
                       <h4 className="font-semibold text-gray-900 mb-3">
                         About
                       </h4>
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-gray-700 leading-relaxed mb-6">
                         {
                           teamMembers.find((m) => m.id === selectedTeamMember)
-                            ?.fullDescription
+                            ?.linkedinAbout
                         }
                       </p>
-                    </div>
 
-                    <div className="flex justify-center pt-4 border-t border-gray-200">
                       <a
                         href={
                           selectedTeamMember === "jether"
@@ -390,6 +401,18 @@ const HomePage = () => {
                         View LinkedIn Profile
                       </a>
                     </div>
+
+                    <div className="pt-4 border-t border-gray-200">
+                      <h4 className="font-semibold text-gray-900 mb-3">
+                        Experience
+                      </h4>
+                      <p className="text-gray-700 leading-relaxed">
+                        {
+                          teamMembers.find((m) => m.id === selectedTeamMember)
+                            ?.fullDescription
+                        }
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
@@ -399,7 +422,7 @@ const HomePage = () => {
       </section>
 
       {/* Industry Integrations Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[#121219] via-[#1a1e2d] to-[#0f1117]">
+      <section className="py-16 md:py-24 bg-gray-900">
         <div className="container mx-auto px-4 text-center mb-12 max-w-8xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Industry-Specific Platform Integrations
@@ -458,7 +481,7 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-black">
         <div className="container mx-auto px-4 text-center max-w-8xl">
           <div className="text-purple-500 font-medium mb-4 uppercase tracking-wider">
             EXPLORE OUR PRODUCTS
@@ -495,7 +518,7 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 md:py-16 bg-[#131620] border-t border-gray-800">
+      <footer className="py-12 md:py-16 bg-black border-t border-gray-800">
         <div className="container mx-auto px-4 max-w-8xl">
           <div className="grid md:grid-cols-4 gap-8 mb-12 max-w-7xl mx-auto">
             <div>
