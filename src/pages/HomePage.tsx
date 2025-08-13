@@ -73,12 +73,12 @@ const HomePage = () => {
   return (
     <div className="bg-[#121219] text-white">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
+      <section className="container mx-auto px-4 py-16 md:py-24 max-w-8xl">
         <div className="text-purple-500 font-medium mb-4 uppercase tracking-wider">
           POWERING PROGRESS
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           <div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Empowering Small Teams & Local Businesses
@@ -139,23 +139,23 @@ const HomePage = () => {
       </section>
 
       {/* AI Tools Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#2a2f42] to-[#3a3f52]">
+        <div className="container mx-auto px-4 max-w-8xl">
+          <div className="grid md:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
                 Your Favorite AI Tools, Integrated
               </h2>
-              <p className="text-gray-300 mb-8">
+              <p className="text-gray-200 mb-8">
                 xEmergence seamlessly integrates with the tools you already
                 love, enabling smooth transitions across your work processes and
                 maximizing operational efficiency.
               </p>
 
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="text-2xl font-bold mb-4 text-white">
                 Centralized Control Tower
               </h3>
-              <p className="text-gray-300 mb-6">
+              <p className="text-gray-200 mb-6">
                 Our platform serves as a unified control tower, powered by
                 advanced AI technology, designed to transform data from your
                 digital components into actionable business intelligence. By
@@ -165,7 +165,7 @@ const HomePage = () => {
                 workflows.
               </p>
 
-              <p className="text-gray-300">
+              <p className="text-gray-200">
                 Access our comprehensive suite of AI-powered tools designed to
                 streamline operations, from intelligent scheduling and analytics
                 to automated notifications and security management. Plus,
@@ -176,92 +176,98 @@ const HomePage = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {/* Tool Card 1 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center mx-auto mb-3">
-                    <Calendar className="h-5 w-5 text-green-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-600/20 to-emerald-700/30 flex items-center justify-center mx-auto mb-3 border border-emerald-500/40">
+                    <Calendar className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <p className="text-sm font-medium">Scheduling</p>
+                  <p className="text-sm font-medium text-white">Scheduling</p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 2 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-3">
-                    <MessageSquare className="h-5 w-5 text-blue-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600/20 to-blue-700/30 flex items-center justify-center mx-auto mb-3 border border-blue-500/40">
+                    <MessageSquare className="h-5 w-5 text-blue-400" />
                   </div>
-                  <p className="text-sm font-medium">AI Chat</p>
+                  <p className="text-sm font-medium text-white">AI Chat</p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 3 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-3">
-                    <BarChart3 className="h-5 w-5 text-purple-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600/20 to-purple-700/30 flex items-center justify-center mx-auto mb-3 border border-purple-500/40">
+                    <BarChart3 className="h-5 w-5 text-purple-400" />
                   </div>
-                  <p className="text-sm font-medium">Analytics</p>
+                  <p className="text-sm font-medium text-white">Analytics</p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 4 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-red-900/30 flex items-center justify-center mx-auto mb-3">
-                    <Brain className="h-5 w-5 text-red-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-rose-600/20 to-rose-700/30 flex items-center justify-center mx-auto mb-3 border border-rose-500/40">
+                    <Brain className="h-5 w-5 text-rose-400" />
                   </div>
-                  <p className="text-sm font-medium">AI Assistant</p>
+                  <p className="text-sm font-medium text-white">AI Assistant</p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 5 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-yellow-900/30 flex items-center justify-center mx-auto mb-3">
-                    <Bell className="h-5 w-5 text-yellow-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-600/20 to-amber-700/30 flex items-center justify-center mx-auto mb-3 border border-amber-500/40">
+                    <Bell className="h-5 w-5 text-amber-400" />
                   </div>
-                  <p className="text-sm font-medium">Notifications</p>
+                  <p className="text-sm font-medium text-white">
+                    Notifications
+                  </p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 6 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-700/30 flex items-center justify-center mx-auto mb-3">
-                    <Settings className="h-5 w-5 text-gray-400" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-600/20 to-slate-700/30 flex items-center justify-center mx-auto mb-3 border border-slate-500/40">
+                    <Settings className="h-5 w-5 text-slate-400" />
                   </div>
-                  <p className="text-sm font-medium">Configuration</p>
+                  <p className="text-sm font-medium text-white">
+                    Configuration
+                  </p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 7 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center mx-auto mb-3">
-                    <Shield className="h-5 w-5 text-green-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600/20 to-teal-700/30 flex items-center justify-center mx-auto mb-3 border border-teal-500/40">
+                    <Shield className="h-5 w-5 text-teal-400" />
                   </div>
-                  <p className="text-sm font-medium">Security</p>
+                  <p className="text-sm font-medium text-white">Security</p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 8 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-3">
-                    <Zap className="h-5 w-5 text-blue-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-600/20 to-indigo-700/30 flex items-center justify-center mx-auto mb-3 border border-indigo-500/40">
+                    <Zap className="h-5 w-5 text-indigo-400" />
                   </div>
-                  <p className="text-sm font-medium">Automation</p>
+                  <p className="text-sm font-medium text-white">Automation</p>
                 </CardContent>
               </Card>
 
               {/* Tool Card 9 */}
-              <Card className="bg-[#1a1e2d] border-none shadow-lg">
+              <Card className="bg-gradient-to-br from-[#1e2139] to-[#252a47] border-gray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-500/50">
                 <CardContent className="p-4 text-center">
-                  <div className="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-3">
-                    <Database className="h-5 w-5 text-purple-500" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-600/20 to-violet-700/30 flex items-center justify-center mx-auto mb-3 border border-violet-500/40">
+                    <Database className="h-5 w-5 text-violet-400" />
                   </div>
-                  <p className="text-sm font-medium">Data Management</p>
+                  <p className="text-sm font-medium text-white">
+                    Data Management
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -275,22 +281,19 @@ const HomePage = () => {
       </section>
 
       {/* Team Section */}
-      <section
-        id="team"
-        className="py-16 md:py-24 bg-gradient-to-br from-[#0f1117] to-[#1a1e2d]"
-      >
-        <div className="container mx-auto px-4">
+      <section id="team" className="py-16 md:py-24 bg-black">
+        <div className="container mx-auto px-4 max-w-8xl">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-white">
             Team Members
           </h2>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* Team Member Selection - Left Side */}
             <div className="lg:col-span-1 space-y-4">
               {teamMembers.map((member, index) => (
                 <div
                   key={index}
-                  className={`bg-gradient-to-r from-[#1e2139] to-[#252a3d] rounded-xl p-4 cursor-pointer transition-all duration-300 hover:shadow-lg border ${
+                  className={`bg-gradient-to-r from-[#0d0f1a] to-[#1a1d2a] rounded-xl p-4 cursor-pointer transition-all duration-300 hover:shadow-lg border ${
                     selectedTeamMember === member.id
                       ? "border-purple-500 shadow-purple-500/20 shadow-lg"
                       : "border-gray-700/50 hover:border-gray-600"
@@ -328,9 +331,9 @@ const HomePage = () => {
             </div>
 
             {/* LinkedIn Preview - Right Side */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 flex justify-center">
               {selectedTeamMember && (
-                <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl overflow-hidden shadow-xl border border-gray-200">
+                <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl overflow-hidden shadow-xl border border-gray-200 max-w-2xl w-full">
                   {/* LinkedIn Header */}
                   <div className="bg-gradient-to-r from-[#0077b5] to-[#005885] p-6 text-white">
                     <div className="flex items-center gap-4">
@@ -370,11 +373,7 @@ const HomePage = () => {
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <div className="h-2 w-2 bg-green-500 rounded-full"></div>
-                        Available for collaboration
-                      </div>
+                    <div className="flex justify-center pt-4 border-t border-gray-200">
                       <a
                         href={
                           selectedTeamMember === "jether"
@@ -401,7 +400,7 @@ const HomePage = () => {
 
       {/* Industry Integrations Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#121219] via-[#1a1e2d] to-[#0f1117]">
-        <div className="container mx-auto px-4 text-center mb-12">
+        <div className="container mx-auto px-4 text-center mb-12 max-w-8xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Industry-Specific Platform Integrations
           </h2>
@@ -415,43 +414,43 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl">
           {/* Industry Card 1 */}
-          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <GraduationCap className="h-6 w-6 text-white" />
+          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 group h-40">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <GraduationCap className="h-5 w-5 text-white" />
             </div>
-            <h3 className="font-bold text-white text-center text-sm">
-              Education
+            <h3 className="font-bold text-white text-center text-sm px-2">
+              Education Platform
             </h3>
           </div>
 
           {/* Industry Card 2 */}
-          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Home className="h-6 w-6 text-white" />
+          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 group h-40">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Home className="h-5 w-5 text-white" />
             </div>
-            <h3 className="font-bold text-white text-center text-sm">
-              Real Estate
+            <h3 className="font-bold text-white text-center text-sm px-2">
+              Real Estate Solutions
             </h3>
           </div>
 
           {/* Industry Card 3 */}
-          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Package className="h-6 w-6 text-white" />
+          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group h-40">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Package className="h-5 w-5 text-white" />
             </div>
-            <h3 className="font-bold text-white text-center text-sm">
-              Services
+            <h3 className="font-bold text-white text-center text-sm px-2">
+              Service Management
             </h3>
           </div>
 
           {/* Industry Card 4 */}
-          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Baby className="h-6 w-6 text-white" />
+          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group h-40">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Baby className="h-5 w-5 text-white" />
             </div>
-            <h3 className="font-bold text-white text-center text-sm">
+            <h3 className="font-bold text-white text-center text-sm px-2">
               Pregnancy Platform
             </h3>
           </div>
@@ -460,7 +459,7 @@ const HomePage = () => {
 
       {/* CTA Section */}
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center max-w-8xl">
           <div className="text-purple-500 font-medium mb-4 uppercase tracking-wider">
             EXPLORE OUR PRODUCTS
           </div>
@@ -497,8 +496,8 @@ const HomePage = () => {
 
       {/* Footer */}
       <footer className="py-12 md:py-16 bg-[#131620] border-t border-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
+        <div className="container mx-auto px-4 max-w-8xl">
+          <div className="grid md:grid-cols-4 gap-8 mb-12 max-w-7xl mx-auto">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="h-8 w-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
@@ -598,7 +597,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
             <p className="text-gray-500 text-sm">
               TrendBlend Inc 2023 All Rights Reserved
             </p>

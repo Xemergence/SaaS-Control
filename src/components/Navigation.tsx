@@ -41,12 +41,12 @@ const Navigation = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-[#121219]">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="h-10 w-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">
             xE
           </div>
           <span className="text-xl font-bold">xEmergence</span>
-        </div>
+        </Link>
 
         {/* Mobile menu button */}
         <button
@@ -68,24 +68,24 @@ const Navigation = () => {
           >
             Home
           </Link>
-          <Link
-            to="/#features"
+          <a
+            href="#features"
             className="text-sm text-white hover:text-purple-400 transition-colors"
           >
             Features
-          </Link>
-          <Link
-            to="/#pricing"
+          </a>
+          <a
+            href="#pricing"
             className="text-sm text-white hover:text-purple-400 transition-colors"
           >
             Pricing
-          </Link>
-          <Link
-            to="/#team"
+          </a>
+          <a
+            href="#team"
             className="text-sm text-white hover:text-purple-400 transition-colors"
           >
             Team
-          </Link>
+          </a>
           <div className="h-4 w-px bg-gray-600 mx-2"></div>
           <Link
             to="/3d-products"
@@ -153,27 +153,27 @@ const Navigation = () => {
               >
                 Home
               </Link>
-              <Link
-                to="/#features"
+              <a
+                href="#features"
                 className="text-sm text-white hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Features
-              </Link>
-              <Link
-                to="/#pricing"
+              </a>
+              <a
+                href="#pricing"
                 className="text-sm text-white hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Pricing
-              </Link>
-              <Link
-                to="/#team"
+              </a>
+              <a
+                href="#team"
                 className="text-sm text-white hover:text-purple-400 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Team
-              </Link>
+              </a>
               <div className="border-t border-gray-700 pt-4 mt-4">
                 <Link
                   to="/3d-products"
