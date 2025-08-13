@@ -4,21 +4,22 @@ import HomePage from "./pages/HomePage";
 import ProductStore from "./pages/ProductStore";
 import Navigation from "./components/Navigation";
 
-// Conditionally import tempo routes only when VITE_TEMPO is enabled
-const TempoRoutes = lazy(async () => {
-  if (import.meta.env.VITE_TEMPO === "true") {
-    try {
-      const routes = await import("tempo-routes");
-      return {
-        default: () => useRoutes(routes.default),
-      };
-    } catch (error) {
-      console.warn("Failed to load tempo routes:", error);
-      return { default: () => null };
-    }
-  }
-  return { default: () => null };
-});
+// Conditionally create TempoRoutes component only when VITE_TEMPO is enabled
+const TempoRoutes =
+  import.meta.env.VITE_TEMPO === "true"
+    ? lazy(() => {
+        // Use eval to prevent Rollup from analyzing this import at build time
+        const importPath = "tempo-routes";
+        return eval(`import("${importPath}")`)
+          .then((routes) => ({
+            default: () => useRoutes(routes.default),
+          }))
+          .catch((error) => {
+            console.warn("Failed to load tempo routes:", error);
+            return { default: () => null };
+          });
+      })
+    : () => null;
 
 function App() {
   return (

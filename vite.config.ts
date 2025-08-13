@@ -20,6 +20,11 @@ export default defineConfig({
       ? [tempo()]
       : []),
   ],
+  build: {
+    rollupOptions: {
+      external: ["tempo-routes"],
+    },
+  },
   resolve: {
     preserveSymlinks: true,
     alias: {
