@@ -96,41 +96,44 @@ const ProductStore = () => {
         <div className="flex overflow-x-auto pb-2 gap-2">
           <Button
             variant={selectedCategory === "all" ? "default" : "outline"}
-            className={`rounded-full ${selectedCategory === "all" ? "bg-purple-600 hover:bg-purple-700 text-white" : "text-gray-300 hover:text-white border-gray-700 hover:border-gray-600"}`}
+            className={`rounded-full ${selectedCategory === "all" ? "bg-purple-600 hover:bg-purple-700 text-white" : "text-white hover:text-white border-gray-700/30 hover:border-gray-600/40 bg-transparent hover:bg-gray-800/20"}`}
             onClick={() => setSelectedCategory("all")}
           >
             <Box className="h-4 w-4 mr-2" /> All Products
           </Button>
           <Button
             variant={selectedCategory === "3d" ? "default" : "outline"}
-            className={`rounded-full ${selectedCategory === "3d" ? "bg-purple-600 hover:bg-purple-700 text-white" : "text-gray-300 hover:text-white border-gray-700 hover:border-gray-600"}`}
+            className={`rounded-full ${selectedCategory === "3d" ? "bg-purple-600 hover:bg-purple-700 text-white" : "text-white hover:text-white border-gray-700/30 hover:border-gray-600/40 bg-transparent hover:bg-gray-800/20"}`}
             onClick={() => setSelectedCategory("3d")}
           >
             <PaintBucket className="h-4 w-4 mr-2" /> 3D Printed Art
           </Button>
           <Button
             variant="outline"
-            className="rounded-full text-gray-500 border-gray-800 opacity-70"
+            className="rounded-full text-white border-gray-600/60 hover:border-gray-500/70 bg-transparent hover:bg-gray-800/10"
             disabled
           >
-            <Box className="h-4 w-4 mr-2" /> NFC Products{" "}
-            <span className="text-xs ml-1">(Coming Soon)</span>
+            <Box className="h-4 w-4 mr-2 text-white" />
+            <span className="text-white">NFC Products</span>{" "}
+            <span className="text-xs ml-1 text-white">(Coming Soon)</span>
           </Button>
           <Button
             variant="outline"
-            className="rounded-full text-gray-500 border-gray-800 opacity-70"
+            className="rounded-full text-white border-gray-600/60 hover:border-gray-500/70 bg-transparent hover:bg-gray-800/10"
             disabled
           >
-            <Box className="h-4 w-4 mr-2" /> IoT Real Estate{" "}
-            <span className="text-xs ml-1">(Coming Soon)</span>
+            <Box className="h-4 w-4 mr-2 text-white" />
+            <span className="text-white">IoT Real Estate</span>{" "}
+            <span className="text-xs ml-1 text-white">(Coming Soon)</span>
           </Button>
           <Button
             variant="outline"
-            className="rounded-full text-gray-500 border-gray-800 opacity-70"
+            className="rounded-full text-white border-gray-600/60 hover:border-gray-500/70 bg-transparent hover:bg-gray-800/10"
             disabled
           >
-            <Box className="h-4 w-4 mr-2" /> Manufacturing{" "}
-            <span className="text-xs ml-1">(Coming Soon)</span>
+            <Box className="h-4 w-4 mr-2 text-white" />
+            <span className="text-white">Manufacturing</span>{" "}
+            <span className="text-xs ml-1 text-white">(Coming Soon)</span>
           </Button>
         </div>
       </div>
