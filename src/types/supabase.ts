@@ -14,12 +14,121 @@ export type Database = {
   }
   public: {
     Tables: {
+      financial_metrics: {
+        Row: {
+          active_subscriptions: number | null
+          created_at: string | null
+          date: string
+          id: string
+          new_users: number | null
+          total_orders: number | null
+          total_revenue: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          active_subscriptions?: number | null
+          created_at?: string | null
+          date?: string
+          id?: string
+          new_users?: number | null
+          total_orders?: number | null
+          total_revenue?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          active_subscriptions?: number | null
+          created_at?: string | null
+          date?: string
+          id?: string
+          new_users?: number | null
+          total_orders?: number | null
+          total_revenue?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string | null
+          design_file_url: string | null
+          id: string
+          notes: string | null
+          order_number: string
+          price: number
+          product_name: string
+          product_type: string
+          quantity: number | null
+          status: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          design_file_url?: string | null
+          id?: string
+          notes?: string | null
+          order_number: string
+          price: number
+          product_name: string
+          product_type: string
+          quantity?: number | null
+          status?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          design_file_url?: string | null
+          id?: string
+          notes?: string | null
+          order_number?: string
+          price?: number
+          product_name?: string
+          product_type?: string
+          quantity?: number | null
+          status?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sign_in_logs: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          ip_address: unknown | null
+          success: boolean
+          user_agent: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          ip_address?: unknown | null
+          success?: boolean
+          user_agent?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          ip_address?: unknown | null
+          success?: boolean
+          user_agent?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_profiles: {
         Row: {
           company_name: string | null
           created_at: string | null
           id: string
           industry: string | null
+          role: string
           subscription_tier: string | null
           team_size: number | null
           updated_at: string | null
@@ -29,6 +138,7 @@ export type Database = {
           created_at?: string | null
           id: string
           industry?: string | null
+          role?: string
           subscription_tier?: string | null
           team_size?: number | null
           updated_at?: string | null
@@ -38,6 +148,7 @@ export type Database = {
           created_at?: string | null
           id?: string
           industry?: string | null
+          role?: string
           subscription_tier?: string | null
           team_size?: number | null
           updated_at?: string | null

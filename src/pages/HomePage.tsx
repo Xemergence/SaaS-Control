@@ -138,7 +138,7 @@ const HomePage = () => {
 
           <div className="bg-[#1a1e2d] rounded-xl p-4 shadow-xl">
             <img
-              src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80"
+              src="/images/Dashboard Example.png"
               alt="Dashboard Analytics"
               className="w-full h-auto rounded-lg shadow-lg"
             />
