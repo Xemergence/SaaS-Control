@@ -90,7 +90,7 @@ const HomePage = () => {
               cost management, and operational efficiency for small businesses,
               individuals, and teams.
             </p>
-            <Button className="bg-purple-600 hover:bg-purple-700 text-lg px-8 py-6 h-auto">
+            <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200">
               Start Free Trial
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -134,7 +134,7 @@ const HomePage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-16 md:py-24 bg-[#131620]">
+      <section id="features" className="py-16 md:py-24">
         <FeatureGrid />
       </section>
 
@@ -275,103 +275,134 @@ const HomePage = () => {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-16 md:py-24">
+      <section
+        id="team"
+        className="py-16 md:py-24 bg-gradient-to-br from-[#0f1117] to-[#1a1e2d]"
+      >
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12">Team members</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-white">
+            Team Members
+          </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Team Member Cards */}
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className={`bg-[#1a1e2d] rounded-lg p-6 flex gap-4 cursor-pointer hover:bg-[#252a3d] transition-colors ${selectedTeamMember === member.id ? "border border-purple-500" : ""}`}
-                onClick={() => setSelectedTeamMember(member.id)}
-              >
-                <div className="flex-shrink-0">
-                  <Avatar className="h-12 w-12 bg-purple-900 text-white">
-                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-bold">{member.name}</h3>
-                    <Badge
-                      variant="outline"
-                      className="bg-transparent border-blue-500 text-blue-400"
-                    >
-                      in
-                    </Badge>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Team Member Selection - Left Side */}
+            <div className="lg:col-span-1 space-y-4">
+              {teamMembers.map((member, index) => (
+                <div
+                  key={index}
+                  className={`bg-gradient-to-r from-[#1e2139] to-[#252a3d] rounded-xl p-4 cursor-pointer transition-all duration-300 hover:shadow-lg border ${
+                    selectedTeamMember === member.id
+                      ? "border-purple-500 shadow-purple-500/20 shadow-lg"
+                      : "border-gray-700/50 hover:border-gray-600"
+                  }`}
+                  onClick={() => setSelectedTeamMember(member.id)}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0">
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        {member.name.charAt(0)}
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-bold text-white text-sm">
+                          {member.name}
+                        </h3>
+                        <Badge
+                          variant="outline"
+                          className="bg-blue-900/30 border-blue-500/50 text-blue-400 text-xs px-1.5 py-0.5"
+                        >
+                          in
+                        </Badge>
+                      </div>
+                      <p className="text-purple-400 text-xs font-medium mb-2 line-clamp-2">
+                        {member.title}
+                      </p>
+                      <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">
+                        {member.description}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-purple-400 text-sm">{member.title}</p>
-                  <p className="text-gray-400 text-sm mt-2">
-                    {member.description}
-                  </p>
-                  <div className="mt-3 flex justify-end">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-blue-600 text-blue-400 flex items-center gap-2"
-                    >
-                      <LinkedinIcon className="h-3 w-3" />
-                      Connect
-                    </Button>
+                </div>
+              ))}
+            </div>
+
+            {/* LinkedIn Preview - Right Side */}
+            <div className="lg:col-span-2">
+              {selectedTeamMember && (
+                <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl overflow-hidden shadow-xl border border-gray-200">
+                  {/* LinkedIn Header */}
+                  <div className="bg-gradient-to-r from-[#0077b5] to-[#005885] p-6 text-white">
+                    <div className="flex items-center gap-4">
+                      <div className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white font-bold text-2xl border-2 border-white/30">
+                        {teamMembers
+                          .find((m) => m.id === selectedTeamMember)
+                          ?.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-2xl">
+                          {
+                            teamMembers.find((m) => m.id === selectedTeamMember)
+                              ?.name
+                          }
+                        </h3>
+                        <p className="text-blue-100 font-medium">
+                          {
+                            teamMembers.find((m) => m.id === selectedTeamMember)
+                              ?.title
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* LinkedIn Content */}
+                  <div className="p-6">
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-gray-900 mb-3">
+                        About
+                      </h4>
+                      <p className="text-gray-700 leading-relaxed">
+                        {
+                          teamMembers.find((m) => m.id === selectedTeamMember)
+                            ?.fullDescription
+                        }
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <div className="h-2 w-2 bg-green-500 rounded-full"></div>
+                        Available for collaboration
+                      </div>
+                      <a
+                        href={
+                          selectedTeamMember === "jether"
+                            ? "https://www.linkedin.com/in/jetherpantonainnovation/"
+                            : selectedTeamMember === "sebastian"
+                              ? "https://www.linkedin.com/in/sebavissepo/"
+                              : "https://www.linkedin.com/in/johan-lingani-5788a953/"
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-[#0077b5] text-white px-4 py-2 rounded-lg hover:bg-[#0069a0] transition-colors font-medium shadow-md hover:shadow-lg"
+                      >
+                        <LinkedinIcon className="h-4 w-4" />
+                        View LinkedIn Profile
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-
-            {/* Team Member Detail Card - Featured */}
-            {selectedTeamMember && (
-              <div className="md:col-span-2 bg-[#1a1e2d] rounded-lg p-6 border border-purple-800/30">
-                <div className="flex items-center gap-4 mb-4">
-                  <Avatar className="h-12 w-12 bg-purple-900 text-white">
-                    <AvatarFallback>
-                      {teamMembers
-                        .find((m) => m.id === selectedTeamMember)
-                        ?.name.charAt(0)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <h3 className="font-bold text-xl">
-                    {teamMembers.find((m) => m.id === selectedTeamMember)?.name}
-                  </h3>
-                </div>
-
-                <p className="text-purple-400 mb-4">
-                  {teamMembers.find((m) => m.id === selectedTeamMember)?.title}
-                </p>
-
-                <p className="text-gray-300 mb-6">
-                  {
-                    teamMembers.find((m) => m.id === selectedTeamMember)
-                      ?.fullDescription
-                  }
-                </p>
-
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    className="border-blue-600 text-blue-400 flex items-center gap-2 flex-1"
-                  >
-                    <LinkedinIcon className="h-4 w-4" />
-                    View LinkedIn Profile
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="border-purple-600 text-purple-400 flex items-center gap-2 flex-1"
-                  >
-                    Message
-                  </Button>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Industry Integrations Section */}
-      <section className="py-16 md:py-24 bg-[#131620]">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#121219] via-[#1a1e2d] to-[#0f1117]">
         <div className="container mx-auto px-4 text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Industry-Specific Platform Integrations
           </h2>
           <p className="text-gray-300 max-w-3xl mx-auto">
@@ -384,46 +415,46 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
           {/* Industry Card 1 */}
-          <Card className="bg-[#1a1e2d] border-none shadow-lg">
-            <CardContent className="p-6 text-center">
-              <div className="w-12 h-12 rounded-full bg-green-900/30 flex items-center justify-center mx-auto mb-4">
-                <GraduationCap className="h-6 w-6 text-green-500" />
-              </div>
-              <h3 className="font-bold">Education</h3>
-            </CardContent>
-          </Card>
+          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 group">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <GraduationCap className="h-6 w-6 text-white" />
+            </div>
+            <h3 className="font-bold text-white text-center text-sm">
+              Education
+            </h3>
+          </div>
 
           {/* Industry Card 2 */}
-          <Card className="bg-[#1a1e2d] border-none shadow-lg">
-            <CardContent className="p-6 text-center">
-              <div className="w-12 h-12 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-4">
-                <Home className="h-6 w-6 text-purple-500" />
-              </div>
-              <h3 className="font-bold">Real Estate</h3>
-            </CardContent>
-          </Card>
+          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 group">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Home className="h-6 w-6 text-white" />
+            </div>
+            <h3 className="font-bold text-white text-center text-sm">
+              Real Estate
+            </h3>
+          </div>
 
           {/* Industry Card 3 */}
-          <Card className="bg-[#1a1e2d] border-none shadow-lg">
-            <CardContent className="p-6 text-center">
-              <div className="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
-                <Package className="h-6 w-6 text-blue-500" />
-              </div>
-              <h3 className="font-bold">Services</h3>
-            </CardContent>
-          </Card>
+          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Package className="h-6 w-6 text-white" />
+            </div>
+            <h3 className="font-bold text-white text-center text-sm">
+              Services
+            </h3>
+          </div>
 
           {/* Industry Card 4 */}
-          <Card className="bg-[#1a1e2d] border-none shadow-lg">
-            <CardContent className="p-6 text-center">
-              <div className="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mx-auto mb-4">
-                <Baby className="h-6 w-6 text-red-500" />
-              </div>
-              <h3 className="font-bold">Pregnancy Platform</h3>
-            </CardContent>
-          </Card>
+          <div className="aspect-square bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-4 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Baby className="h-6 w-6 text-white" />
+            </div>
+            <h3 className="font-bold text-white text-center text-sm">
+              Pregnancy Platform
+            </h3>
+          </div>
         </div>
       </section>
 
@@ -446,7 +477,7 @@ const HomePage = () => {
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/3d-products">
-              <Button className="bg-purple-600 hover:bg-purple-700 flex items-center gap-2">
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-200">
                 <ShoppingCart className="h-4 w-4" />
                 Browse Products
                 <ArrowRight className="h-4 w-4" />
@@ -455,7 +486,7 @@ const HomePage = () => {
 
             <Button
               variant="outline"
-              className="border-gray-700 text-gray-300 flex items-center gap-2"
+              className="border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 bg-transparent flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200"
             >
               <Grid className="h-4 w-4" />
               View All Categories
