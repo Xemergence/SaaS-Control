@@ -38,7 +38,7 @@ const ProductStore = () => {
       price: 89.99,
       originalPrice: 119.99,
       image:
-        "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&q=80",
+        "/images/20250409_1752_Social Media Keychains_remix_01jre8m26bfsfbyn3ad255arhg.png",
       tags: ["Custom Design", "Durable Material"],
       comingSoon: true,
       sale: true,
@@ -49,8 +49,7 @@ const ProductStore = () => {
       description:
         "Upload your logo or design for custom 3D printing on various products including promotional items.",
       price: 149.99,
-      image:
-        "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&q=80",
+      image: "/images/Custom Image v1.png",
       tags: ["Modular Design", "Multiple Sizes"],
       comingSoon: true,
     },
@@ -146,7 +145,10 @@ const ProductStore = () => {
               key={product.id}
               className="bg-[#1c1c24] rounded-lg overflow-hidden border border-gray-800"
             >
-              <div className="relative">
+              <div
+                className="relative cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={() => handleProductSelect(product)}
+              >
                 <img
                   src={product.image}
                   alt={product.name}
@@ -194,7 +196,7 @@ const ProductStore = () => {
                       </span>
                     )}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex justify-end">
                     {product.id === "1" ? (
                       <Button
                         onClick={() => handleProductSelect(product)}
@@ -208,11 +210,6 @@ const ProductStore = () => {
                         className="bg-purple-600 hover:bg-purple-700"
                       >
                         Customize Design
-                      </Button>
-                    )}
-                    {product.id === "1" && (
-                      <Button variant="outline" size="icon">
-                        <ShoppingCart className="h-4 w-4" />
                       </Button>
                     )}
                   </div>
