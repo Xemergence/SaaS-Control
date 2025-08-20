@@ -26,6 +26,7 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [currentMode, setCurrentMode] = useState(mode);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,29 +35,82 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
     setMessage("");
 
     try {
-      if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+      if (currentMode === "signup") {
+        // Use environment-based redirect URL
+        const baseUrl = window.location.origin;
+        const redirectUrl = `${baseUrl}/auth/callback`;
+
+        console.log("Using redirect URL:", redirectUrl);
+
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
             data: {
               full_name: fullName,
             },
+            emailRedirectTo: redirectUrl,
           },
         });
 
-        if (error) throw error;
+        if (error) {
+          // Handle specific signup errors
+          if (error.message.includes("already registered")) {
+            setError(
+              "An account with this email already exists. Please sign in instead.",
+            );
+            // Automatically switch to sign-in mode
+            setTimeout(() => {
+              setCurrentMode("signin");
+              setError("");
+              setMessage("Please sign in with your existing account.");
+            }, 2000);
+            return;
+          }
+          throw error;
+        }
 
-        setMessage(
-          "Check your email for the confirmation link to complete your registration.",
-        );
+        if (data.user) {
+          if (data.user.email_confirmed_at) {
+            // User is immediately confirmed (email confirmation disabled)
+            setMessage("Account created successfully! You are now signed in.");
+            setTimeout(() => {
+              setOpen(false);
+              window.location.reload();
+            }, 1500);
+          } else {
+            // Email confirmation required
+            setMessage(
+              "Account created! Please check your email and click the confirmation link to complete your registration. You can then sign in.",
+            );
+            // Switch to sign-in mode after showing the message
+            setTimeout(() => {
+              setCurrentMode("signin");
+              setMessage("Please sign in after confirming your email.");
+            }, 3000);
+          }
+        }
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
 
-        if (error) throw error;
+        if (error) {
+          // Handle specific sign-in errors
+          if (error.message.includes("Invalid login credentials")) {
+            setError(
+              "Invalid email or password. Please check your credentials and try again.",
+            );
+          } else if (error.message.includes("Email not confirmed")) {
+            setError(
+              "Please confirm your email address before signing in. Check your inbox for the confirmation link.",
+            );
+          } else {
+            setError(error.message);
+          }
+          return;
+        }
 
         setMessage("Successfully signed in!");
         setTimeout(() => {
@@ -65,7 +119,10 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
         }, 1000);
       }
     } catch (error: any) {
-      setError(error.message);
+      console.error("Auth error:", error);
+      setError(
+        error.message || "An unexpected error occurred. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -77,6 +134,7 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
     setFullName("");
     setMessage("");
     setError("");
+    setCurrentMode(mode);
   };
 
   return (
@@ -91,17 +149,17 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
       <DialogContent className="sm:max-w-md bg-[#1a1e2d] border-gray-700 text-white">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-            {mode === "signup" ? "Create Account" : "Welcome Back"}
+            {currentMode === "signup" ? "Create Account" : "Welcome Back"}
           </DialogTitle>
           <DialogDescription className="text-center text-gray-400">
-            {mode === "signup"
+            {currentMode === "signup"
               ? "Join xEmergence to transform your business data"
               : "Sign in to access your dashboard"}
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {mode === "signup" && (
+          {currentMode === "signup" && (
             <div className="space-y-2">
               <Label htmlFor="fullName" className="text-sm font-medium">
                 Full Name
@@ -178,11 +236,13 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                {mode === "signup" ? "Creating Account..." : "Signing In..."}
+                {currentMode === "signup"
+                  ? "Creating Account..."
+                  : "Signing In..."}
               </>
             ) : (
               <>
-                {mode === "signup" ? "Create Account" : "Sign In"}
+                {currentMode === "signup" ? "Create Account" : "Sign In"}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </>
             )}
@@ -190,14 +250,15 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
         </form>
 
         <div className="text-center text-sm text-gray-400">
-          {mode === "signup" ? (
+          {currentMode === "signup" ? (
             <p>
               Already have an account?{" "}
               <button
                 type="button"
                 onClick={() => {
-                  setOpen(false);
-                  setTimeout(() => setOpen(true), 100);
+                  setCurrentMode("signin");
+                  setError("");
+                  setMessage("");
                 }}
                 className="text-purple-400 hover:text-purple-300 font-medium"
               >
@@ -210,8 +271,9 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
               <button
                 type="button"
                 onClick={() => {
-                  setOpen(false);
-                  setTimeout(() => setOpen(true), 100);
+                  setCurrentMode("signup");
+                  setError("");
+                  setMessage("");
                 }}
                 className="text-purple-400 hover:text-purple-300 font-medium"
               >

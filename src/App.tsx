@@ -8,6 +8,8 @@ import AccountOverview from "./pages/AccountOverview";
 import Navigation from "./components/Navigation";
 import { supabase, getUserProfile, canAccessDashboard, type UserProfile } from "./lib/supabase";
 import type { User } from "@supabase/supabase-js";
+import EmailConfirmation from "./pages/EmailConfirmation";
+import AuthCallback from "./pages/AuthCallback";
 
 // Protected Route Component
 const ProtectedRoute = ({ 
@@ -100,6 +102,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/3d-products" element={<ProductStore />} />
+          <Route path="/auth/confirm" element={<EmailConfirmation />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
           
           {/* Protected Routes */}
           <Route 
