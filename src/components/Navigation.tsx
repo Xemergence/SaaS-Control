@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -20,9 +20,36 @@ const Navigation = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  // Add smooth scroll handler for navigation links
+  const handleSectionClick = (sectionId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/', { replace: true });
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If we're already on the home page, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    
+    // Close mobile menu if open
+    setMobileMenuOpen(false);
   };
 
   useEffect(() => {
@@ -116,19 +143,22 @@ const Navigation = () => {
           </Link>
           <a
             href="#features"
-            className="text-sm text-white hover:text-purple-400 transition-colors"
+            onClick={(e) => handleSectionClick('features', e)}
+            className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
           >
             Features
           </a>
           <a
             href="#pricing"
-            className="text-sm text-white hover:text-purple-400 transition-colors"
+            onClick={(e) => handleSectionClick('pricing', e)}
+            className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
           >
             Pricing
           </a>
           <a
             href="#team"
-            className="text-sm text-white hover:text-purple-400 transition-colors"
+            onClick={(e) => handleSectionClick('team', e)}
+            className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
           >
             Team
           </a>
@@ -260,22 +290,22 @@ const Navigation = () => {
               </Link>
               <a
                 href="#features"
-                className="text-sm text-white hover:text-purple-400 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleSectionClick('features', e)}
+                className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
               >
                 Features
               </a>
               <a
                 href="#pricing"
-                className="text-sm text-white hover:text-purple-400 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleSectionClick('pricing', e)}
+                className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
               >
                 Pricing
               </a>
               <a
                 href="#team"
-                className="text-sm text-white hover:text-purple-400 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleSectionClick('team', e)}
+                className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
               >
                 Team
               </a>

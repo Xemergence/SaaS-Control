@@ -49,7 +49,8 @@ const ProductStore = () => {
       description:
         "Upload your logo or design for custom 3D printing on various products including promotional items.",
       price: 149.99,
-      image: "/images/Custom Image v1.png",
+      image:
+        "/images/3d-printing-icon-symbol-white-background_268104-19336.avif",
       tags: ["Modular Design", "Multiple Sizes"],
       comingSoon: true,
     },
@@ -165,7 +166,7 @@ const ProductStore = () => {
                   </Badge>
                 )}
               </div>
-              <div className="p-5">
+              <div className="p-5 flex flex-col h-full">
                 <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                 <p className="text-gray-400 text-sm mb-4">
                   {product.description}
@@ -185,7 +186,7 @@ const ProductStore = () => {
                     </span>
                   )}
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-end justify-between mt-auto">
                   <div>
                     <span className="text-xl font-bold">
                       ${product.price.toFixed(2)}
@@ -200,14 +201,14 @@ const ProductStore = () => {
                     {product.id === "1" ? (
                       <Button
                         onClick={() => handleProductSelect(product)}
-                        className="bg-purple-600 hover:bg-purple-700"
+                        className="bg-purple-600 hover:bg-purple-700 h-10"
                       >
-                        Buy Now
+                        Explore
                       </Button>
                     ) : (
                       <Button
                         onClick={() => handleProductSelect(product)}
-                        className="bg-purple-600 hover:bg-purple-700"
+                        className="bg-purple-600 hover:bg-purple-700 h-10"
                       >
                         Customize Design
                       </Button>

@@ -78,6 +78,28 @@ const HomePage = () => {
     },
   ];
 
+  // Add handler for industry card clicks
+  const handleIndustryClick = (industry: string) => {
+    switch (industry) {
+      case 'education':
+        window.open('https://tempo-deployment-dfa3f0dc-dfe0-4b42.vercel.app/', '_blank');
+        break;
+      case 'realestate':
+        window.open('https://tempo-deployment-0d4445fa-fe2d-4801.vercel.app/', '_blank');
+        break;
+      case 'pregnancy':
+        // No link available - could show a coming soon message
+        alert('Pregnancy Platform coming soon!');
+        break;
+      case 'services':
+        // No link available - could show a coming soon message
+        alert('Service Management Platform coming soon!');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="bg-[#121219] text-white">
       {/* Hero Section */}
@@ -409,8 +431,11 @@ const HomePage = () => {
         </div>
 
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl">
-          {/* Industry Card 1 */}
-          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 group h-40">
+          {/* Industry Card 1 - Education */}
+          <div 
+            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 group h-40 cursor-pointer"
+            onClick={() => handleIndustryClick('education')}
+          >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <GraduationCap className="h-5 w-5 text-white" />
             </div>
@@ -419,8 +444,11 @@ const HomePage = () => {
             </h3>
           </div>
 
-          {/* Industry Card 2 */}
-          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 group h-40">
+          {/* Industry Card 2 - Real Estate */}
+          <div 
+            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 group h-40 cursor-pointer"
+            onClick={() => handleIndustryClick('realestate')}
+          >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <Home className="h-5 w-5 text-white" />
             </div>
@@ -429,8 +457,11 @@ const HomePage = () => {
             </h3>
           </div>
 
-          {/* Industry Card 3 */}
-          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group h-40">
+          {/* Industry Card 3 - Services */}
+          <div 
+            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group h-40 cursor-pointer"
+            onClick={() => handleIndustryClick('services')}
+          >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <Package className="h-5 w-5 text-white" />
             </div>
@@ -439,8 +470,11 @@ const HomePage = () => {
             </h3>
           </div>
 
-          {/* Industry Card 4 */}
-          <div className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group h-40">
+          {/* Industry Card 4 - Pregnancy */}
+          <div 
+            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group h-40 cursor-pointer"
+            onClick={() => handleIndustryClick('pregnancy')}
+          >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <Baby className="h-5 w-5 text-white" />
             </div>
