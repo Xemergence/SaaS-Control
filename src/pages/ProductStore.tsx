@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -28,6 +28,7 @@ interface Product {
 const ProductStore = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const navigate = useNavigate();
 
   const products: Product[] = [
     {
@@ -57,6 +58,10 @@ const ProductStore = () => {
   ];
 
   const handleProductSelect = (product: Product) => {
+    if (product.id === "1") {
+      navigate("/nfc-keychains");
+      return;
+    }
     setSelectedProduct(product);
   };
 
@@ -84,7 +89,7 @@ const ProductStore = () => {
         <h1 className="text-3xl md:text-5xl font-bold mb-4">
           Innovative Solutions for Your Business
         </h1>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <p className="text-white max-w-2xl mx-auto">
           From 3D printed art covers to IoT solutions for real estate and
           manufacturing - discover products designed to enhance your business
           operations.
@@ -168,20 +173,18 @@ const ProductStore = () => {
               </div>
               <div className="p-5 flex flex-col h-full">
                 <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                <p className="text-gray-400 text-sm mb-4">
-                  {product.description}
-                </p>
+                <p className="text-white text-sm mb-4">{product.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {product.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-md"
+                      className="text-xs bg-gray-800 text-white px-2 py-1 rounded-md"
                     >
                       {tag}
                     </span>
                   ))}
                   {product.tags.length > 2 && (
-                    <span className="text-xs text-gray-400">
+                    <span className="text-xs text-white">
                       +{product.tags.length - 2} more
                     </span>
                   )}
@@ -192,7 +195,7 @@ const ProductStore = () => {
                       ${product.price.toFixed(2)}
                     </span>
                     {product.originalPrice && (
-                      <span className="text-gray-500 line-through ml-2">
+                      <span className="text-white line-through ml-2">
                         ${product.originalPrice.toFixed(2)}
                       </span>
                     )}
@@ -230,17 +233,17 @@ const ProductStore = () => {
             </div>
             <span className="text-lg font-medium">xEmergence</span>
           </div>
-          <p className="text-sm text-gray-400 mb-4">
+          <p className="text-sm text-white mb-4">
             Secure payments powered by Stripe • No account required
           </p>
           <div className="flex gap-6 text-sm">
-            <Link to="/" className="text-gray-400 hover:text-white">
+            <Link to="/" className="text-white hover:text-white">
               Home
             </Link>
-            <Link to="/contact" className="text-gray-400 hover:text-white">
+            <Link to="/contact" className="text-white hover:text-white">
               Contact
             </Link>
-            <Link to="/support" className="text-gray-400 hover:text-white">
+            <Link to="/support" className="text-white hover:text-white">
               Support
             </Link>
           </div>

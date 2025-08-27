@@ -28,6 +28,14 @@ import {
   X,
 } from "lucide-react";
 
+// Helper to create fast Supabase Image CDN URLs with sensible defaults
+const sbImage = (path: string, width: number = 800, quality: number = 80) => {
+  const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+  const clean = encodeURI(path.replace(/^\/+/, ""));
+  if (!base) return `/${clean}`; // Fallback to local public folder
+  return `${base.replace(/\/$/, "")}/storage/v1/render/image/public/site-assets/${clean}?width=${width}&quality=${quality}`;
+};
+
 interface TeamMember {
   id: string;
   name: string;
@@ -81,19 +89,25 @@ const HomePage = () => {
   // Add handler for industry card clicks
   const handleIndustryClick = (industry: string) => {
     switch (industry) {
-      case 'education':
-        window.open('https://tempo-deployment-dfa3f0dc-dfe0-4b42.vercel.app/', '_blank');
+      case "education":
+        window.open(
+          "https://tempo-deployment-dfa3f0dc-dfe0-4b42.vercel.app/",
+          "_blank",
+        );
         break;
-      case 'realestate':
-        window.open('https://tempo-deployment-0d4445fa-fe2d-4801.vercel.app/', '_blank');
+      case "realestate":
+        window.open(
+          "https://tempo-deployment-0d4445fa-fe2d-4801.vercel.app/",
+          "_blank",
+        );
         break;
-      case 'pregnancy':
+      case "pregnancy":
         // No link available - could show a coming soon message
-        alert('Pregnancy Platform coming soon!');
+        alert("Pregnancy Platform coming soon!");
         break;
-      case 'services':
+      case "services":
         // No link available - could show a coming soon message
-        alert('Service Management Platform coming soon!');
+        alert("Service Management Platform coming soon!");
         break;
       default:
         break;
@@ -160,9 +174,21 @@ const HomePage = () => {
 
           <div className="bg-[#1a1e2d] rounded-xl p-4 shadow-xl">
             <img
-              src="/images/Dashboard Example.png"
+              src={sbImage("images/Dashboard Example.png", 1200, 80)}
+              loading="lazy"
               alt="Dashboard Analytics"
               className="w-full h-auto rounded-lg shadow-lg"
+              onError={(e) => {
+                const t = e.currentTarget as HTMLImageElement;
+                const tried = t.getAttribute("data-failed");
+                if (!tried) {
+                  t.setAttribute("data-failed", "true");
+                  t.src = "/images/Dashboard Example.png";
+                } else {
+                  t.src =
+                    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=60";
+                }
+              }}
             />
           </div>
         </div>
@@ -432,9 +458,9 @@ const HomePage = () => {
 
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl">
           {/* Industry Card 1 - Education */}
-          <div 
+          <div
             className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick('education')}
+            onClick={() => handleIndustryClick("education")}
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <GraduationCap className="h-5 w-5 text-white" />
@@ -445,9 +471,9 @@ const HomePage = () => {
           </div>
 
           {/* Industry Card 2 - Real Estate */}
-          <div 
+          <div
             className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick('realestate')}
+            onClick={() => handleIndustryClick("realestate")}
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <Home className="h-5 w-5 text-white" />
@@ -458,9 +484,9 @@ const HomePage = () => {
           </div>
 
           {/* Industry Card 3 - Services */}
-          <div 
+          <div
             className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick('services')}
+            onClick={() => handleIndustryClick("services")}
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <Package className="h-5 w-5 text-white" />
@@ -471,9 +497,9 @@ const HomePage = () => {
           </div>
 
           {/* Industry Card 4 - Pregnancy */}
-          <div 
+          <div
             className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick('pregnancy')}
+            onClick={() => handleIndustryClick("pregnancy")}
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
               <Baby className="h-5 w-5 text-white" />

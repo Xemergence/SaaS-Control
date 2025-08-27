@@ -10,6 +10,7 @@ import { supabase, getUserProfile, canAccessDashboard, type UserProfile } from "
 import type { User } from "@supabase/supabase-js";
 import EmailConfirmation from "./pages/EmailConfirmation";
 import AuthCallback from "./pages/AuthCallback";
+import NFCKeychains from "./pages/NFCKeychains";
 
 // Protected Route Component
 const ProtectedRoute = ({ 
@@ -102,6 +103,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/3d-products" element={<ProductStore />} />
+          <Route path="/nfc-keychains" element={<NFCKeychains />} />
           <Route path="/auth/confirm" element={<EmailConfirmation />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           

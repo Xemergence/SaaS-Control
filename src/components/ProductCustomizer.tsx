@@ -106,7 +106,7 @@ const ProductCustomizer = ({
             <Button
               variant="ghost"
               onClick={handleBack}
-              className="mr-4 text-gray-300 hover:text-white hover:bg-gray-800"
+              className="mr-4 text-white hover:text-white hover:bg-gray-800"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Products
@@ -125,13 +125,13 @@ const ProductCustomizer = ({
           <h1 className="text-4xl font-bold mb-4 text-white">
             Create Your Custom 3D Print
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-white text-lg">
             Upload your design and choose what you'd like us to create for you
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Left Column - Choose Your Item */}
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-white">
@@ -143,8 +143,8 @@ const ProductCustomizer = ({
                   key={option.id}
                   className={`cursor-pointer transition-all duration-300 border-2 ${
                     selectedProduct === option.id
-                      ? "border-purple-500 bg-gray-800/50"
-                      : "border-gray-700 bg-gray-900/50 hover:border-gray-600"
+                      ? "border-purple-500 bg-[#1c1c24]"
+                      : "border-gray-700 bg-[#141625] hover:border-gray-600"
                   }`}
                   onClick={() => setSelectedProduct(option.id)}
                 >
@@ -158,7 +158,7 @@ const ProductCustomizer = ({
                           <h3 className="font-semibold text-lg text-white mb-2">
                             {option.name}
                           </h3>
-                          <p className="text-sm text-gray-400 leading-relaxed">
+                          <p className="text-sm text-white leading-relaxed">
                             {option.description}
                           </p>
                         </div>
@@ -189,7 +189,7 @@ const ProductCustomizer = ({
 
             {/* Preview Section */}
             <div className="mb-6">
-              <p className="text-sm mb-3 text-gray-400">
+              <p className="text-sm mb-3 text-white">
                 Preview: {selectedProductData.name}
               </p>
               <div className="border-2 border-gray-700 rounded-lg overflow-hidden bg-gray-900 h-64 flex items-center justify-center">
@@ -206,7 +206,7 @@ const ProductCustomizer = ({
                       alt="Example of art piece"
                       className="max-h-full max-w-full object-contain mx-auto rounded-lg"
                     />
-                    <p className="text-sm text-gray-400 mt-3">
+                    <p className="text-sm text-white mt-3">
                       Example of {selectedProductData.name.toLowerCase()}
                     </p>
                   </div>
@@ -223,7 +223,7 @@ const ProductCustomizer = ({
                 <p className="mb-2 text-lg font-medium text-white">
                   Drop your file here or click to browse
                 </p>
-                <p className="text-sm text-gray-400 mb-6">
+                <p className="text-sm text-white mb-6">
                   SVG files preferred for best results. PNG, JPG also accepted.
                 </p>
                 <Button
@@ -249,7 +249,7 @@ const ProductCustomizer = ({
               <h3 className="font-semibold text-white mb-2">
                 Selected: {selectedProductData.name}
               </h3>
-              <p className="text-sm text-gray-400 mb-3">
+              <p className="text-sm text-white mb-3">
                 {selectedProductData.description}
               </p>
               <p className="text-purple-400 font-semibold text-lg">
