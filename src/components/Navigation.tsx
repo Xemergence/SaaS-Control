@@ -9,8 +9,23 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, ArrowRight, User, LogOut, BarChart3, Settings, Crown, Star } from "lucide-react";
-import { supabase, getUserProfile, canAccessDashboard, type UserProfile } from "@/lib/supabase";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  User,
+  LogOut,
+  BarChart3,
+  Settings,
+  Crown,
+  Star,
+} from "lucide-react";
+import {
+  supabase,
+  getUserProfile,
+  canAccessDashboard,
+  type UserProfile,
+} from "@/lib/supabase";
 import AuthDialog from "@/components/auth/AuthDialog";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 
@@ -29,25 +44,25 @@ const Navigation = () => {
   // Add smooth scroll handler for navigation links
   const handleSectionClick = (sectionId: string, e: React.MouseEvent) => {
     e.preventDefault();
-    
+
     // If we're not on the home page, navigate there first
-    if (location.pathname !== '/') {
-      navigate('/', { replace: true });
+    if (location.pathname !== "/") {
+      navigate("/", { replace: true });
       // Wait for navigation to complete, then scroll
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
     } else {
       // If we're already on the home page, just scroll
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
-    
+
     // Close mobile menu if open
     setMobileMenuOpen(false);
   };
@@ -75,15 +90,17 @@ const Navigation = () => {
   const loadUserData = async () => {
     try {
       // Get initial session
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       setUser(session?.user ?? null);
-      
+
       if (session?.user) {
         const profile = await getUserProfile(session.user.id);
         setUserProfile(profile);
       }
     } catch (error) {
-      console.error('Error loading user data:', error);
+      console.error("Error loading user data:", error);
     } finally {
       setLoading(false);
     }
@@ -96,28 +113,43 @@ const Navigation = () => {
 
   const getRoleIcon = (role: string) => {
     switch (role) {
-      case 'admin': return <Crown className="h-4 w-4 text-red-400" />;
-      case 'subadmin': return <Star className="h-4 w-4 text-purple-400" />;
-      default: return <User className="h-4 w-4 text-blue-400" />;
+      case "admin":
+        return <Crown className="h-4 w-4 text-red-400" />;
+      case "subadmin":
+        return <Star className="h-4 w-4 text-purple-400" />;
+      default:
+        return <User className="h-4 w-4 text-blue-400" />;
     }
   };
 
   const getUserDisplayName = () => {
-    return userProfile?.full_name || user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
+    return (
+      userProfile?.full_name ||
+      user?.user_metadata?.full_name ||
+      user?.email?.split("@")[0] ||
+      "User"
+    );
   };
 
   const getUserInitials = () => {
     const name = getUserDisplayName();
-    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
   };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-[#121219]">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-10 w-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">
-            xE
-          </div>
+          <img
+            src="/images/logo-black.png"
+            alt="Logo"
+            className="h-10 w-10 rounded-full border border-gray-700 object-cover bg-black"
+          />
           <span className="text-xl font-bold">xEmergence</span>
         </Link>
 
@@ -143,21 +175,21 @@ const Navigation = () => {
           </Link>
           <a
             href="#features"
-            onClick={(e) => handleSectionClick('features', e)}
+            onClick={(e) => handleSectionClick("features", e)}
             className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
           >
             Features
           </a>
           <a
             href="#pricing"
-            onClick={(e) => handleSectionClick('pricing', e)}
+            onClick={(e) => handleSectionClick("pricing", e)}
             className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
           >
             Pricing
           </a>
           <a
             href="#team"
-            onClick={(e) => handleSectionClick('team', e)}
+            onClick={(e) => handleSectionClick("team", e)}
             className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
           >
             Team
@@ -177,7 +209,10 @@ const Navigation = () => {
           ) : user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-10 w-10 rounded-full p-0 hover:bg-gray-800">
+                <Button
+                  variant="ghost"
+                  className="relative h-10 w-10 rounded-full p-0 hover:bg-gray-800"
+                >
                   <Avatar className="h-10 w-10">
                     <AvatarImage src={userProfile?.avatar_url} />
                     <AvatarFallback className="bg-purple-600 text-white text-sm">
@@ -186,7 +221,10 @@ const Navigation = () => {
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64 bg-gray-900 border-gray-700" align="end">
+              <DropdownMenuContent
+                className="w-64 bg-gray-900 border-gray-700"
+                align="end"
+              >
                 <div className="flex items-center gap-3 p-3">
                   <Avatar className="h-12 w-12">
                     <AvatarImage src={userProfile?.avatar_url} />
@@ -198,21 +236,23 @@ const Navigation = () => {
                     <p className="text-sm font-medium text-white truncate">
                       {getUserDisplayName()}
                     </p>
-                    <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                    <p className="text-xs text-gray-400 truncate">
+                      {user.email}
+                    </p>
                     <div className="flex items-center gap-1 mt-1">
-                      {getRoleIcon(userProfile?.role || 'user')}
+                      {getRoleIcon(userProfile?.role || "user")}
                       <span className="text-xs text-gray-400 capitalize">
-                        {userProfile?.role || 'user'}
+                        {userProfile?.role || "user"}
                       </span>
                     </div>
                   </div>
                 </div>
                 <DropdownMenuSeparator className="bg-gray-700" />
-                
+
                 {canAccessDashboard(userProfile) && (
                   <DropdownMenuItem asChild>
-                    <Link 
-                      to="/dashboard" 
+                    <Link
+                      to="/dashboard"
                       className="flex items-center gap-2 text-white hover:bg-gray-800 cursor-pointer"
                     >
                       <BarChart3 className="h-4 w-4" />
@@ -220,29 +260,29 @@ const Navigation = () => {
                     </Link>
                   </DropdownMenuItem>
                 )}
-                
+
                 <DropdownMenuItem asChild>
-                  <Link 
-                    to="/orders" 
+                  <Link
+                    to="/orders"
                     className="flex items-center gap-2 text-white hover:bg-gray-800 cursor-pointer"
                   >
                     <User className="h-4 w-4" />
                     Track Orders
                   </Link>
                 </DropdownMenuItem>
-                
+
                 <DropdownMenuItem asChild>
-                  <Link 
-                    to="/account" 
+                  <Link
+                    to="/account"
                     className="flex items-center gap-2 text-white hover:bg-gray-800 cursor-pointer"
                   >
                     <Settings className="h-4 w-4" />
                     Account Overview
                   </Link>
                 </DropdownMenuItem>
-                
+
                 <DropdownMenuSeparator className="bg-gray-700" />
-                <DropdownMenuItem 
+                <DropdownMenuItem
                   onClick={handleSignOut}
                   className="flex items-center gap-2 text-red-400 hover:bg-gray-800 cursor-pointer"
                 >
@@ -290,21 +330,21 @@ const Navigation = () => {
               </Link>
               <a
                 href="#features"
-                onClick={(e) => handleSectionClick('features', e)}
+                onClick={(e) => handleSectionClick("features", e)}
                 className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
               >
                 Features
               </a>
               <a
                 href="#pricing"
-                onClick={(e) => handleSectionClick('pricing', e)}
+                onClick={(e) => handleSectionClick("pricing", e)}
                 className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
               >
                 Pricing
               </a>
               <a
                 href="#team"
-                onClick={(e) => handleSectionClick('team', e)}
+                onClick={(e) => handleSectionClick("team", e)}
                 className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
               >
                 Team
@@ -318,7 +358,7 @@ const Navigation = () => {
                   3D Products
                 </Link>
               </div>
-              
+
               {user ? (
                 <div className="space-y-3 pt-4 border-t border-gray-700">
                   <div className="flex items-center gap-3 px-3 py-2 bg-[#121219] rounded-lg">
@@ -329,16 +369,18 @@ const Navigation = () => {
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-white truncate">{getUserDisplayName()}</p>
+                      <p className="text-sm text-white truncate">
+                        {getUserDisplayName()}
+                      </p>
                       <div className="flex items-center gap-1">
-                        {getRoleIcon(userProfile?.role || 'user')}
+                        {getRoleIcon(userProfile?.role || "user")}
                         <span className="text-xs text-gray-400 capitalize">
-                          {userProfile?.role || 'user'}
+                          {userProfile?.role || "user"}
                         </span>
                       </div>
                     </div>
                   </div>
-                  
+
                   {canAccessDashboard(userProfile) && (
                     <Link
                       to="/dashboard"
@@ -349,7 +391,7 @@ const Navigation = () => {
                       Dashboard
                     </Link>
                   )}
-                  
+
                   <Link
                     to="/orders"
                     className="flex items-center gap-2 text-white hover:text-purple-400 transition-colors"
@@ -358,7 +400,7 @@ const Navigation = () => {
                     <User className="h-4 w-4" />
                     Track Orders
                   </Link>
-                  
+
                   <Link
                     to="/account"
                     className="flex items-center gap-2 text-white hover:text-purple-400 transition-colors"
@@ -367,7 +409,7 @@ const Navigation = () => {
                     <Settings className="h-4 w-4" />
                     Account Overview
                   </Link>
-                  
+
                   <Button
                     onClick={handleSignOut}
                     variant="outline"
