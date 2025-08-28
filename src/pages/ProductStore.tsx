@@ -13,6 +13,45 @@ import {
 } from "lucide-react";
 import ProductCustomizer from "@/components/ProductCustomizer";
 
+// Supabase Image helpers with optional bucket parameter (defaults to 'site-assets')
+const sbObjectUrl = (path: string, bucket: string = "site-assets") => {
+  const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+  const clean = encodeURI(path.replace(/^\/+/, ""));
+  if (!base) return `/${clean}`;
+  return `${base.replace(/\/$/, "")}/storage/v1/object/public/${bucket}/${clean}`;
+};
+
+const sbImage = (
+  path: string,
+  width?: number,
+  quality?: number,
+  bucket: string = "site-assets",
+) => {
+  const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+  const clean = encodeURI(path.replace(/^\/+/, ""));
+  if (!base) return `/${clean}`;
+  if (width || quality) {
+    const q: string[] = [];
+    if (width) q.push(`width=${width}`);
+    if (quality) q.push(`quality=${quality}`);
+    return `${base.replace(/\/$/, "")}/storage/v1/render/image/public/${bucket}/${clean}${q.length ? `?${q.join("&")}` : ""}`;
+  }
+  return sbObjectUrl(path, bucket);
+};
+
+// Generic image error fallback: try object URL if render fails, then placeholder
+const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const t = e.currentTarget;
+  const fallback = t.getAttribute("data-fallback");
+  if (fallback && t.src !== fallback) {
+    t.src = fallback;
+    t.removeAttribute("data-fallback");
+    return;
+  }
+  t.src =
+    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=60";
+};
+
 interface Product {
   id: string;
   name: string;
@@ -20,9 +59,11 @@ interface Product {
   price: number;
   originalPrice?: number;
   image: string;
+  imageFallback?: string;
   tags: string[];
   comingSoon?: boolean;
   sale?: boolean;
+  route?: string; // if present, navigate to this route on select
 }
 
 const ProductStore = () => {
@@ -32,34 +73,47 @@ const ProductStore = () => {
 
   const products: Product[] = [
     {
-      id: "1",
+      id: "nfc-collection",
       name: "3D Printed NFC Keychains",
       description:
         "Custom NFC keychains with your logo or design. Perfect for business branding and marketing.",
       price: 89.99,
       originalPrice: 119.99,
-      image:
-        "/images/20250409_1752_Social Media Keychains_remix_01jre8m26bfsfbyn3ad255arhg.png",
-      tags: ["Custom Design", "Durable Material"],
-      comingSoon: true,
+      image: sbImage(
+        "marketing/nfc_keychains_hero.png",
+        800,
+        80,
+        "product-images",
+      ),
+      imageFallback:
+        "https://storage.googleapis.com/tempo-image-previews/github%7C145282054-1756348109835-20250409_1752_Social%20Media%20Keychains_remix_01jre8m26bfsfbyn3ad255arhg.png",
+      tags: ["NFC", "Custom Design"],
+      comingSoon: false,
       sale: true,
+      route: "/nfc-keychains",
     },
     {
-      id: "2",
+      id: "custom-3d-print",
       name: "Custom 3D Print",
       description:
         "Upload your logo or design for custom 3D printing on various products including promotional items.",
       price: 149.99,
-      image:
-        "/images/3d-printing-icon-symbol-white-background_268104-19336.avif",
+      image: sbImage(
+        "marketing/custom_3d_print.png",
+        800,
+        80,
+        "product-images",
+      ),
+      imageFallback:
+        "https://storage.googleapis.com/tempo-image-previews/github%7C145282054-1756348326892-Custom%20Product%20Image.png",
       tags: ["Modular Design", "Multiple Sizes"],
       comingSoon: true,
     },
   ];
 
   const handleProductSelect = (product: Product) => {
-    if (product.id === "1") {
-      navigate("/nfc-keychains");
+    if (product.route) {
+      navigate(product.route);
       return;
     }
     setSelectedProduct(product);
@@ -96,7 +150,7 @@ const ProductStore = () => {
         </p>
       </section>
 
-      {/* Category Tabs */}
+      {/* Category Tabs (visual only) */}
       <div className="max-w-6xl mx-auto px-4 md:px-8 mb-8">
         <div className="flex overflow-x-auto pb-2 gap-2">
           <Button
@@ -114,13 +168,11 @@ const ProductStore = () => {
             <PaintBucket className="h-4 w-4 mr-2" /> 3D Printed Art
           </Button>
           <Button
-            variant="outline"
-            className="rounded-full text-white border-gray-600/60 hover:border-gray-500/70 bg-transparent hover:bg-gray-800/10"
-            disabled
+            variant={selectedCategory === "nfc" ? "default" : "outline"}
+            className={`rounded-full ${selectedCategory === "nfc" ? "bg-purple-600 hover:bg-purple-700 text-white" : "text-white hover:text-white border-gray-700/30 hover:border-gray-600/40 bg-transparent hover:bg-gray-800/20"}`}
+            onClick={() => setSelectedCategory("nfc")}
           >
-            <Box className="h-4 w-4 mr-2 text-white" />
-            <span className="text-white">NFC Products</span>{" "}
-            <span className="text-xs ml-1 text-white">(Coming Soon)</span>
+            <Box className="h-4 w-4 mr-2 text-white" /> NFC Products
           </Button>
           <Button
             variant="outline"
@@ -157,8 +209,11 @@ const ProductStore = () => {
               >
                 <img
                   src={product.image}
+                  data-fallback={product.imageFallback}
                   alt={product.name}
                   className="w-full h-48 object-cover"
+                  onError={handleImgError}
+                  loading="lazy"
                 />
                 {product.comingSoon && (
                   <Badge className="absolute top-3 left-3 bg-purple-600 text-white">
@@ -183,11 +238,6 @@ const ProductStore = () => {
                       {tag}
                     </span>
                   ))}
-                  {product.tags.length > 2 && (
-                    <span className="text-xs text-white">
-                      +{product.tags.length - 2} more
-                    </span>
-                  )}
                 </div>
                 <div className="flex items-end justify-between mt-auto">
                   <div>
@@ -201,7 +251,7 @@ const ProductStore = () => {
                     )}
                   </div>
                   <div className="flex justify-end">
-                    {product.id === "1" ? (
+                    {product.route ? (
                       <Button
                         onClick={() => handleProductSelect(product)}
                         className="bg-purple-600 hover:bg-purple-700 h-10"

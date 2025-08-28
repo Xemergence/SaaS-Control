@@ -28,12 +28,39 @@ import {
   X,
 } from "lucide-react";
 
-// Helper to create fast Supabase Image CDN URLs with sensible defaults
-const sbImage = (path: string, width: number = 800, quality: number = 80) => {
+// Helper to create Supabase Image URLs with robust fallbacks
+const sbObjectUrl = (path: string) => {
   const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
   const clean = encodeURI(path.replace(/^\/+/, ""));
-  if (!base) return `/${clean}`; // Fallback to local public folder
-  return `${base.replace(/\/$/, "")}/storage/v1/render/image/public/site-assets/${clean}?width=${width}&quality=${quality}`;
+  if (!base) return `/${clean}`;
+  return `${base.replace(/\/$/, "")}/storage/v1/object/public/site-assets/${clean}`;
+};
+
+const sbImage = (path: string, width?: number, quality?: number) => {
+  const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+  const clean = encodeURI(path.replace(/^\/+/, ""));
+  if (!base) return `/${clean}`;
+  // Prefer render endpoint (supports transformations) when possible
+  if (width || quality) {
+    const q: string[] = [];
+    if (width) q.push(`width=${width}`);
+    if (quality) q.push(`quality=${quality}`);
+    return `${base.replace(/\/$/, "")}/storage/v1/render/image/public/site-assets/${clean}${q.length ? `?${q.join("&")}` : ""}`;
+  }
+  return sbObjectUrl(path);
+};
+
+// Generic image error fallback: try object URL if render fails, then remote placeholder
+const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const t = e.currentTarget;
+  const fallback = t.getAttribute("data-fallback");
+  if (fallback && t.src !== fallback) {
+    t.src = fallback;
+    t.removeAttribute("data-fallback");
+    return;
+  }
+  t.src =
+    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=60";
 };
 
 interface TeamMember {
@@ -174,21 +201,12 @@ const HomePage = () => {
 
           <div className="bg-[#1a1e2d] rounded-xl p-4 shadow-xl">
             <img
-              src={sbImage("images/Dashboard Example.png", 1200, 80)}
+              src="/images/Dashboard%20Example.png"
+              data-fallback={sbObjectUrl("images/Dashboard Example.png")}
               loading="lazy"
               alt="Dashboard Analytics"
               className="w-full h-auto rounded-lg shadow-lg"
-              onError={(e) => {
-                const t = e.currentTarget as HTMLImageElement;
-                const tried = t.getAttribute("data-failed");
-                if (!tried) {
-                  t.setAttribute("data-failed", "true");
-                  t.src = "/images/Dashboard Example.png";
-                } else {
-                  t.src =
-                    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=60";
-                }
-              }}
+              onError={handleImgError}
             />
           </div>
         </div>

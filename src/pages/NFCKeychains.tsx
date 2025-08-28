@@ -14,22 +14,34 @@ interface KeychainItem {
   comingSoon?: boolean;
 }
 
-// Helper to create fast Supabase Image CDN URLs with sensible defaults
-const sbImage = (path: string, width: number = 800, quality: number = 80) => {
+// Supabase Image helpers with fallback
+const sbObjectUrl = (path: string) => {
   const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
   const clean = encodeURI(path.replace(/^\/+/, ""));
-  if (!base) return `/${clean}`; // Fallback to local public folder
-  return `${base.replace(/\/$/, "")}/storage/v1/render/image/public/site-assets/${clean}?width=${width}&quality=${quality}`;
+  if (!base) return `/${clean}`;
+  return `${base.replace(/\/$/, "")}/storage/v1/object/public/site-assets/${clean}`;
 };
 
-// Generic image error fallback: try local public image once, then a lightweight placeholder
+const sbImage = (path: string, width?: number, quality?: number) => {
+  const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+  const clean = encodeURI(path.replace(/^\/+/, ""));
+  if (!base) return `/${clean}`;
+  if (width || quality) {
+    const q: string[] = [];
+    if (width) q.push(`width=${width}`);
+    if (quality) q.push(`quality=${quality}`);
+    return `${base.replace(/\/$/, "")}/storage/v1/render/image/public/site-assets/${clean}${q.length ? `?${q.join("&")}` : ""}`;
+  }
+  return sbObjectUrl(path);
+};
+
+// Generic image error fallback: try object URL if render fails, then placeholder
 const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
   const t = e.currentTarget;
   const fallback = t.getAttribute("data-fallback");
-  const alreadyTried = t.getAttribute("data-failed");
-  if (fallback && !alreadyTried) {
-    t.setAttribute("data-failed", "true");
+  if (fallback && t.src !== fallback) {
     t.src = fallback;
+    t.removeAttribute("data-fallback");
     return;
   }
   t.src =
@@ -122,7 +134,7 @@ export default function NFCKeychains() {
           <div className="border border-gray-800 rounded-lg overflow-hidden bg-[#121219]">
             <img
               src={sbImage("images/tiktok_pair.png", 1200, 80)}
-              data-fallback="/images/tiktok_pair.png"
+              data-fallback={sbObjectUrl("images/tiktok_pair.png")}
               onError={handleImgError}
               loading="lazy"
               alt="NFC Keychains"
@@ -198,7 +210,7 @@ export default function NFCKeychains() {
                     {item.image ? (
                       <img
                         src={sbImage(item.image, 600, 80)}
-                        data-fallback={`/${item.image}`}
+                        data-fallback={sbObjectUrl(item.image)}
                         onError={handleImgError}
                         loading="lazy"
                         alt={`${item.platform} keychain`}
@@ -250,7 +262,7 @@ export default function NFCKeychains() {
                   <div className="relative mb-4 h-44 w-full rounded-md overflow-hidden bg-black flex items-center justify-center">
                     <img
                       src={sbImage(item.image!, 600, 80)}
-                      data-fallback={`/${item.image}`}
+                      data-fallback={sbObjectUrl(item.image!)}
                       onError={handleImgError}
                       loading="lazy"
                       alt={`${item.platform} keychain`}
