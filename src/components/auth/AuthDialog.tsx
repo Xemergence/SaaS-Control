@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/supabase/client";
 import { ArrowRight, Mail, Lock, User, Loader2 } from "lucide-react";
 
 interface AuthDialogProps {
@@ -36,9 +36,9 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
 
     try {
       if (currentMode === "signup") {
-        // Use environment-based redirect URL
+        // Use environment-based redirect URL (confirm page)
         const baseUrl = window.location.origin;
-        const redirectUrl = `${baseUrl}/auth/callback`;
+        const redirectUrl = `${baseUrl}/auth/confirm`;
 
         console.log("Using redirect URL:", redirectUrl);
 

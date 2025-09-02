@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/supabase/client";
 import { Loader2, CheckCircle, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -133,7 +133,8 @@ const AuthCallback = () => {
                   {
                     id: data.session.user.id,
                     email: data.session.user.email!,
-                    full_name: data.session.user.user_metadata?.full_name || null,
+                    full_name:
+                      data.session.user.user_metadata?.full_name || null,
                     avatar_url:
                       data.session.user.user_metadata?.avatar_url || null,
                     created_at: new Date().toISOString(),
