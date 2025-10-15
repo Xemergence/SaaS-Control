@@ -7,10 +7,10 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import FeatureGrid from "@/components/FeatureGrid";
-import PricingTiers from "@/components/PricingTiers";
 import TeamSection from "@/components/TeamSection";
-import IntegrationsSection from "@/components/IntegrationsSection";
 import IndustryIntegrationsSection from "@/components/IndustryIntegrationsSection";
+import { Feature251 } from "@/components/Feature251";
+import { Timeline13 } from "@/components/Timeline13";
 import {
   ArrowRight,
   Infinity,
@@ -29,6 +29,9 @@ import {
   Grid,
   Menu,
   X,
+  Lightbulb,
+  Code2,
+  Rocket,
 } from "lucide-react";
 
 // Helper to create Supabase Image URLs with robust fallbacks
@@ -145,7 +148,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-[#121219] text-white h-[2646px]">
+    <div className="bg-[#121219] text-white h-[5943px]">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#1a1b2e]">
         {/* Background decorative elements */}
@@ -234,13 +237,26 @@ const HomePage = () => {
       <section id="features" className="bg-black">
         <FeatureGrid />
       </section>
-      {/* AI Tools Section */}
-      <IntegrationsSection />
-      {/* Pricing Section */}
-      <section id="pricing">
-        <div className="bg-[#1a1b2e] min-h-[868px] py-16 md:py-24">
-          <PricingTiers />
+      {/* New Features Section (replacing AI Tools) */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#1a1b2e]">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12">
+            <Badge
+              variant="outline"
+              className="mb-4 bg-purple-900/30 border-purple-500/50 text-purple-400 px-4 py-1.5 text-sm"
+            >
+              Our Approach
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+              Built for Innovation
+            </h2>
+          </div>
         </div>
+        <Feature251 />
+      </section>
+      {/* Timeline Section */}
+      <section className="py-20 md:py-32 bg-black">
+        <Timeline13 />
       </section>
       {/* Team Section */}
       <section id="team">
