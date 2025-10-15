@@ -34,6 +34,12 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
     setError("");
     setMessage("");
 
+    // Add timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+      setError("Request timed out. Please check your connection and try again.");
+    }, 30000); // 30 second timeout
+
     try {
       if (currentMode === "signup") {
         // Use environment-based redirect URL (confirm page)
@@ -52,6 +58,8 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
             emailRedirectTo: redirectUrl,
           },
         });
+
+        clearTimeout(timeoutId);
 
         if (error) {
           // Handle specific signup errors
@@ -96,6 +104,8 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
           password,
         });
 
+        clearTimeout(timeoutId);
+
         if (error) {
           // Handle specific sign-in errors
           if (error.message.includes("Invalid login credentials")) {
@@ -119,6 +129,7 @@ const AuthDialog = ({ mode, trigger }: AuthDialogProps) => {
         }, 1000);
       }
     } catch (error: any) {
+      clearTimeout(timeoutId);
       console.error("Auth error:", error);
       setError(
         error.message || "An unexpected error occurred. Please try again.",
