@@ -145,7 +145,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-[#121219] text-white h-[5986px]">
+    <div className="bg-[#121219] text-white h-[2646px]">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#1a1b2e]">
         {/* Background decorative elements */}
@@ -230,30 +230,24 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      
       {/* Features Section */}
       <section id="features" className="bg-black">
         <FeatureGrid />
       </section>
-      
       {/* AI Tools Section */}
       <IntegrationsSection />
-      
       {/* Pricing Section */}
       <section id="pricing">
         <div className="bg-[#1a1b2e] min-h-[868px] py-16 md:py-24">
           <PricingTiers />
         </div>
       </section>
-      
       {/* Team Section */}
       <section id="team">
         <TeamSection />
       </section>
-      
       {/* Industry Integrations Section */}
       <IndustryIntegrationsSection />
-      
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-black">
         <div className="container mx-auto px-4 text-center max-w-8xl">
