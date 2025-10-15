@@ -1,4 +1,4 @@
-import { useRoutes, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import ProductStore from "./pages/ProductStore";
@@ -6,18 +6,23 @@ import AdminDashboard from "./pages/AdminDashboard";
 import OrderTracking from "./pages/OrderTracking";
 import AccountOverview from "./pages/AccountOverview";
 import Navigation from "./components/Navigation";
-import { supabase, getUserProfile, canAccessDashboard, type UserProfile } from "./lib/supabase";
+import {
+  supabase,
+  getUserProfile,
+  canAccessDashboard,
+  type UserProfile,
+} from "./lib/supabase";
 import type { User } from "@supabase/supabase-js";
 import EmailConfirmation from "./pages/EmailConfirmation";
 import AuthCallback from "./pages/AuthCallback";
 import NFCKeychains from "./pages/NFCKeychains";
 
 // Protected Route Component
-const ProtectedRoute = ({ 
-  children, 
-  requiresAuth = true, 
-  requiresDashboardAccess = false 
-}: { 
+const ProtectedRoute = ({
+  children,
+  requiresAuth = true,
+  requiresDashboardAccess = false,
+}: {
   children: React.ReactNode;
   requiresAuth?: boolean;
   requiresDashboardAccess?: boolean;
@@ -29,15 +34,17 @@ const ProtectedRoute = ({
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
         setUser(session?.user ?? null);
-        
+
         if (session?.user) {
           const profile = await getUserProfile(session.user.id);
           setUserProfile(profile);
         }
       } catch (error) {
-        console.error('Error checking auth:', error);
+        console.error("Error checking auth:", error);
       } finally {
         setLoading(false);
       }
@@ -45,7 +52,9 @@ const ProtectedRoute = ({
 
     checkAuth();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null);
       if (session?.user) {
         const profile = await getUserProfile(session.user.id);
@@ -79,64 +88,45 @@ const ProtectedRoute = ({
 };
 
 function App() {
-  const [routes, setRoutes] = useState<any>(null);
-
-  useEffect(() => {
-    if (import.meta.env.VITE_TEMPO === "true") {
-      import("tempo-routes")
-        .then((module) => {
-          setRoutes(module.default);
-        })
-        .catch((error) => {
-          console.warn("Failed to load tempo routes:", error);
-        });
-    }
-  }, []);
-
   return (
     <div className="min-h-screen bg-[#121219] text-white">
       <Navigation />
       <main>
-        {/* Tempo routes - must come first to catch storyboard routes */}
-        {import.meta.env.VITE_TEMPO === "true" && routes && useRoutes(routes)}
-
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/3d-products" element={<ProductStore />} />
           <Route path="/nfc-keychains" element={<NFCKeychains />} />
           <Route path="/auth/confirm" element={<EmailConfirmation />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
-          
+
           {/* Protected Routes */}
-          <Route 
-            path="/dashboard" 
+          <Route
+            path="/dashboard"
             element={
-              <ProtectedRoute requiresAuth={true} requiresDashboardAccess={true}>
+              <ProtectedRoute
+                requiresAuth={true}
+                requiresDashboardAccess={true}
+              >
                 <AdminDashboard />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/orders" 
+          <Route
+            path="/orders"
             element={
               <ProtectedRoute requiresAuth={true}>
                 <OrderTracking />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/account" 
+          <Route
+            path="/account"
             element={
               <ProtectedRoute requiresAuth={true}>
                 <AccountOverview />
               </ProtectedRoute>
-            } 
+            }
           />
-
-          {/* Add tempo route fallback */}
-          {import.meta.env.VITE_TEMPO === "true" && (
-            <Route path="/tempobook/*" element={<div />} />
-          )}
         </Routes>
       </main>
     </div>

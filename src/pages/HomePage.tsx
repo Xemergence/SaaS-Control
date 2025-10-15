@@ -8,6 +8,9 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import FeatureGrid from "@/components/FeatureGrid";
 import PricingTiers from "@/components/PricingTiers";
+import TeamSection from "@/components/TeamSection";
+import IntegrationsSection from "@/components/IntegrationsSection";
+import IndustryIntegrationsSection from "@/components/IndustryIntegrationsSection";
 import {
   ArrowRight,
   Infinity,
@@ -142,393 +145,115 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-[#121219] text-white">
+    <div className="bg-[#121219] text-white h-[5986px]">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24 max-w-8xl">
-        <div className="text-purple-500 font-medium mb-4 uppercase tracking-wider">
-          POWERING PROGRESS
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#1a1b2e]">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Empowering Small Teams & Local Businesses
+        <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/30 border border-purple-500/50 mb-8">
+              <Badge className="bg-gradient-to-r from-purple-600 to-blue-600">
+                POWERING PROGRESS
+              </Badge>
+              <span className="text-sm text-gray-300">
+                For Innovators, Small Teams & Local Businesses
+              </span>
+            </div>
+
+            {/* Main Heading */}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Empowering Small Teams & Local Businesses
+              </span>
             </h1>
-            <p className="text-gray-300 mb-8 text-lg">
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               Transform your data into digital solutions with our comprehensive
               control tower platform. Aggregate and visualize critical business
               metrics from your digital components, enabling real-time insights,
               cost management, and operational efficiency for small businesses,
               individuals, and teams.
             </p>
-            <AuthDialog
-              mode="signin"
-              trigger={
-                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              }
-            />
-            <p className="mt-4 text-gray-400 text-sm">
-              Designed for innovators, small teams, and growing businesses
-            </p>
 
-            <div className="flex flex-wrap gap-3 mt-6">
+            {/* CTA Button */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+              <AuthDialog
+                mode="signin"
+                trigger={
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                  >
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                }
+              />
+            </div>
+
+            {/* Feature Badges */}
+            <div className="flex flex-wrap justify-center gap-4 mb-16">
               <Badge
                 variant="outline"
-                className="bg-[#1a1e2d] border-purple-900 text-white flex items-center gap-2 py-2 px-4"
+                className="px-4 py-2 text-sm bg-purple-900/20 border-purple-500/30 text-purple-300"
               >
-                <Infinity className="h-4 w-4 text-purple-500" />
                 For Innovators
               </Badge>
               <Badge
                 variant="outline"
-                className="bg-[#1a1e2d] border-purple-900 text-white flex items-center gap-2 py-2 px-4"
+                className="px-4 py-2 text-sm bg-blue-900/20 border-blue-500/30 text-blue-300"
               >
-                <Code className="h-4 w-4 text-blue-500" />
                 Digital Integrations
               </Badge>
               <Badge
                 variant="outline"
-                className="bg-[#1a1e2d] border-purple-900 text-white flex items-center gap-2 py-2 px-4"
+                className="px-4 py-2 text-sm bg-purple-900/20 border-purple-500/30 text-purple-300"
               >
-                <Users className="h-4 w-4 text-purple-500" />
                 For Small Teams
               </Badge>
             </div>
-          </div>
 
-          <div className="bg-[#1a1e2d] rounded-xl p-4 shadow-xl">
-            <img
-              src="/images/Dashboard%20Example.png"
-              data-fallback={sbObjectUrl("images/Dashboard Example.png")}
-              loading="lazy"
-              alt="Dashboard Analytics"
-              className="w-full h-auto rounded-lg shadow-lg"
-              onError={handleImgError}
-            />
+            {/* Dashboard Preview Image */}
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-3xl"></div>
+              <img
+                src="/images/Dashboard Example.png"
+                alt="Dashboard Preview"
+                className="relative rounded-lg shadow-2xl border border-gray-700/50"
+              />
+            </div>
           </div>
         </div>
       </section>
-
+      
       {/* Features Section */}
       <section id="features" className="bg-black">
         <FeatureGrid />
       </section>
-
+      
       {/* AI Tools Section */}
-      <section className="py-20 md:py-32 bg-black">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            {/* Left Side - Text Content */}
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                Your Favorite AI Tools, Integrated
-              </h2>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                xEmergence seamlessly integrates with the tools you already
-                love, enabling smooth transitions across your work processes and
-                maximizing operational efficiency.
-              </p>
-
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-white">
-                  Centralized Control Tower
-                </h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Our platform serves as a unified control tower, powered by
-                  advanced AI technology, designed to transform data from your
-                  digital components into actionable business intelligence. By
-                  centralizing all your tools and platforms under one
-                  intelligent system, we empower small businesses, individuals,
-                  and teams with seamless integration, real-time insights, and
-                  automated workflows.
-                </p>
-                <p className="text-gray-300 leading-relaxed">
-                  Access our comprehensive suite of AI-powered tools designed to
-                  streamline operations, from intelligent scheduling and
-                  analytics to automated notifications and security management.
-                  Plus, explore our array of US-designed and manufactured 3D
-                  products to enhance your physical business presence.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Side - 3x3 Grid of Tools */}
-            <div className="flex justify-center">
-              <div className="grid grid-cols-3 gap-6 max-w-md">
-                {/* Row 1 */}
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20">
-                  <Calendar className="h-9 w-9 text-green-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    Scheduling
-                  </span>
-                </div>
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20">
-                  <MessageSquare className="h-9 w-9 text-blue-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    AI Chat
-                  </span>
-                </div>
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20">
-                  <BarChart3 className="h-9 w-9 text-purple-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    Analytics
-                  </span>
-                </div>
-
-                {/* Row 2 */}
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-red-500/50 hover:shadow-lg hover:shadow-red-500/20">
-                  <Brain className="h-9 w-9 text-red-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    AI Assistant
-                  </span>
-                </div>
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/20">
-                  <Bell className="h-9 w-9 text-yellow-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    Notifications
-                  </span>
-                </div>
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20">
-                  <Settings className="h-9 w-9 text-purple-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    Configuration
-                  </span>
-                </div>
-
-                {/* Row 3 */}
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20">
-                  <Shield className="h-9 w-9 text-green-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    Security
-                  </span>
-                </div>
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20">
-                  <Zap className="h-9 w-9 text-blue-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    Automation
-                  </span>
-                </div>
-                <div className="bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] rounded-xl p-6 flex flex-col items-center justify-center text-center h-36 w-36 hover:from-[#2a2f4a] hover:to-[#3a3f5a] transition-all duration-300 hover:scale-105 border border-gray-700/30 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/20">
-                  <Database className="h-9 w-9 text-orange-400 mb-2" />
-                  <span className="text-white text-xs font-medium">
-                    Data Management
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <IntegrationsSection />
+      
       {/* Pricing Section */}
       <section id="pricing">
         <div className="bg-[#1a1b2e] min-h-[868px] py-16 md:py-24">
           <PricingTiers />
         </div>
       </section>
-
+      
       {/* Team Section */}
-      <section id="team" className="py-20 md:py-28 bg-black">
-        <div className="container mx-auto px-4 max-w-8xl">
-          <h2 className="text-2xl md:text-3xl font-bold mb-16 text-white text-center">
-            Team Members
-          </h2>
-
-          <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto items-start">
-            {/* Team Member Selection - Left Side */}
-            <div className="w-full lg:w-2/5 space-y-3">
-              {teamMembers.map((member, index) => (
-                <div
-                  key={index}
-                  className={`bg-gradient-to-r from-[#0d0f1a] to-[#1a1d2a] rounded-xl p-5 cursor-pointer transition-all duration-300 hover:shadow-lg border w-full ${
-                    selectedTeamMember === member.id
-                      ? "border-purple-500 shadow-purple-500/20 shadow-lg"
-                      : "border-gray-700/50 hover:border-gray-600"
-                  }`}
-                  onClick={() => setSelectedTeamMember(member.id)}
-                >
-                  <div className="flex items-start gap-5">
-                    <div className="flex-shrink-0">
-                      <div className="h-14 w-14 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        {member.name.charAt(0)}
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-3 min-w-0">
-                        <h3 className="font-bold text-white text-base truncate">
-                          {member.name}
-                        </h3>
-                        <Badge
-                          variant="outline"
-                          className="bg-blue-900/30 border-blue-500/50 text-blue-400 text-xs px-2 py-1 flex-shrink-0"
-                        >
-                          in
-                        </Badge>
-                      </div>
-                      <p className="text-purple-400 text-sm font-medium mb-3 line-clamp-2">
-                        {member.title}
-                      </p>
-                      <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
-                        {member.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* LinkedIn Preview - Right Side */}
-            <div className="w-full lg:w-3/5 flex justify-center items-start">
-              {selectedTeamMember && (
-                <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl overflow-hidden shadow-xl border border-gray-200 max-w-2xl w-full">
-                  {/* LinkedIn Header */}
-                  <div className="bg-gradient-to-r from-[#0077b5] to-[#005885] p-6 text-white">
-                    <div className="flex items-center gap-4">
-                      <div className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white font-bold text-2xl border-2 border-white/30">
-                        {teamMembers
-                          .find((m) => m.id === selectedTeamMember)
-                          ?.name.charAt(0)}
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-2xl">
-                          {
-                            teamMembers.find((m) => m.id === selectedTeamMember)
-                              ?.name
-                          }
-                        </h3>
-                        <p className="text-blue-100 font-medium">
-                          {
-                            teamMembers.find((m) => m.id === selectedTeamMember)
-                              ?.title
-                          }
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* LinkedIn Content */}
-                  <div className="p-6">
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-gray-900 mb-3">
-                        About
-                      </h4>
-                      <p className="text-gray-700 leading-relaxed mb-6">
-                        {
-                          teamMembers.find((m) => m.id === selectedTeamMember)
-                            ?.linkedinAbout
-                        }
-                      </p>
-
-                      <a
-                        href={
-                          selectedTeamMember === "jether"
-                            ? "https://www.linkedin.com/in/jetherpantonainnovation/"
-                            : selectedTeamMember === "sebastian"
-                              ? "https://www.linkedin.com/in/sebavissepo/"
-                              : "https://www.linkedin.com/in/johan-lingani-5788a953/"
-                        }
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#0077b5] text-white px-4 py-2 rounded-lg hover:bg-[#0069a0] transition-colors font-medium shadow-md hover:shadow-lg"
-                      >
-                        <LinkedinIcon className="h-4 w-4" />
-                        View LinkedIn Profile
-                      </a>
-                    </div>
-
-                    <div className="pt-4 border-t border-gray-200">
-                      <h4 className="font-semibold text-gray-900 mb-3">
-                        Experience
-                      </h4>
-                      <p className="text-gray-700 leading-relaxed">
-                        {
-                          teamMembers.find((m) => m.id === selectedTeamMember)
-                            ?.fullDescription
-                        }
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+      <section id="team">
+        <TeamSection />
       </section>
-
+      
       {/* Industry Integrations Section */}
-      <section className="py-16 md:py-24 bg-gray-900">
-        <div className="container mx-auto px-4 text-center mb-12 max-w-8xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            Industry-Specific Platform Integrations
-          </h2>
-          <p className="text-gray-300 max-w-3xl mx-auto">
-            Discover our specialized platforms designed to enhance specific
-            industries. We build and sponsor industry-focused solutions that
-            empower professionals and small businesses with data visualization,
-            automation, AI, and advanced features. Our template-driven approach
-            accelerates development while maintaining affordability through
-            tiered pricing systems.
-          </p>
-        </div>
-
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl">
-          {/* Industry Card 1 - Education */}
-          <div
-            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick("education")}
-          >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <GraduationCap className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-bold text-white text-center text-sm px-2">
-              Education Platform
-            </h3>
-          </div>
-
-          {/* Industry Card 2 - Real Estate */}
-          <div
-            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick("realestate")}
-          >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Home className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-bold text-white text-center text-sm px-2">
-              Real Estate Solutions
-            </h3>
-          </div>
-
-          {/* Industry Card 3 - Services */}
-          <div
-            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick("services")}
-          >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Package className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-bold text-white text-center text-sm px-2">
-              Service Management
-            </h3>
-          </div>
-
-          {/* Industry Card 4 - Pregnancy */}
-          <div
-            className="bg-gradient-to-br from-[#1e2139] to-[#2a2f4a] rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group h-40 cursor-pointer"
-            onClick={() => handleIndustryClick("pregnancy")}
-          >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Baby className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-bold text-white text-center text-sm px-2">
-              Pregnancy Platform
-            </h3>
-          </div>
-        </div>
-      </section>
-
+      <IndustryIntegrationsSection />
+      
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-black">
         <div className="container mx-auto px-4 text-center max-w-8xl">
@@ -565,7 +290,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="py-12 md:py-16 bg-black border-t border-gray-800">
         <div className="container mx-auto px-4 max-w-8xl">
