@@ -327,6 +327,59 @@
     --animation-delay: 500ms;
   }
 
+  .grid-fade {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: 20px 20px;
+    background-position: 0 0;
+    pointer-events: none;
+    -webkit-mask-image: repeating-linear-gradient(
+        to right,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+      ),
+      radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%);
+    mask-image: repeating-linear-gradient(
+        to right,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent 8px
+      ),
+      radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .grid-fade--light {
+    background-image:
+      linear-gradient(to right, rgba(231, 229, 228, 0.65) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(231, 229, 228, 0.65) 1px, transparent 1px);
+  }
+
+  .grid-fade--dark {
+    background-image:
+      linear-gradient(to right, rgba(52, 56, 92, 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(52, 56, 92, 0.55) 1px, transparent 1px);
+  }
+
   @keyframes marquee-horizontal {
     from {
       transform: translateX(0);

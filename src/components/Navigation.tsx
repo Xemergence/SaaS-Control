@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, Sparkles, Users, HeartHandshake, ShoppingCart } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
@@ -25,12 +25,8 @@ const Navigation = () => {
     [],
   );
 
-  const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.pathname === "/") {
-      event.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setActiveSection("hero");
-    }
+  const handleHomeClick = (event: React.MouseEvent) => {
+    handleSectionClick("hero", event);
   };
 
   // Add smooth scroll handler for navigation links
@@ -143,8 +139,8 @@ const Navigation = () => {
   const headerClasses = cn(
     "sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-300 ease-out",
     isScrolled
-      ? "bg-background/80 border-[color:var(--color-border-strong)] shadow-[var(--shadow-sm)]"
-      : "bg-background/92 border-[color:var(--color-border-subtle)] shadow-none",
+      ? "bg-background/90 border-[color:var(--color-border-strong)] shadow-[var(--shadow-sm)]"
+      : "bg-background/95 border-[color:var(--color-border-subtle)] shadow-none",
   );
 
   const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -157,30 +153,57 @@ const Navigation = () => {
     }
   };
 
+  const navItems = [
+    { id: "hero", label: "Home", kind: "section" as const, icon: Home },
+    { id: "features", label: "Features", kind: "section" as const, icon: Sparkles },
+    { id: "team", label: "Team", kind: "section" as const, icon: Users },
+    { id: "integrations", label: "Industry Solutions", kind: "section" as const, icon: HeartHandshake },
+    { id: "products", label: "3D Products", kind: "route" as const, href: "/3d-products", icon: ShoppingCart },
+  ];
+
+  const isNavItemActive = (item: (typeof navItems)[number]) => {
+    if (item.kind === "route") {
+      return location.pathname === item.href;
+    }
+
+    switch (item.id) {
+      case "hero":
+        return isHomeRoute && activeSection === "hero";
+      case "features":
+        return isFeaturesActive;
+      case "team":
+        return isTeamActive;
+      case "integrations":
+        return isIndustryActive;
+      default:
+        return false;
+    }
+  };
+
   return (
     <header className={headerClasses}>
       <div
         className={cn(
-          "container mx-auto flex items-center justify-between px-4 transition-[padding] duration-300 ease-out",
-          isScrolled ? "py-1.5 sm:py-2" : "py-2.5 sm:py-3"
+          "container mx-auto flex items-center justify-between px-3 sm:px-4 transition-[padding] duration-300 ease-out",
+          isScrolled ? "py-2 sm:py-2" : "py-2.5 sm:py-3"
         )}
       >
         <Link
           to="/"
-          className="flex items-center gap-3"
+          className="flex items-center gap-2 sm:gap-3"
           onClick={handleLogoClick}
         >
           <img
             src={preferredLogo}
             alt="xEmergence Logo"
-            className="h-9 w-9 rounded-[1.2rem] object-contain transition-transform duration-300 ease-out hover:scale-[1.02]"
+            className="h-6 w-6 sm:h-7 sm:w-7 rounded-[1.2rem] object-contain transition-transform duration-300 ease-out hover:scale-[1.02]"
             onError={(e) => {
               if (!e.currentTarget.src.includes("logo-black.png")) {
                 e.currentTarget.src = fallbackLogo;
               }
             }}
           />
-          <span className="text-xl font-bold text-foreground">xEmergence</span>
+          <span className="text-base sm:text-lg font-bold text-foreground">xEmergence</span>
         </Link>
 
         {/* Mobile menu button */}
@@ -188,7 +211,7 @@ const Navigation = () => {
           type="button"
           className="p-3 text-foreground transition-colors hover:text-primary focus:outline-none md:hidden"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={mobileMenuOpen}
+          aria-expanded={mobileMenuOpen ? "true" : "false"}
           aria-controls="mobile-navigation"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -205,63 +228,68 @@ const Navigation = () => {
             to="/"
             onClick={handleHomeClick}
             className={cn(
-              "text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 text-[1.08rem] font-semibold tracking-tight transition-colors",
               isHomeRoute
                 ? activeSection === "hero"
                   ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary"
                 : isActive("/")
                   ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground",
+                  : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
             )}
           >
-            Home
+            <Home className="h-4 w-4" />
+            <span className="hidden lg:inline">Home</span>
           </Link>
           <a
             href="#features"
             onClick={(e) => handleSectionClick("features", e)}
             className={cn(
-              "cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
               isFeaturesActive
                 ? "text-primary"
-                : "text-muted-foreground hover:text-foreground",
+                : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
             )}
           >
-            Features
+            <Sparkles className="h-4 w-4" />
+            <span className="hidden lg:inline">Features</span>
           </a>
           <a
             href="#team"
             onClick={(e) => handleSectionClick("team", e)}
             className={cn(
-              "cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
               isTeamActive
                 ? "text-primary"
-                : "text-muted-foreground hover:text-foreground",
+                : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
             )}
           >
-            Team
+            <Users className="h-4 w-4" />
+            <span className="hidden lg:inline">Team</span>
           </a>
           <a
             href="#integrations"
             onClick={(e) => handleSectionClick("integrations", e)}
             className={cn(
-              "cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
               isIndustryActive
                 ? "text-primary"
-                : "text-muted-foreground hover:text-foreground",
+                : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
             )}
           >
-            Industry Solutions
+            <HeartHandshake className="h-4 w-4" />
+            <span className="hidden lg:inline">Industry Solutions</span>
           </a>
-          <span className="text-[0.95rem] text-muted-foreground">|</span>
+          <span className="hidden text-[0.95rem] text-muted-foreground dark:text-white/60 lg:inline">|</span>
           <Link
             to="/3d-products"
             className={cn(
-              "text-[1.08rem] font-semibold tracking-tight transition-colors",
-              isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground",
+              "flex items-center gap-2 text-[1.08rem] font-semibold tracking-tight transition-colors",
+              isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
             )}
           >
-            3D Products
+            <ShoppingCart className="h-4 w-4" />
+            <span className="hidden lg:inline">3D Products</span>
           </Link>
         </nav>
 
@@ -271,81 +299,96 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div
-            id="mobile-navigation"
-            className="absolute left-0 right-0 top-full border-t bg-background/96 p-4 shadow-lg shadow-primary/10 backdrop-blur-xl md:hidden"
-          >
-            <nav className="flex flex-col space-y-4 text-foreground">
-              <Link
-                to="/"
-                onClick={(event) => {
-                  handleHomeClick(event);
-                  setMobileMenuOpen(false);
-                }}
-                className={cn(
-                  "text-base font-semibold transition-colors",
-                  isHomeRoute
-                    ? activeSection === "hero"
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                    : isActive("/")
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground",
-                )}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-            <a
-              href="#features"
-              onClick={(e) => handleSectionClick("features", e)}
-              className={cn(
-                "cursor-pointer text-base font-semibold transition-colors",
-                isFeaturesActive
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
+          <>
+            {/* Backdrop overlay to prevent content interaction */}
+            <div
+              className="fixed inset-0 top-[var(--header-height,4rem)] z-40 bg-black/20 backdrop-blur-sm md:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <div
+              id="mobile-navigation"
+              className="absolute left-0 right-0 top-full z-50 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border/60 bg-background/98 p-4 shadow-lg shadow-primary/10 backdrop-blur-xl md:hidden"
             >
-              Features
-            </a>
-              <a
-                href="#team"
-                onClick={(e) => handleSectionClick("team", e)}
-                className={cn(
-                  "cursor-pointer text-base font-semibold transition-colors",
-                  isTeamActive
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                Team
-              </a>
-              <a
-                href="#integrations"
-                onClick={(e) => handleSectionClick("integrations", e)}
-                className={cn(
-                  "cursor-pointer text-base font-semibold transition-colors",
-                  isIndustryActive
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                Industry Solutions
-              </a>
-              <div className="mt-4 border-t border-border/60 pt-4">
+              <nav className="flex flex-col space-y-3 text-foreground">
                 <Link
-                  to="/3d-products"
-                  className={`text-base font-semibold transition-colors ${isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
-                  onClick={() => setMobileMenuOpen(false)}
+                  to="/"
+                  onClick={(event) => {
+                    handleHomeClick(event);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={cn(
+                    "flex items-center gap-3 text-base font-semibold transition-colors",
+                    isHomeRoute
+                      ? activeSection === "hero"
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary"
+                      : isActive("/")
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
+                  )}
                 >
-                  3D Products
+                  <Home className="h-5 w-5" />
+                  <span>Home</span>
                 </Link>
-              </div>
-              <div className="pt-2">
-                <ThemeToggle />
-              </div>
-            </nav>
-          </div>
+                <a
+                  href="#features"
+                  onClick={(e) => handleSectionClick("features", e)}
+                  className={cn(
+                    "flex items-center gap-3 cursor-pointer text-base font-semibold transition-colors",
+                    isFeaturesActive
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
+                  )}
+                >
+                  <Sparkles className="h-5 w-5" />
+                  <span>Features</span>
+                </a>
+                <a
+                  href="#team"
+                  onClick={(e) => handleSectionClick("team", e)}
+                  className={cn(
+                    "flex items-center gap-3 cursor-pointer text-base font-semibold transition-colors",
+                    isTeamActive
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
+                  )}
+                >
+                  <Users className="h-5 w-5" />
+                  <span>Team</span>
+                </a>
+                <a
+                  href="#integrations"
+                  onClick={(e) => handleSectionClick("integrations", e)}
+                  className={cn(
+                    "flex items-center gap-3 cursor-pointer text-base font-semibold transition-colors",
+                    isIndustryActive
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
+                  )}
+                >
+                  <HeartHandshake className="h-5 w-5" />
+                  <span>Industry Solutions</span>
+                </a>
+                <div className="mt-4 border-t border-border/60 pt-4">
+                  <Link
+                    to="/3d-products"
+                    className={cn(
+                      "flex items-center gap-3 text-base font-semibold transition-colors",
+                      isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary"
+                    )}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <ShoppingCart className="h-5 w-5" />
+                    <span>3D Products</span>
+                  </Link>
+                </div>
+                <div className="pt-2">
+                  <ThemeToggle />
+                </div>
+              </nav>
+            </div>
+          </>
         )}
       </div>
     </header>

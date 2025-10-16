@@ -35,30 +35,33 @@ const Timeline13 = () => {
   return (
     <section
       id="timeline"
-      className="section-divider section-divider--short relative isolate scroll-mt-32 bg-[color:var(--primary-foreground)] py-24 transition-colors dark:bg-[color:var(--color-surface)] sm:py-32"
+      className="section-divider section-divider--short relative isolate scroll-mt-32 bg-[color:var(--color-surface)] py-24 transition-colors dark:bg-[color:var(--color-surface)] sm:py-32 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-border/80"
     >
       <div className="container relative max-w-6xl">
-        <div className="mx-auto max-w-3xl space-y-4 text-center md:text-left">
-          <div className="flex justify-center md:justify-start">
-            <Badge className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+        <div className="mx-auto max-w-3xl space-y-4 text-center">
+          <div className="flex justify-center">
+            <Badge className="transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow hover:bg-primary/80 inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
               Timeline
             </Badge>
           </div>
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+          <p className="text-center text-sm font-semibold uppercase tracking-[0.35em] text-muted-foreground">
             Journey Mapping
           </p>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+          <h1 className="text-balance text-center text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
             Journey to Product Launch
           </h1>
-          <p className="text-balance text-base text-muted-foreground md:text-lg">
+          <p className="text-balance text-center text-base text-muted-foreground md:text-lg">
             Follow the essential milestones that move your idea from spark to
             launch-day triumph, with clear ownership and measurable progress.
           </p>
         </div>
 
-        <div className="relative mt-16 overflow-hidden rounded-[2.75rem] border-[1.25px] border-[color:var(--color-border-strong)] bg-white/80 p-8 shadow-[0_40px_120px_-60px_rgba(72,56,149,0.45)] backdrop-blur-2xl transition-colors dark:bg-white/[0.05] dark:shadow-[0_60px_160px_-80px_rgba(16,15,60,0.8)] sm:p-12 lg:p-16">
+        <div className="relative mt-16 overflow-hidden rounded-[2.75rem] border-[1.25px] border-[color:var(--color-border-strong)] bg-[color:var(--primary-foreground)] p-8 shadow-[0_40px_120px_-60px_rgba(72,56,149,0.45)] backdrop-blur-2xl transition-colors dark:bg-[color:var(--color-surface)] dark:shadow-[0_60px_160px_-80px_rgba(16,15,60,0.8)] sm:p-12 lg:p-16">
+          {/* Light theme aura background for inner container */}
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-90 bg-aura-light dark:hidden" />
+          {/* Dark theme aura background for inner container */}
           <div className="pointer-events-none absolute inset-0 -z-10 hidden opacity-90 bg-aura-dark dark:block" />
+          {/* Additional dark theme gradient blur */}
           <div className="absolute inset-0 -z-10 hidden opacity-70 blur-[120px] transition-opacity dark:block">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_50%,rgba(167,139,250,0.3),transparent_60%),radial-gradient(circle_at_90%_30%,rgba(59,130,246,0.28),transparent_60%),radial-gradient(circle_at_50%_100%,rgba(236,72,153,0.32),transparent_65%)]" />
           </div>
@@ -87,12 +90,12 @@ const Timeline13 = () => {
                   <span className="absolute left-1/2 top-8 hidden size-3 -translate-x-1/2 rounded-full border border-white/60 bg-gradient-to-r from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:block" />
 
                   <div
-                    className="inline-flex items-center gap-px overflow-hidden rounded-full border-[1.25px] border-[color:var(--color-border-soft)] text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground dark:text-white/70"
+                    className="inline-flex items-center gap-px overflow-hidden rounded-full border-[1.25px] border-[color:var(--color-border-soft)] bg-transparent text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground backdrop-blur-sm dark:text-white/70"
                   >
-                    <span className="bg-white/70 px-3 py-1 text-foreground dark:bg-white/[0.02] dark:text-white/90">
+                    <span className="bg-transparent px-3 py-1 text-foreground dark:text-white/90">
                       {step.id}
                     </span>
-                    <span className="bg-transparent px-3 py-1 text-muted-foreground dark:bg-transparent dark:text-white/80">
+                    <span className="bg-transparent px-3 py-1 text-muted-foreground dark:text-white/80">
                       {step.label}
                     </span>
                   </div>

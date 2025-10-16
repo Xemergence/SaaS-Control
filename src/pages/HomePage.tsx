@@ -263,22 +263,122 @@ const HomePage = () => {
       </section>
       {/* Industry Integrations Section */}
       <IndustryIntegrationsSection />
-      {/* CTA Section */}
-      <section className="section-divider section-divider--short py-16 md:py-24">
-        <div className="container mx-auto max-w-8xl px-4 text-center">
+      {/* CTA Section - Explore Our Products */}
+      <section className="section-divider section-divider--short relative isolate overflow-hidden py-16 md:py-24">
+        {/* Dashed Center Fade Grid Background */}
+        <div
+          className="absolute inset-0 z-0"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+              linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+            `,
+            backgroundSize: "20px 20px",
+            backgroundPosition: "0 0, 0 0",
+            maskImage: `
+              repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+            `,
+            WebkitMaskImage: `
+              repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+            `,
+            maskComposite: "intersect",
+            WebkitMaskComposite: "source-in",
+          }}
+        />
+        {/* Dark theme grid - adjust color for dark mode */}
+        <div
+          className="absolute inset-0 z-0 hidden dark:block"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(52, 56, 92, 0.55) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(52, 56, 92, 0.55) 1px, transparent 1px)
+            `,
+            backgroundSize: "20px 20px",
+            backgroundPosition: "0 0, 0 0",
+            maskImage: `
+              repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+            `,
+            WebkitMaskImage: `
+              repeating-linear-gradient(
+                to right,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                black 0px,
+                black 3px,
+                transparent 3px,
+                transparent 8px
+              ),
+              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
+            `,
+            maskComposite: "intersect",
+            WebkitMaskComposite: "source-in",
+          }}
+        />
+        <div className="container relative z-10 mx-auto max-w-8xl px-4 text-center">
           <div className="mb-4 font-medium uppercase tracking-[0.4em] text-primary">
             EXPLORE OUR PRODUCTS
           </div>
           <h2 className="text-balance mb-6 text-3xl font-bold md:text-4xl">
             Ready to Transform Your Business with Our Products?
           </h2>
-          <p className="text-balance mx-auto mb-12 max-w-3xl leading-relaxed text-muted-foreground">
-            Discover our range of innovative, US-designed and manufactured
-            products that enhance your business operations. From custom 3D
-            printed solutions to IoT devices and NFC technology, each product is
-            crafted to integrate seamlessly with your digital transformation
-            journey.
-          </p>
+          <div className="mx-auto mb-12 max-w-3xl">
+            <p className="text-balance rounded-2xl bg-background/60 px-6 py-4 font-semibold leading-relaxed text-foreground shadow-sm backdrop-blur-sm dark:bg-background/40">
+              Discover our range of innovative, US-designed and manufactured
+              products that enhance your business operations. From custom 3D
+              printed solutions to IoT devices and NFC technology, each product is
+              crafted to integrate seamlessly with your digital transformation
+              journey.
+            </p>
+          </div>
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/3d-products">
@@ -402,32 +502,6 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between border-t border-border/60 pt-6 md:flex-row">
-            <p className="text-sm text-muted-foreground">
-              TrendBlend Inc 2023 All Rights Reserved
-            </p>
-
-            <div className="mt-4 flex gap-4 md:mt-0">
-              <Link
-                to="#"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link
-                to="#"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Youtube className="h-5 w-5" />
-              </Link>
-              <Link
-                to="#"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Instagram className="h-5 w-5" />
-              </Link>
-            </div>
-          </div>
         </div>
       </footer>
     </div>

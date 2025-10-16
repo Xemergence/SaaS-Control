@@ -41,10 +41,13 @@ const teamMembers: TeamMember[] = [
 
 export default function TeamSection() {
   return (
-    <section className="section-divider section-divider--short relative overflow-hidden py-20 transition-colors md:py-28">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-aura-light dark:hidden" />
-      <div className="pointer-events-none absolute inset-0 -z-10 hidden bg-aura-dark dark:block" />
-      <div className="container relative mx-auto max-w-7xl px-4">
+    <section className="section-divider section-divider--short relative isolate bg-[color:var(--primary-foreground)] py-20 transition-colors dark:bg-[color:var(--color-surface)] md:py-28">
+      {/* Light theme aura background */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-90 bg-aura-light dark:hidden" />
+      {/* Dark theme aura background */}
+      <div className="pointer-events-none absolute inset-0 -z-10 hidden opacity-90 bg-aura-dark dark:block" />
+
+      <div className="container mx-auto max-w-7xl px-4">
         <div className="mb-16 text-center">
           <Badge
             variant="outline"
