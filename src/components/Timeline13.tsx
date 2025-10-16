@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
 const TIMELINE_STEPS = [
@@ -89,9 +88,6 @@ const Timeline13 = () => {
                 Map your path from concept to launch-day victory.
               </h2>
             </div>
-            <Button className="rounded-full bg-gradient-to-r from-[#ff4ecd] via-[#b5179e] to-[#6c2de9] px-6 py-2 text-sm font-semibold text-white shadow-[0_14px_40px_rgba(255,78,205,0.45)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(255,78,205,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent">
-              Request a demo
-            </Button>
           </div>
 
           <div className="relative mt-14">

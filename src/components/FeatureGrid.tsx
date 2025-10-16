@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -20,32 +21,47 @@ interface FeatureProps {
 
 const Feature = ({ icon, title, description, iconBgColor, delay }: FeatureProps) => {
   return (
-    <Card 
-      className="group relative overflow-hidden bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] border-gray-700/30 hover:border-purple-500/50 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/20 animate-fade-in"
+    <Card
+      className={cn(
+        "group relative overflow-hidden border border-border/60 transition-all duration-500 animate-fade-in hover:-translate-y-1",
+        "bg-white/85 shadow-[0_28px_80px_-60px_rgba(73,56,149,0.35)] backdrop-blur-xl hover:border-primary/40 hover:shadow-primary/25",
+        "dark:bg-gradient-to-br dark:from-[#1a1e2d] dark:to-[#2a2f4a] dark:border-slate-700/40 dark:hover:border-purple-500/50 dark:hover:shadow-purple-500/20"
+      )}
       style={{ animationDelay: `${delay}ms` }}
     >
       <CardContent className="p-8 relative z-10">
         {/* Icon Container */}
         <div className="mb-6 relative">
           <div
-            className={`inline-flex rounded-2xl p-4 ${iconBgColor} border-2 border-gray-800/50 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}
+            className={cn(
+              "inline-flex rounded-2xl border-2 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3",
+              "border-white/60",
+              "dark:border-gray-800/50",
+              iconBgColor
+            )}
           >
             <div className="relative z-10">{icon}</div>
           </div>
           {/* Glow effect */}
-          <div className={`absolute inset-0 ${iconBgColor} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}></div>
+          <div
+            className={cn(
+              "pointer-events-none absolute inset-0 -z-10 blur-xl transition-opacity duration-500",
+              "opacity-0 group-hover:opacity-30",
+              iconBgColor
+            )}
+          ></div>
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-bold mb-3 text-white group-hover:text-purple-300 transition-colors duration-300">
+        <h3 className="text-xl font-bold mb-3 text-foreground transition-colors duration-300 group-hover:text-primary">
           {title}
         </h3>
-        <p className="text-sm text-gray-300 leading-relaxed">
+        <p className="text-sm leading-relaxed text-muted-foreground">
           {description}
         </p>
 
         {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-purple-500/0 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
       </CardContent>
     </Card>
   );
@@ -111,30 +127,41 @@ const FeatureGrid = ({
   ],
 }: FeatureGridProps) => {
   return (
-    <section className="w-full py-20 md:py-32 bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#0a0a0f] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="relative overflow-hidden py-20 md:py-32">
+      <div
+        className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 dark:hidden"
+        style={{
+          backgroundColor: "#fefcff",
+          backgroundImage:
+            "radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%), radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)",
+        }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 -z-10 hidden overflow-hidden dark:block" aria-hidden>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(110,114,255,0.35),transparent_60%),radial-gradient(circle_at_85%_25%,rgba(232,74,248,0.32),transparent_62%),radial-gradient(circle_at_50%_80%,rgba(14,116,212,0.25),transparent_68%),linear-gradient(160deg,#040312_0%,#0a0f2a_45%,#01000f_100%)]" />
+      </div>
+      <div className="absolute -top-28 left-1/5 -z-10 h-56 w-56 rounded-full bg-primary/20 blur-[160px] dark:bg-primary/40" />
+      <div className="absolute -bottom-36 right-1/4 -z-10 h-64 w-64 rounded-full bg-sky-400/25 blur-[140px] dark:bg-fuchsia-400/35" />
+
+      <div className="container relative z-10 mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <Badge 
-            variant="outline" 
-            className="mb-4 bg-purple-900/30 border-purple-500/50 text-purple-400 px-4 py-1.5 text-sm"
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <Badge
+            variant="outline"
+            className="mb-4 border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm text-primary"
           >
             Features
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight text-foreground">
             {title}
           </h2>
-          <p className="text-gray-300 text-lg leading-relaxed">
+          <p className="text-lg leading-relaxed text-muted-foreground">
             {subtitle}
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <Feature
               key={index}
@@ -148,8 +175,8 @@ const FeatureGrid = ({
         </div>
 
         {/* Bottom CTA or additional info */}
-        <div className="text-center mt-16">
-          <p className="text-gray-400 text-sm">
+        <div className="mt-16 text-center">
+          <p className="text-sm text-muted-foreground">
             Designed for innovators, small teams, and growing businesses
           </p>
         </div>

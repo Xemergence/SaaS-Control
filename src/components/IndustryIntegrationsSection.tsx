@@ -40,7 +40,7 @@ const IndustryCard = ({
           </div>
           {/* Glow effect */}
           <div
-            className={`absolute inset-0 ${iconBgColor} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
+            className={`pointer-events-none absolute inset-0 -z-10 ${iconBgColor} opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-30`}
           ></div>
         </div>
 
@@ -137,10 +137,21 @@ const IndustryIntegrationsSection = ({
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-br from-background via-muted/20 to-background py-20 md:py-32 dark:from-[#0a0a0f] dark:via-[#121219] dark:to-[#0a0a0f]">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent dark:from-purple-900/30"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sky-400/20 via-transparent to-transparent dark:from-blue-900/25"></div>
+    <section className="relative w-full overflow-hidden py-20 md:py-32">
+      <div
+        className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 dark:hidden"
+        style={{
+          backgroundColor: "#fefcff",
+          backgroundImage:
+            "radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%), radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)",
+        }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 -z-10 hidden overflow-hidden dark:block" aria-hidden>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(110,114,255,0.35),transparent_60%),radial-gradient(circle_at_85%_25%,rgba(232,74,248,0.32),transparent_62%),radial-gradient(circle_at_50%_80%,rgba(14,116,212,0.25),transparent_68%),linear-gradient(160deg,#040312_0%,#0a0f2a_45%,#01000f_100%)]" />
+      </div>
+      <div className="absolute -top-32 left-1/5 -z-10 h-64 w-64 rounded-full bg-primary/20 blur-[140px] dark:bg-primary/40" />
+      <div className="absolute -bottom-40 right-1/4 -z-10 h-72 w-72 rounded-full bg-sky-400/25 blur-[150px] dark:bg-fuchsia-500/35" />
 
       <div className="container relative z-10 mx-auto px-4">
         {/* Header */}
