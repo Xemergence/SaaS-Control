@@ -148,7 +148,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-background text-foreground transition-colors duration-300">
+    <div className="relative min-h-screen w-full bg-background text-foreground transition-colors duration-300">
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-100 dark:hidden">
         <div className="absolute inset-0 bg-[#fefcff]" />
         <div
@@ -165,7 +165,7 @@ const HomePage = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(236,72,153,0.2),_transparent_55%)]" />
       </div>
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-transparent dark:bg-gradient-to-br dark:from-[#0b0b19] dark:via-[#171a2f] dark:to-[#1f1433]">
+      <section className="relative isolate flex min-h-[calc(100vh-5.5rem)] items-center justify-center bg-transparent dark:bg-gradient-to-br dark:from-[#0b0b19] dark:via-[#171a2f] dark:to-[#1f1433]">
         {/* Background decorative elements */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#fde5ff]/40 via-transparent to-transparent dark:from-purple-500/25 dark:via-transparent dark:to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#c9f1ff]/35 via-transparent to-transparent dark:from-sky-500/25 dark:via-transparent dark:to-transparent" />
@@ -183,14 +183,14 @@ const HomePage = () => {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-balance text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
               <span className="bg-gradient-to-r from-primary via-fuchsia-500 to-sky-500 bg-clip-text text-transparent">
                 Empowering Small Teams & Local Businesses
               </span>
             </h1>
 
             {/* Description */}
-            <p className="mx-auto mb-12 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <p className="text-balance mx-auto mb-12 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
               Transform your data into digital solutions with our comprehensive
               control tower platform. Aggregate and visualize critical business
               metrics from your digital components, enabling real-time insights,
@@ -246,7 +246,7 @@ const HomePage = () => {
         </div>
       </section>
       {/* Features Section */}
-      <section id="features" className="bg-background">
+      <section id="features" className="scroll-mt-32 bg-background">
         <FeatureGrid />
       </section>
       {/* New Features Section (replacing AI Tools) */}
@@ -270,7 +270,7 @@ const HomePage = () => {
       {/* Timeline Section */}
       <Timeline13 />
       {/* Team Section */}
-      <section id="team">
+      <section id="team" className="scroll-mt-32">
         <TeamSection />
       </section>
       {/* Industry Integrations Section */}
@@ -281,10 +281,10 @@ const HomePage = () => {
           <div className="mb-4 font-medium uppercase tracking-[0.4em] text-primary">
             EXPLORE OUR PRODUCTS
           </div>
-          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+          <h2 className="text-balance mb-6 text-3xl font-bold md:text-4xl">
             Ready to Transform Your Business with Our Products?
           </h2>
-          <p className="mx-auto mb-12 max-w-3xl text-muted-foreground">
+          <p className="text-balance mx-auto mb-12 max-w-3xl leading-relaxed text-muted-foreground">
             Discover our range of innovative, US-designed and manufactured
             products that enhance your business operations. From custom 3D
             printed solutions to IoT devices and NFC technology, each product is

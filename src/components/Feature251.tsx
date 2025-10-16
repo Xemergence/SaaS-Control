@@ -18,7 +18,7 @@ const Feature251: React.FC = () => {
   const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-24">
+    <section className="relative isolate py-20 md:py-24">
       <div
         className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 dark:hidden"
         style={{
@@ -34,160 +34,174 @@ const Feature251: React.FC = () => {
       <div className="pointer-events-none absolute -top-32 left-1/4 -z-10 h-64 w-64 rounded-full bg-primary/25 blur-[140px] dark:bg-primary/40" />
       <div className="pointer-events-none absolute -bottom-40 right-1/5 -z-10 h-72 w-72 rounded-full bg-sky-400/25 blur-[150px] dark:bg-fuchsia-500/30" />
       <div className="container relative">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-stretch justify-center gap-5">
-          {/* 1st Card */}
-          <Card className="group relative h-96 w-full rounded-3xl border border-border/60 bg-gradient-to-br from-muted/50 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-60px_rgba(147,51,234,0.35)] transition-all duration-300 hover:border-primary/50 hover:shadow-primary/30 md:w-[660px]">
-            <CardHeader className="pb-2 text-left">
-              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-                Customizable Workflows
-              </h3>
-              <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt Lorem ipsum dolor sit amet,
-                consectetur
-              </p>
-            </CardHeader>
-            <CardContent
-              ref={containerRef1}
-              className="relative ml-5 h-[calc(24rem-5.5rem)]"
-            >
-              <IconCard
-                ref={div1Ref}
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg"
-                className="mb-3"
-              />
-              <IconCard
-                ref={div2Ref}
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-icon.svg"
-                className="translate-x-32"
-              />
-              <IconCard
-                ref={div3Ref}
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/notion-icon.svg"
-                className="mt-3"
-              />
-              <IconCard
-                ref={div5Ref}
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-                className="absolute right-12 top-1/2 -translate-y-1/2"
-              />
+                <div className="mx-auto max-w-6xl">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:items-stretch">
+            <div className="grid gap-6">
+              {/* 1st Card */}
+              <Card
+                className="group relative min-h-[24rem] overflow-visible rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/75 to-white/55 shadow-[0_32px_96px_-48px_rgba(120,85,255,0.45)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_44px_120px_-48px_rgba(139,92,246,0.55)] dark:from-white/[0.12] dark:via-white/[0.08] dark:to-white/[0.05] dark:shadow-[0_42px_120px_-64px_rgba(71,45,155,0.65)]"
+                style={{ borderColor: "var(--color-border-strong)" }}
+              >
+                <CardHeader className="space-y-3 px-8 pt-8 text-left">
+                  <h3 className="text-balance text-2xl font-semibold leading-tight text-foreground md:text-[28px]">
+                    Customizable Workflows
+                  </h3>
+                  <p className="text-balance text-base leading-relaxed text-muted-foreground">
+                    Orchestrate manufacturing, IoT, and analytics tasks from one adaptive canvas. Drag trusted tools into governed pipelines, automate dependencies, and let BOS adjust instantly as production data or customer demand shifts.
+                  </p>
+                </CardHeader>
+                <CardContent
+                  ref={containerRef1}
+                  className="relative h-[18rem] px-8 pb-10"
+                >
+                  <IconCard
+                    ref={div1Ref}
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/google-icon.svg"
+                    className="mb-6"
+                  />
+                  <IconCard
+                    ref={div2Ref}
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-icon.svg"
+                    className="translate-x-24 sm:translate-x-28"
+                  />
+                  <IconCard
+                    ref={div3Ref}
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/notion-icon.svg"
+                    className="mt-6"
+                  />
+                  <IconCard
+                    ref={div5Ref}
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
+                    className="absolute right-10 top-1/2 -translate-y-1/2"
+                  />
 
-              <div
-                ref={div4Ref}
-                className="absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-500/50 bg-purple-600/20 shadow-lg shadow-purple-500/50"
-              />
+                  <div
+                    ref={div4Ref}
+                    className="absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-500/50 bg-purple-600/20 shadow-lg shadow-purple-500/50"
+                  />
 
-              {/* Connectors */}
-              <AnimatedBeam
-                duration={3}
-                containerRef={containerRef1}
-                fromRef={div1Ref}
-                curvature={40}
-                toRef={div4Ref}
-                gradientStartColor="#9333ea"
-                gradientStopColor="#3b82f6"
-              />
-              <AnimatedBeam
-                duration={3}
-                containerRef={containerRef1}
-                fromRef={div2Ref}
-                toRef={div4Ref}
-                gradientStartColor="#9333ea"
-                gradientStopColor="#3b82f6"
-              />
-              <AnimatedBeam
-                duration={3}
-                containerRef={containerRef1}
-                fromRef={div3Ref}
-                curvature={-40}
-                toRef={div4Ref}
-                gradientStartColor="#9333ea"
-                gradientStopColor="#3b82f6"
-              />
-              <AnimatedBeam
-                duration={3}
-                containerRef={containerRef1}
-                fromRef={div4Ref}
-                toRef={div5Ref}
-                gradientStartColor="#9333ea"
-                gradientStopColor="#3b82f6"
-              />
-            </CardContent>
-          </Card>
+                  {/* Connectors */}
+                  <AnimatedBeam
+                    duration={3}
+                    containerRef={containerRef1}
+                    fromRef={div1Ref}
+                    curvature={38}
+                    toRef={div4Ref}
+                    gradientStartColor="#9333ea"
+                    gradientStopColor="#3b82f6"
+                  />
+                  <AnimatedBeam
+                    duration={3}
+                    containerRef={containerRef1}
+                    fromRef={div2Ref}
+                    toRef={div4Ref}
+                    gradientStartColor="#9333ea"
+                    gradientStopColor="#3b82f6"
+                  />
+                  <AnimatedBeam
+                    duration={3}
+                    containerRef={containerRef1}
+                    fromRef={div3Ref}
+                    curvature={-38}
+                    toRef={div4Ref}
+                    gradientStartColor="#9333ea"
+                    gradientStopColor="#3b82f6"
+                  />
+                  <AnimatedBeam
+                    duration={3}
+                    containerRef={containerRef1}
+                    fromRef={div5Ref}
+                    curvature={-18}
+                    toRef={div4Ref}
+                    gradientStartColor="#3b82f6"
+                    gradientStopColor="#9333ea"
+                  />
+                </CardContent>
+              </Card>
 
-          {/* 2nd Card */}
-          <Card className="group h-96 w-full rounded-3xl border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-70px_rgba(59,130,246,0.35)] transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/30 md:w-[332px]">
-            <CardHeader className="pb-2 text-left">
-              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-                Smart Task Tracking
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              </p>
-            </CardHeader>
-            <CardContent
-              ref={containerRef2}
-              className="relative flex h-[calc(24rem-5.5rem)] flex-col items-center justify-between"
-            >
-              <IconCard
-                ref={div6Ref}
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-                className="mb-3"
-              />
-              <IconCard
-                ref={div7Ref}
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/g2-icon.svg"
-                className="mt-3"
-              />
-              <AnimatedBeam
-                duration={3}
-                containerRef={containerRef2}
-                fromRef={div6Ref}
-                direction="vertical"
-                curvature={40}
-                toRef={div7Ref}
-                gradientStartColor="#3b82f6"
-                gradientStopColor="#9333ea"
-              />
-            </CardContent>
-          </Card>
+              {/* 4th Card */}
+              <Card
+                className="group relative min-h-[24rem] overflow-hidden rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/65 to-white/45 shadow-[0_32px_96px_-48px_rgba(120,85,255,0.38)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_44px_120px_-48px_rgba(125,86,255,0.5)] dark:from-white/[0.1] dark:via-white/[0.06] dark:to-white/[0.04] dark:shadow-[0_42px_120px_-64px_rgba(55,38,140,0.6)]"
+                style={{ borderColor: "var(--color-border-strong)" }}
+              >
+                <CardHeader className="relative z-10 space-y-3 px-8 pt-8 text-left">
+                  <h3 className="text-balance text-2xl font-semibold leading-tight text-foreground md:text-[28px]">
+                    Trusted by 100k Users
+                  </h3>
+                  <p className="text-balance text-base leading-relaxed text-muted-foreground">
+                    Deliver BOS experiences that scale globally with verified uptime, hardened access controls, and compliance reporting. Our automation backbone powers 100k+ daily users across regulated manufacturing, healthcare, and smart city deployments.
+                  </p>
+                </CardHeader>
+                <CardContent className="relative flex h-[18rem] items-end justify-end">
+                  <Globe className="-bottom-12 left-auto right-[-14%] size-[440px] translate-x-0 opacity-80 saturate-[1.1]" />
+                </CardContent>
+              </Card>
+            </div>
 
-          {/* 3rd Card */}
-          <Card className="group relative flex h-96 w-full flex-col rounded-3xl border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-70px_rgba(34,197,94,0.25)] transition-all duration-300 hover:border-emerald-400/60 hover:shadow-emerald-400/20 md:w-[332px]">
-            <CardContent className="flex-1">
-              <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-                className="mt-5 size-32 drop-shadow-lg"
-                alt="Integration placeholder"
-              />
-            </CardContent>
-            <CardHeader className="mt-auto text-left">
-              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-                Seamless Integration & Real-Time Collaboration
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              </p>
-            </CardHeader>
-          </Card>
+            <div className="grid gap-6">
+              {/* 2nd Card */}
+              <Card
+                className="group relative min-h-[24rem] rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/70 to-white/50 shadow-[0_28px_90px_-50px_rgba(67,112,255,0.45)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_40px_110px_-52px_rgba(67,112,255,0.55)] dark:from-white/[0.12] dark:via-white/[0.08] dark:to-white/[0.05]"
+                style={{ borderColor: "var(--color-border-strong)" }}
+              >
+                <CardHeader className="space-y-3 px-8 pt-8 text-left">
+                  <h3 className="text-balance text-2xl font-semibold leading-tight text-foreground md:text-[28px]">
+                    Smart Task Tracking
+                  </h3>
+                  <p className="text-balance text-base leading-relaxed text-muted-foreground">
+                    Monitor milestones, alerts, and work orders in a single signal stack. BOS unifies shop-floor telemetry with service tickets so every owner sees dependencies before bottlenecks surface.
+                  </p>
+                </CardHeader>
+                <CardContent
+                  ref={containerRef2}
+                  className="relative flex h-[18rem] flex-col items-center justify-between px-8 pb-10"
+                >
+                  <IconCard
+                    ref={div6Ref}
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
+                    className="mb-6"
+                  />
+                  <IconCard
+                    ref={div7Ref}
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/g2-icon.svg"
+                    className="mt-6"
+                  />
+                  <AnimatedBeam
+                    duration={3}
+                    containerRef={containerRef2}
+                    fromRef={div6Ref}
+                    direction="vertical"
+                    curvature={42}
+                    toRef={div7Ref}
+                    gradientStartColor="#3b82f6"
+                    gradientStopColor="#9333ea"
+                  />
+                </CardContent>
+              </Card>
 
-          {/* 4th Card */}
-          <Card className="group relative h-96 w-full overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-60px_rgba(147,51,234,0.35)] transition-all duration-300 hover:border-primary/50 hover:shadow-primary/30 md:w-[660px]">
-            <CardHeader className="relative z-10 pb-2 text-left">
-              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-                Trusted by 100k Users
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt Lorem ipsum dolor sit amet,
-                consectetur
-              </p>
-            </CardHeader>
-            <CardContent className="relative">
-              {/* Position the globe peeking from the bottom right, similar to the reference */}
-              <Globe className="-top-6 left-auto right-[-10%] translate-x-0 opacity-70 saturate-[1.15]" />
-            </CardContent>
-          </Card>
+              {/* 3rd Card */}
+              <Card
+                className="group relative flex min-h-[24rem] flex-col rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/70 to-white/48 shadow-[0_28px_90px_-50px_rgba(45,197,123,0.32)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_40px_110px_-52px_rgba(45,197,123,0.45)] dark:from-white/[0.1] dark:via-white/[0.07] dark:to-white/[0.05]"
+                style={{ borderColor: "var(--color-border-strong)" }}
+              >
+                <CardContent className="flex flex-1 items-center justify-center px-8 pt-12">
+                  <img
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
+                    className="size-28 drop-shadow-lg md:size-32"
+                    alt="Integration placeholder"
+                  />
+                </CardContent>
+                <CardHeader className="mt-auto space-y-3 px-8 pb-8 text-left">
+                  <h3 className="text-balance text-2xl font-semibold leading-tight text-foreground md:text-[28px]">
+                    Seamless Integration & Real-Time Collaboration
+                  </h3>
+                  <p className="text-balance text-base leading-relaxed text-muted-foreground">
+                    Launch secure integrations without custom code debt. Prebuilt connectors map ERP, MES, and finance records into shared models while in-line coauthoring keeps engineering, ops, and vendors aligned in real time.
+                  </p>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -205,7 +219,7 @@ const IconCard = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative z-10 flex size-14 items-center justify-center rounded-xl border border-border/60 bg-muted/50 backdrop-blur-md shadow-lg shadow-primary/10 transition-all duration-300 hover:border-primary/50 hover:shadow-primary/30 dark:bg-muted/60",
+        "relative z-10 flex size-14 items-center justify-center rounded-xl border-[1.15px] border-[color:var(--color-border-soft)] bg-muted/50 backdrop-blur-md shadow-lg shadow-primary/10 transition-all duration-300 hover:border-[color:var(--color-border-strong)] hover:shadow-primary/30 dark:bg-muted/60",
         className,
       )}
     >

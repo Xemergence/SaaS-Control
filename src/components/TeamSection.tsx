@@ -50,10 +50,10 @@ export default function TeamSection() {
           >
             Our Team
           </Badge>
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="text-balance mb-4 text-3xl font-bold leading-tight text-foreground md:text-5xl">
             Meet the Innovators
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="text-balance mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
             A diverse team of experts dedicated to transforming your digital
             vision into reality
           </p>

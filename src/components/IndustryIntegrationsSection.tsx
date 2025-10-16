@@ -27,14 +27,14 @@ const IndustryCard = ({
   return (
     <Card
       onClick={onClick}
-      className={`group relative cursor-pointer overflow-hidden border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 transition-all duration-500 ${borderColor} ${shadowColor} animate-fade-in hover:shadow-xl`}
+      className={`group relative cursor-pointer overflow-hidden border-[1.15px] border-[color:var(--color-border-soft)] bg-gradient-to-br from-muted/40 via-card to-background/80 transition-all duration-500 ${borderColor} ${shadowColor} animate-fade-in hover:shadow-xl`}
       style={{ animationDelay: `${delay}ms` }}
     >
       <CardContent className="p-8 relative z-10">
         {/* Icon Container */}
         <div className="mb-6 relative">
           <div
-            className={`inline-flex rounded-2xl border-2 border-border/60 p-4 shadow-lg shadow-primary/10 transition-all duration-300 group-hover:rotate-3 group-hover:scale-110 ${iconBgColor}`}
+            className={`inline-flex rounded-2xl border-[1.5px] border-[color:var(--color-border-soft)] p-4 shadow-lg shadow-primary/10 transition-all duration-300 group-hover:rotate-3 group-hover:scale-110 ${iconBgColor}`}
           >
             <div className="relative z-10">{icon}</div>
           </div>
@@ -162,10 +162,10 @@ const IndustryIntegrationsSection = ({
           >
             Industry Solutions
           </Badge>
-          <h2 className="mb-6 text-3xl font-bold leading-tight text-foreground md:text-5xl">
+          <h2 className="text-balance mb-6 text-3xl font-bold leading-tight text-foreground md:text-5xl">
             {title}
           </h2>
-          <p className="text-lg leading-relaxed text-muted-foreground">
+          <p className="text-balance text-lg leading-relaxed text-muted-foreground">
             {subtitle}
           </p>
         </div>

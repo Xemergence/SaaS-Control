@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -19,11 +20,10 @@ const Navigation = () => {
   const preferredLogo =
     theme === "dark" ? "/images/logo-dark.svg" : "/images/logo-light.svg";
   const logoFrameClasses = cn(
-    "grid size-14 place-items-center rounded-[1.65rem] border transition-all duration-300 backdrop-blur-sm",
-    "shadow-[0_18px_46px_-28px_rgba(86,72,198,0.45)] hover:shadow-[0_20px_56px_-22px_rgba(130,104,255,0.5)]",
+    "grid size-14 place-items-center rounded-[1.65rem] border transition-transform duration-300",
     theme === "dark"
-      ? "border-white/12 bg-slate-900/80"
-      : "border-slate-200 bg-white/95"
+      ? "border-[color:var(--color-border-strong)] bg-white/5 shadow-[var(--shadow-xs)] hover:scale-105"
+      : "border-[color:var(--color-border-subtle)] bg-white/90 shadow-[var(--shadow-xs)] hover:scale-105"
   );
 
   // Add smooth scroll handler for navigation links
@@ -52,9 +52,38 @@ const Navigation = () => {
     setMobileMenuOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 6);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const headerShadow = isScrolled ? "var(--shadow-sm)" : "none";
+  const headerBorder = isScrolled
+    ? "var(--color-border-strong)"
+    : "var(--color-border-subtle)";
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-xl">
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-300 ease-out",
+        isScrolled ? "bg-background/80" : "bg-background/92"
+      )}
+      style={{
+        borderColor: headerBorder,
+        boxShadow: headerShadow,
+      }}
+    >
+      <div
+        className={cn(
+          "container mx-auto flex items-center justify-between px-4 transition-[padding] duration-300 ease-out",
+          isScrolled ? "py-3 sm:py-3.5" : "py-4 sm:py-5"
+        )}
+      >
         <Link to="/" className="flex items-center gap-3">
           <span className={logoFrameClasses}>
             <img
@@ -73,7 +102,11 @@ const Navigation = () => {
 
         {/* Mobile menu button */}
         <button
-          className="text-foreground transition-colors hover:text-primary focus:outline-none md:hidden"
+          type="button"
+          className="p-3 text-foreground transition-colors hover:text-primary focus:outline-none md:hidden"
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -127,7 +160,10 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="absolute left-0 right-0 top-full border-t border-border/60 bg-background/98 p-4 shadow-lg shadow-primary/10 md:hidden">
+          <div
+            id="mobile-navigation"
+            className="absolute left-0 right-0 top-full border-t bg-background/96 p-4 shadow-lg shadow-primary/10 backdrop-blur-xl md:hidden"
+          >
             <nav className="flex flex-col space-y-4 text-foreground">
               <Link
                 to="/"

@@ -127,7 +127,7 @@ const FeatureGrid = ({
   ],
 }: FeatureGridProps) => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32">
+    <section className="relative isolate py-20 md:py-32">
       <div
         className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 dark:hidden"
         style={{
@@ -152,10 +152,10 @@ const FeatureGrid = ({
           >
             Features
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight text-foreground">
+          <h2 className="text-balance text-3xl font-bold leading-tight text-foreground md:text-5xl">
             {title}
           </h2>
-          <p className="text-lg leading-relaxed text-muted-foreground">
+          <p className="text-balance text-lg leading-relaxed text-muted-foreground">
             {subtitle}
           </p>
         </div>
