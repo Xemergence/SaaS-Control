@@ -231,20 +231,21 @@ const HomePage = () => {
         </div>
       </section>
       {/* Features Section */}
-      <section id="features" className="bg-black">
+      <section id="features" className="bg-background">
         <FeatureGrid />
       </section>
       {/* New Features Section (replacing AI Tools) */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#1a1b2e]">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-12">
+      <section className="relative overflow-hidden py-20 md:py-32">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-background via-muted/30 to-background dark:from-[#0a0a0f] dark:via-[#121219] dark:to-[#1a1b2e]" />
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="mb-12 text-center">
             <Badge
               variant="outline"
-              className="mb-4 bg-purple-900/30 border-purple-500/50 text-purple-400 px-4 py-1.5 text-sm"
+              className="mb-4 border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm text-primary"
             >
               Our Approach
             </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight text-foreground">
               Built for Innovation
             </h2>
           </div>
@@ -252,9 +253,7 @@ const HomePage = () => {
         <Feature251 />
       </section>
       {/* Timeline Section */}
-      <section className="py-20 md:py-32 bg-black">
-        <Timeline13 />
-      </section>
+      <Timeline13 />
       {/* Team Section */}
       <section id="team">
         <TeamSection />
@@ -262,15 +261,15 @@ const HomePage = () => {
       {/* Industry Integrations Section */}
       <IndustryIntegrationsSection />
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-black">
-        <div className="container mx-auto px-4 text-center max-w-8xl">
-          <div className="text-purple-500 font-medium mb-4 uppercase tracking-wider">
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-8xl px-4 text-center">
+          <div className="mb-4 font-medium uppercase tracking-[0.4em] text-primary">
             EXPLORE OUR PRODUCTS
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             Ready to Transform Your Business with Our Products?
           </h2>
-          <p className="text-gray-300 max-w-3xl mx-auto mb-12">
+          <p className="mx-auto mb-12 max-w-3xl text-muted-foreground">
             Discover our range of innovative, US-designed and manufactured
             products that enhance your business operations. From custom 3D
             printed solutions to IoT devices and NFC technology, each product is
@@ -280,7 +279,7 @@ const HomePage = () => {
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/3d-products">
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-200">
+              <Button className="flex items-center gap-2 bg-gradient-to-r from-primary to-fuchsia-500 text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-200 hover:from-primary/90 hover:to-fuchsia-500/90 hover:shadow-primary/40">
                 <ShoppingCart className="h-4 w-4" />
                 Browse Products
                 <ArrowRight className="h-4 w-4" />
@@ -289,7 +288,7 @@ const HomePage = () => {
 
             <Button
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 bg-transparent flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200"
+              className="flex items-center gap-2 border border-border/70 bg-background/60 text-muted-foreground shadow-md shadow-primary/10 transition-all duration-200 hover:border-primary/40 hover:text-foreground hover:shadow-primary/25"
             >
               <Grid className="h-4 w-4" />
               View All Categories
@@ -298,18 +297,18 @@ const HomePage = () => {
         </div>
       </section>
       {/* Footer */}
-      <footer className="py-12 md:py-16 bg-black border-t border-gray-800">
-        <div className="container mx-auto px-4 max-w-8xl">
-          <div className="grid md:grid-cols-4 gap-8 mb-12 max-w-7xl mx-auto">
+      <footer className="border-t border-border/60 bg-background py-12 md:py-16">
+        <div className="container mx-auto max-w-8xl px-4">
+          <div className="mx-auto mb-12 grid max-w-7xl gap-8 md:grid-cols-4">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="h-8 w-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
+              <div className="mb-4 flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-fuchsia-500 text-xs font-bold text-primary-foreground">
                   xE
                 </div>
-                <span className="font-bold">xEmergence</span>
+                <span className="font-bold text-foreground">xEmergence</span>
               </div>
 
-              <p className="text-gray-400 text-sm">
+              <p className="text-sm text-muted-foreground">
                 Unleash the full potential of your ideas with our accelerated
                 digital solutions, transforming data into actionable insights
                 and driving your success forward through innovative technology
@@ -318,12 +317,12 @@ const HomePage = () => {
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">Product</h3>
+              <h3 className="mb-4 font-bold text-foreground">Product</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
                     to="/designers"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     For Designers
                   </Link>
@@ -331,7 +330,7 @@ const HomePage = () => {
                 <li>
                   <Link
                     to="/developers"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     For Developers
                   </Link>
@@ -339,7 +338,7 @@ const HomePage = () => {
                 <li>
                   <Link
                     to="/managers"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     For Managers
                   </Link>
@@ -348,12 +347,12 @@ const HomePage = () => {
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">Company</h3>
+              <h3 className="mb-4 font-bold text-foreground">Company</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
                     to="/about"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     About Us
                   </Link>
@@ -361,7 +360,7 @@ const HomePage = () => {
                 <li>
                   <Link
                     to="/careers"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     Careers
                   </Link>
@@ -369,7 +368,7 @@ const HomePage = () => {
                 <li>
                   <Link
                     to="/contact"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     Contact Us
                   </Link>
@@ -378,12 +377,12 @@ const HomePage = () => {
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">Legal</h3>
+              <h3 className="mb-4 font-bold text-foreground">Legal</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
                     to="/privacy"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     Privacy Policy
                   </Link>
@@ -391,7 +390,7 @@ const HomePage = () => {
                 <li>
                   <Link
                     to="/terms"
-                    className="text-gray-400 hover:text-white text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     Terms and Conditions
                   </Link>
@@ -400,19 +399,28 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
-            <p className="text-gray-500 text-sm">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between border-t border-border/60 pt-6 md:flex-row">
+            <p className="text-sm text-muted-foreground">
               TrendBlend Inc 2023 All Rights Reserved
             </p>
 
-            <div className="flex gap-4 mt-4 md:mt-0">
-              <Link to="#" className="text-gray-400 hover:text-white">
+            <div className="mt-4 flex gap-4 md:mt-0">
+              <Link
+                to="#"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link to="#" className="text-gray-400 hover:text-white">
+              <Link
+                to="#"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
                 <Youtube className="h-5 w-5" />
               </Link>
-              <Link to="#" className="text-gray-400 hover:text-white">
+              <Link
+                to="#"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
                 <Instagram className="h-5 w-5" />
               </Link>
             </div>

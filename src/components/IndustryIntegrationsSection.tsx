@@ -27,14 +27,14 @@ const IndustryCard = ({
   return (
     <Card
       onClick={onClick}
-      className={`group relative overflow-hidden bg-gradient-to-br from-[#1a1e2d] to-[#2a2f4a] border-gray-700/30 ${borderColor} hover:shadow-xl ${shadowColor} transition-all duration-500 cursor-pointer animate-fade-in`}
+      className={`group relative cursor-pointer overflow-hidden border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 transition-all duration-500 ${borderColor} ${shadowColor} animate-fade-in hover:shadow-xl`}
       style={{ animationDelay: `${delay}ms` }}
     >
       <CardContent className="p-8 relative z-10">
         {/* Icon Container */}
         <div className="mb-6 relative">
           <div
-            className={`inline-flex rounded-2xl p-4 ${iconBgColor} border-2 border-gray-800/50 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}
+            className={`inline-flex rounded-2xl border-2 border-border/60 p-4 shadow-lg shadow-primary/10 transition-all duration-300 group-hover:rotate-3 group-hover:scale-110 ${iconBgColor}`}
           >
             <div className="relative z-10">{icon}</div>
           </div>
@@ -45,13 +45,15 @@ const IndustryCard = ({
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-bold mb-3 text-white group-hover:text-purple-300 transition-colors duration-300">
+        <h3 className="text-xl font-bold mb-3 text-foreground transition-colors duration-300 group-hover:text-primary">
           {title}
         </h3>
-        <p className="text-sm text-gray-300 leading-relaxed">{description}</p>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
 
         {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-purple-500/0 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
       </CardContent>
     </Card>
   );
@@ -135,28 +137,30 @@ const IndustryIntegrationsSection = ({
   ];
 
   return (
-    <section className="w-full py-20 md:py-32 bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#0a0a0f] relative overflow-hidden">
+    <section className="relative w-full overflow-hidden bg-gradient-to-br from-background via-muted/20 to-background py-20 md:py-32 dark:from-[#0a0a0f] dark:via-[#121219] dark:to-[#0a0a0f]">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent dark:from-purple-900/30"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sky-400/20 via-transparent to-transparent dark:from-blue-900/25"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container relative z-10 mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
           <Badge
             variant="outline"
-            className="mb-4 bg-purple-900/30 border-purple-500/50 text-purple-400 px-4 py-1.5 text-sm"
+            className="mb-4 border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm text-primary"
           >
             Industry Solutions
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
+          <h2 className="mb-6 text-3xl font-bold leading-tight text-foreground md:text-5xl">
             {title}
           </h2>
-          <p className="text-gray-300 text-lg leading-relaxed">{subtitle}</p>
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            {subtitle}
+          </p>
         </div>
 
         {/* Industries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {industries.map((industry, index) => (
             <IndustryCard
               key={industry.id}
@@ -173,8 +177,8 @@ const IndustryIntegrationsSection = ({
         </div>
 
         {/* Bottom CTA or additional info */}
-        <div className="text-center mt-16">
-          <p className="text-gray-400 text-sm">
+        <div className="mt-16 text-center">
+          <p className="text-sm text-muted-foreground">
             Tailored solutions for diverse industries and business needs
           </p>
         </div>
