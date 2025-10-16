@@ -96,7 +96,7 @@ const IndustryIntegrationsSection = ({
   const industries = [
     {
       id: "education",
-      icon: <GraduationCap className="h-7 w-7 text-white" />,
+      icon: <GraduationCap className="h-7 w-7" color="white" strokeWidth={2.5} />,
       title: "Education Platform",
       description:
         "Comprehensive learning management system with student tracking, course management, and analytics for educational institutions.",
@@ -106,7 +106,7 @@ const IndustryIntegrationsSection = ({
     },
     {
       id: "realestate",
-      icon: <Home className="h-7 w-7 text-white" />,
+      icon: <Home className="h-7 w-7" color="white" strokeWidth={2.5} />,
       title: "Real Estate Solutions",
       description:
         "Property management, listing automation, client relationship tools, and market analytics for real estate professionals.",
@@ -116,7 +116,7 @@ const IndustryIntegrationsSection = ({
     },
     {
       id: "services",
-      icon: <Package className="h-7 w-7 text-white" />,
+      icon: <Package className="h-7 w-7" color="white" strokeWidth={2.5} />,
       title: "Service Management",
       description:
         "End-to-end service delivery platform with scheduling, invoicing, customer management, and performance tracking.",
@@ -126,7 +126,7 @@ const IndustryIntegrationsSection = ({
     },
     {
       id: "pregnancy",
-      icon: <Baby className="h-7 w-7 text-white" />,
+      icon: <Baby className="h-7 w-7" color="white" strokeWidth={2.5} />,
       title: "Pregnancy Platform",
       description:
         "Holistic pregnancy journey tracker with health monitoring, appointment scheduling, and community support features.",

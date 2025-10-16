@@ -1,0 +1,33 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-light" x1="96" y1="64" x2="416" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.48" stop-color="#F1F7FF"/>
+      <stop offset="1" stop-color="#E7F3FF"/>
+    </linearGradient>
+    <linearGradient id="petal-light" x1="256" y1="140" x2="256" y2="372" gradientUnits="userSpaceOnUse">
+      <stop offset="0.1" stop-color="#56CCF2"/>
+      <stop offset="0.55" stop-color="#1CB5E0"/>
+      <stop offset="1" stop-color="#1797D2"/>
+    </linearGradient>
+    <linearGradient id="accent-light" x1="256" y1="196" x2="256" y2="316" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#53D8C5"/>
+      <stop offset="1" stop-color="#1D9CE0"/>
+    </linearGradient>
+    <filter id="shadow-light" x="80" y="52" width="352" height="352" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="32" stdDeviation="32" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect x="32" y="32" width="448" height="448" rx="120" fill="url(#bg-light)" stroke="#F3F6FF" stroke-width="8"/>
+  <g filter="url(#shadow-light)">
+    <path id="petal-shape" d="M256 132L318 256L256 380L194 256Z" fill="url(#petal-light)" stroke="#ECFDFF" stroke-width="10" stroke-linejoin="round"/>
+    <use href="#petal-shape" transform="rotate(45 256 256)"/>
+    <use href="#petal-shape" transform="rotate(90 256 256)"/>
+    <use href="#petal-shape" transform="rotate(135 256 256)"/>
+  </g>
+  <g opacity="0.9">
+    <path d="M256 184L296 256L256 328L216 256Z" fill="url(#accent-light)" stroke="#F8FFFF" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+  <circle cx="256" cy="256" r="36" fill="#F7FFFF" opacity="0.86"/>
+</svg>

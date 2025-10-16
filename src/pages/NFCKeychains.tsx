@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Factory, Ruler, MapPin, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTheme } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 
 interface KeychainItem {
   id: string;
@@ -109,6 +111,18 @@ const items: KeychainItem[] = [
 ];
 
 export default function NFCKeychains() {
+  const { theme } = useTheme();
+  const fallbackLogo = "/images/logo-black.png";
+  const preferredLogo =
+    theme === "dark" ? "/images/logo-dark.svg" : "/images/logo-light.svg";
+  const logoFrameClasses = cn(
+    "grid size-12 place-items-center rounded-[1.4rem] border transition-all duration-300 backdrop-blur-sm",
+    "shadow-[0_16px_44px_-28px_rgba(86,72,198,0.45)] hover:shadow-[0_22px_48px_-24px_rgba(130,104,255,0.5)]",
+    theme === "dark"
+      ? "border-white/12 bg-slate-900/80"
+      : "border-slate-200 bg-white/95"
+  );
+
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-8">
@@ -123,11 +137,18 @@ export default function NFCKeychains() {
             </Button>
           </Link>
           <div className="flex items-center gap-3">
-            <img
-              src="/images/logo-black.png"
-              alt="Logo"
-              className="h-10 w-10 rounded-full border border-gray-700 object-cover bg-black"
-            />
+            <span className={logoFrameClasses}>
+              <img
+                src={preferredLogo}
+                alt="xEmergence Logo"
+                className="h-9 w-9 rounded-[1.1rem] object-contain"
+                onError={(e) => {
+                  if (!e.currentTarget.src.includes("logo-black.png")) {
+                    e.currentTarget.src = fallbackLogo;
+                  }
+                }}
+              />
+            </span>
             <span className="text-xl font-bold">NFC Keychains</span>
           </div>
         </div>

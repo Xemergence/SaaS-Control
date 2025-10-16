@@ -120,6 +120,68 @@
       @apply bg-background text-foreground;
       letter-spacing: var(--tracking-normal);
     }
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .app-shell {
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-color: transparent;
+    }
+    .app-shell::before,
+    .app-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 1.2s ease;
+    }
+    .app-shell::before {
+      background-color: #fefcff;
+      background-image: radial-gradient(
+          circle at 30% 70%,
+          rgba(173, 216, 230, 0.35),
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at 70% 30%,
+          rgba(255, 182, 193, 0.4),
+          transparent 60%
+        );
+      transform: scale(1);
+      opacity: 1;
+    }
+    .app-shell::after {
+      background-image: radial-gradient(
+          circle at 20% 20%,
+          rgba(105, 96, 255, 0.42),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 75% 30%,
+          rgba(194, 71, 255, 0.35),
+          transparent 62%
+        ),
+        radial-gradient(
+          circle at 50% 80%,
+          rgba(25, 175, 208, 0.25),
+          transparent 68%
+        ),
+        linear-gradient(160deg, #050112 0%, #0a1028 45%, #010108 100%);
+      opacity: 0;
+      transform: scale(1.02);
+    }
+    .dark .app-shell::before {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    .dark .app-shell::after {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   @layer utilities {

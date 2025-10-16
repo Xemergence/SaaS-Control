@@ -6,9 +6,9 @@ import NFCKeychains from "./pages/NFCKeychains";
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+    <div className="app-shell isolate flex min-h-screen flex-col text-foreground transition-colors duration-300">
       <Navigation />
-      <main>
+      <main className="relative z-10 flex-1">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/3d-products" element={<ProductStore />} />
