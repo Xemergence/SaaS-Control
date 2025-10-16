@@ -211,29 +211,6 @@
     position: relative;
   }
 
-  main section + section {
-    margin-block-start: clamp(48px, 7vw, 96px);
-    padding-block-start: clamp(32px, 6vw, 72px);
-    border-top: 1px solid var(--color-divider);
-  }
-
-  main section + section::before {
-    content: "";
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline: clamp(24px, 6vw, 160px);
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-border-strong) 20%,
-      var(--color-border-strong) 80%,
-      transparent
-    );
-    opacity: 0.18;
-    pointer-events: none;
-  }
-
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 3px;
@@ -263,9 +240,91 @@
     }
   }
 
+  .bg-aura-light {
+    background-color: #fefcff;
+    background-image: radial-gradient(
+        circle at 30% 70%,
+        rgba(173, 216, 230, 0.35),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 70% 30%,
+        rgba(255, 182, 193, 0.4),
+        transparent 60%
+      );
+  }
+
+  .bg-aura-dark {
+    background-image: radial-gradient(
+        circle at 15% 20%,
+        rgba(110, 114, 255, 0.35),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 85% 25%,
+        rgba(232, 74, 248, 0.32),
+        transparent 62%
+      ),
+      radial-gradient(
+        circle at 50% 80%,
+        rgba(14, 116, 212, 0.25),
+        transparent 68%
+      ),
+      linear-gradient(160deg, #040312 0%, #0a0f2a 45%, #01000f 100%);
+  }
+
+  .section-divider {
+    position: relative;
+  }
+
+  .section-divider::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    height: 1px;
+    background-color: rgba(18, 21, 36, 0.14);
+  }
+
+  .section-divider--short::after {
+    inset-inline: clamp(24px, 10vw, 180px);
+  }
+
+  .section-divider--full::after {
+    inset-inline: 0;
+  }
+
+  .dark .section-divider::after {
+    background-color: rgba(230, 232, 250, 0.22);
+  }
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
+    animation-delay: var(--animation-delay, 0ms);
     opacity: 0;
+  }
+
+  .delay-0ms {
+    --animation-delay: 0ms;
+  }
+
+  .delay-100ms {
+    --animation-delay: 100ms;
+  }
+
+  .delay-200ms {
+    --animation-delay: 200ms;
+  }
+
+  .delay-300ms {
+    --animation-delay: 300ms;
+  }
+
+  .delay-400ms {
+    --animation-delay: 400ms;
+  }
+
+  .delay-500ms {
+    --animation-delay: 500ms;
   }
 
   @keyframes marquee-horizontal {

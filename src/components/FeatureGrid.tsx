@@ -19,28 +19,39 @@ interface FeatureProps {
   delay: number;
 }
 
+const DELAY_CLASS_MAP: Record<number, string> = {
+  0: "delay-0ms",
+  100: "delay-100ms",
+  200: "delay-200ms",
+  300: "delay-300ms",
+  400: "delay-400ms",
+  500: "delay-500ms",
+};
+
 const Feature = ({ icon, title, description, iconBgColor, delay }: FeatureProps) => {
+  const delayClass = DELAY_CLASS_MAP[delay] ?? "delay-0ms";
+
   return (
     <Card
       className={cn(
         "group relative overflow-hidden border border-border/60 transition-all duration-500 animate-fade-in hover:-translate-y-1",
         "bg-white/85 shadow-[0_28px_80px_-60px_rgba(73,56,149,0.35)] backdrop-blur-xl hover:border-primary/40 hover:shadow-primary/25",
-        "dark:bg-gradient-to-br dark:from-[#1a1e2d] dark:to-[#2a2f4a] dark:border-slate-700/40 dark:hover:border-purple-500/50 dark:hover:shadow-purple-500/20"
+        "dark:bg-gradient-to-br dark:from-[#1a1e2d] dark:to-[#2a2f4a] dark:border-slate-700/40 dark:hover:border-purple-500/50 dark:hover:shadow-purple-500/20",
+        delayClass,
       )}
-      style={{ animationDelay: `${delay}ms` }}
     >
       <CardContent className="p-8 relative z-10">
         {/* Icon Container */}
-        <div className="mb-6 relative">
+        <div className="relative z-20 mb-6">
           <div
             className={cn(
-              "inline-flex rounded-2xl border-2 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3",
+              "relative inline-flex rounded-2xl border-2 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3",
               "border-white/60",
               "dark:border-gray-800/50",
               iconBgColor
             )}
           >
-            <div className="relative z-10">{icon}</div>
+            <div className="relative z-20 text-white">{icon}</div>
           </div>
           {/* Glow effect */}
           <div
@@ -127,21 +138,15 @@ const FeatureGrid = ({
   ],
 }: FeatureGridProps) => {
   return (
-    <section className="relative isolate py-20 md:py-32">
+    <section className="section-divider section-divider--short relative isolate py-20 md:py-32">
       <div
-        className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 dark:hidden"
-        style={{
-          backgroundColor: "#fefcff",
-          backgroundImage:
-            "radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%), radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)",
-        }}
+        className="absolute inset-0 -z-10 bg-[color:var(--primary-foreground)] transition-colors dark:hidden"
         aria-hidden
       />
-      <div className="absolute inset-0 -z-10 hidden overflow-hidden dark:block" aria-hidden>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(110,114,255,0.35),transparent_60%),radial-gradient(circle_at_85%_25%,rgba(232,74,248,0.32),transparent_62%),radial-gradient(circle_at_50%_80%,rgba(14,116,212,0.25),transparent_68%),linear-gradient(160deg,#040312_0%,#0a0f2a_45%,#01000f_100%)]" />
-      </div>
-      <div className="absolute -top-28 left-1/5 -z-10 h-56 w-56 rounded-full bg-primary/20 blur-[160px] dark:bg-primary/40" />
-      <div className="absolute -bottom-36 right-1/4 -z-10 h-64 w-64 rounded-full bg-sky-400/25 blur-[140px] dark:bg-fuchsia-400/35" />
+      <div
+        className="absolute inset-0 -z-10 hidden bg-[color:var(--color-surface)] transition-colors dark:block"
+        aria-hidden
+      />
 
       <div className="container relative z-10 mx-auto px-4">
         {/* Header */}
@@ -174,12 +179,6 @@ const FeatureGrid = ({
           ))}
         </div>
 
-        {/* Bottom CTA or additional info */}
-        <div className="mt-16 text-center">
-          <p className="text-sm text-muted-foreground">
-            Designed for innovators, small teams, and growing businesses
-          </p>
-        </div>
       </div>
     </section>
   );

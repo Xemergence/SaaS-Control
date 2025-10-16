@@ -151,13 +151,7 @@ const HomePage = () => {
     <div className="relative min-h-screen w-full bg-background text-foreground transition-colors duration-300">
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-100 dark:hidden">
         <div className="absolute inset-0 bg-[#fefcff]" />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%), radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-aura-light" />
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10 hidden dark:block">
         <div className="absolute inset-0 bg-gradient-to-br from-[#05040d] via-[#101328] to-[#1a1030]" />
@@ -165,12 +159,15 @@ const HomePage = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(236,72,153,0.2),_transparent_55%)]" />
       </div>
       {/* Hero Section */}
-      <section className="relative isolate flex min-h-[calc(100vh-5.5rem)] items-center justify-center bg-transparent dark:bg-gradient-to-br dark:from-[#0b0b19] dark:via-[#171a2f] dark:to-[#1f1433]">
+      <section
+        id="hero"
+        className="section-divider section-divider--full relative isolate flex min-h-[calc(100vh-5.5rem)] items-center justify-center bg-transparent pt-24 sm:pt-28 dark:bg-gradient-to-br dark:from-[#0b0b19] dark:via-[#171a2f] dark:to-[#1f1433]"
+      >
         {/* Background decorative elements */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#fde5ff]/40 via-transparent to-transparent dark:from-purple-500/25 dark:via-transparent dark:to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#c9f1ff]/35 via-transparent to-transparent dark:from-sky-500/25 dark:via-transparent dark:to-transparent" />
 
-        <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
+        <div className="container relative z-10 mx-auto px-4 pb-20 md:pb-32">
           <div className="mx-auto max-w-5xl text-center">
             {/* Badge */}
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 backdrop-blur">
@@ -234,7 +231,7 @@ const HomePage = () => {
             </div>
 
             {/* Dashboard Preview Image */}
-            <div className="relative mx-auto max-w-4xl">
+            <div className="relative mx-auto max-w-4xl pb-12">
               <div className="absolute inset-0 blur-3xl bg-gradient-to-r from-primary/20 via-fuchsia-500/10 to-sky-500/20" />
               <img
                 src="/images/Dashboard Example.png"
@@ -246,37 +243,28 @@ const HomePage = () => {
         </div>
       </section>
       {/* Features Section */}
-      <section id="features" className="scroll-mt-32 bg-background">
+      <section id="features" className="section-divider section-divider--short scroll-mt-32">
         <FeatureGrid />
       </section>
       {/* New Features Section (replacing AI Tools) */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-background via-muted/30 to-background dark:from-[#0a0a0f] dark:via-[#121219] dark:to-[#1a1b2e]" />
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="mb-12 text-center">
-            <Badge
-              variant="outline"
-              className="mb-4 border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm text-primary"
-            >
-              Our Approach
-            </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight text-foreground">
-              Built for Innovation
-            </h2>
-          </div>
-        </div>
+      <section
+        id="innovation"
+        className="section-divider section-divider--full relative overflow-hidden"
+      >
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 bg-aura-light dark:hidden" />
+        <div className="pointer-events-none absolute inset-0 -z-10 hidden opacity-100 transition-opacity duration-500 bg-aura-dark dark:block" />
         <Feature251 />
       </section>
       {/* Timeline Section */}
       <Timeline13 />
       {/* Team Section */}
-      <section id="team" className="scroll-mt-32">
+      <section id="team" className="section-divider section-divider--short scroll-mt-32">
         <TeamSection />
       </section>
       {/* Industry Integrations Section */}
       <IndustryIntegrationsSection />
       {/* CTA Section */}
-      <section className="py-16 md:py-24">
+      <section className="section-divider section-divider--short py-16 md:py-24">
         <div className="container mx-auto max-w-8xl px-4 text-center">
           <div className="mb-4 font-medium uppercase tracking-[0.4em] text-primary">
             EXPLORE OUR PRODUCTS

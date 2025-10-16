@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useId, useState, RefObject } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Globe from "@/components/magicui/globe";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 // Feature251 section – 2x2 mosaic that matches the provided reference image
@@ -18,14 +19,9 @@ const Feature251: React.FC = () => {
   const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative isolate py-20 md:py-24">
+    <section className="relative isolate">
       <div
-        className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 dark:hidden"
-        style={{
-          backgroundColor: "#fefcff",
-          backgroundImage:
-            "radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%), radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)",
-        }}
+        className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 bg-aura-light dark:hidden"
         aria-hidden
       />
       <div className="absolute inset-0 -z-10 hidden overflow-hidden dark:block" aria-hidden>
@@ -33,14 +29,24 @@ const Feature251: React.FC = () => {
       </div>
       <div className="pointer-events-none absolute -top-32 left-1/4 -z-10 h-64 w-64 rounded-full bg-primary/25 blur-[140px] dark:bg-primary/40" />
       <div className="pointer-events-none absolute -bottom-40 right-1/5 -z-10 h-72 w-72 rounded-full bg-sky-400/25 blur-[150px] dark:bg-fuchsia-500/30" />
-      <div className="container relative">
-                <div className="mx-auto max-w-6xl">
+      <div className="container relative py-20 md:py-24">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <Badge
+            variant="outline"
+            className="inline-flex items-center justify-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+          >
+            Our Approach
+          </Badge>
+          <h2 className="mt-4 text-balance text-3xl font-bold leading-tight text-foreground md:text-5xl">
+            Built for Innovation
+          </h2>
+        </div>
+        <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:items-stretch">
             <div className="grid gap-6">
               {/* 1st Card */}
               <Card
-                className="group relative min-h-[24rem] overflow-visible rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/75 to-white/55 shadow-[0_32px_96px_-48px_rgba(120,85,255,0.45)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_44px_120px_-48px_rgba(139,92,246,0.55)] dark:from-white/[0.12] dark:via-white/[0.08] dark:to-white/[0.05] dark:shadow-[0_42px_120px_-64px_rgba(71,45,155,0.65)]"
-                style={{ borderColor: "var(--color-border-strong)" }}
+                className="group relative min-h-[24rem] overflow-visible rounded-[2rem] border-[1.25px] border-[color:var(--color-border-strong)] bg-gradient-to-br from-white/85 via-white/75 to-white/55 shadow-[0_32px_96px_-48px_rgba(120,85,255,0.45)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_44px_120px_-48px_rgba(139,92,246,0.55)] dark:from-white/[0.12] dark:via-white/[0.08] dark:to-white/[0.05] dark:shadow-[0_42px_120px_-64px_rgba(71,45,155,0.65)]"
               >
                 <CardHeader className="space-y-3 px-8 pt-8 text-left">
                   <h3 className="text-balance text-2xl font-semibold leading-tight text-foreground md:text-[28px]">
@@ -121,8 +127,7 @@ const Feature251: React.FC = () => {
 
               {/* 4th Card */}
               <Card
-                className="group relative min-h-[24rem] overflow-hidden rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/65 to-white/45 shadow-[0_32px_96px_-48px_rgba(120,85,255,0.38)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_44px_120px_-48px_rgba(125,86,255,0.5)] dark:from-white/[0.1] dark:via-white/[0.06] dark:to-white/[0.04] dark:shadow-[0_42px_120px_-64px_rgba(55,38,140,0.6)]"
-                style={{ borderColor: "var(--color-border-strong)" }}
+                className="group relative min-h-[24rem] overflow-hidden rounded-[2rem] border-[1.25px] border-[color:var(--color-border-strong)] bg-gradient-to-br from-white/85 via-white/65 to-white/45 shadow-[0_32px_96px_-48px_rgba(120,85,255,0.38)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_44px_120px_-48px_rgba(125,86,255,0.5)] dark:from-white/[0.1] dark:via-white/[0.06] dark:to-white/[0.04] dark:shadow-[0_42px_120px_-64px_rgba(55,38,140,0.6)]"
               >
                 <CardHeader className="relative z-10 space-y-3 px-8 pt-8 text-left">
                   <h3 className="text-balance text-2xl font-semibold leading-tight text-foreground md:text-[28px]">
@@ -141,8 +146,7 @@ const Feature251: React.FC = () => {
             <div className="grid gap-6">
               {/* 2nd Card */}
               <Card
-                className="group relative min-h-[24rem] rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/70 to-white/50 shadow-[0_28px_90px_-50px_rgba(67,112,255,0.45)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_40px_110px_-52px_rgba(67,112,255,0.55)] dark:from-white/[0.12] dark:via-white/[0.08] dark:to-white/[0.05]"
-                style={{ borderColor: "var(--color-border-strong)" }}
+                className="group relative min-h-[24rem] rounded-[2rem] border-[1.25px] border-[color:var(--color-border-strong)] bg-gradient-to-br from-white/85 via-white/70 to-white/50 shadow-[0_28px_90px_-50px_rgba(67,112,255,0.45)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_40px_110px_-52px_rgba(67,112,255,0.55)] dark:from-white/[0.12] dark:via-white/[0.08] dark:to-white/[0.05]"
               >
                 <CardHeader className="space-y-3 px-8 pt-8 text-left">
                   <h3 className="text-balance text-2xl font-semibold leading-tight text-foreground md:text-[28px]">
@@ -181,8 +185,7 @@ const Feature251: React.FC = () => {
 
               {/* 3rd Card */}
               <Card
-                className="group relative flex min-h-[24rem] flex-col rounded-[2rem] border-[1.25px] bg-gradient-to-br from-white/85 via-white/70 to-white/48 shadow-[0_28px_90px_-50px_rgba(45,197,123,0.32)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_40px_110px_-52px_rgba(45,197,123,0.45)] dark:from-white/[0.1] dark:via-white/[0.07] dark:to-white/[0.05]"
-                style={{ borderColor: "var(--color-border-strong)" }}
+                className="group relative flex min-h-[24rem] flex-col rounded-[2rem] border-[1.25px] border-[color:var(--color-border-strong)] bg-gradient-to-br from-white/85 via-white/70 to-white/48 shadow-[0_28px_90px_-50px_rgba(45,197,123,0.32)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_40px_110px_-52px_rgba(45,197,123,0.45)] dark:from-white/[0.1] dark:via-white/[0.07] dark:to-white/[0.05]"
               >
                 <CardContent className="flex flex-1 items-center justify-center px-8 pt-12">
                   <img

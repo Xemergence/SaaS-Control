@@ -14,6 +14,15 @@ interface IndustryCardProps {
   onClick: () => void;
 }
 
+const INDUSTRY_DELAY_CLASSES: Record<number, string> = {
+  0: "delay-0ms",
+  100: "delay-100ms",
+  200: "delay-200ms",
+  300: "delay-300ms",
+  400: "delay-400ms",
+  500: "delay-500ms",
+};
+
 const IndustryCard = ({
   icon,
   title,
@@ -24,11 +33,12 @@ const IndustryCard = ({
   delay,
   onClick,
 }: IndustryCardProps) => {
+  const delayClass = INDUSTRY_DELAY_CLASSES[delay] ?? "delay-0ms";
+
   return (
     <Card
       onClick={onClick}
-      className={`group relative cursor-pointer overflow-hidden border-[1.15px] border-[color:var(--color-border-soft)] bg-gradient-to-br from-muted/40 via-card to-background/80 transition-all duration-500 ${borderColor} ${shadowColor} animate-fade-in hover:shadow-xl`}
-      style={{ animationDelay: `${delay}ms` }}
+      className={`group relative cursor-pointer overflow-hidden border-[1.15px] border-[color:var(--color-border-soft)] bg-gradient-to-br from-muted/40 via-card to-background/80 transition-all duration-500 ${borderColor} ${shadowColor} animate-fade-in hover:shadow-xl ${delayClass}`}
     >
       <CardContent className="p-8 relative z-10">
         {/* Icon Container */}
@@ -137,21 +147,12 @@ const IndustryIntegrationsSection = ({
   ];
 
   return (
-    <section className="relative w-full overflow-hidden py-20 md:py-32">
-      <div
-        className="absolute inset-0 -z-10 opacity-95 transition-opacity duration-500 dark:hidden"
-        style={{
-          backgroundColor: "#fefcff",
-          backgroundImage:
-            "radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%), radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)",
-        }}
-        aria-hidden
-      />
-      <div className="absolute inset-0 -z-10 hidden overflow-hidden dark:block" aria-hidden>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(110,114,255,0.35),transparent_60%),radial-gradient(circle_at_85%_25%,rgba(232,74,248,0.32),transparent_62%),radial-gradient(circle_at_50%_80%,rgba(14,116,212,0.25),transparent_68%),linear-gradient(160deg,#040312_0%,#0a0f2a_45%,#01000f_100%)]" />
-      </div>
-      <div className="absolute -top-32 left-1/5 -z-10 h-64 w-64 rounded-full bg-primary/20 blur-[140px] dark:bg-primary/40" />
-      <div className="absolute -bottom-40 right-1/4 -z-10 h-72 w-72 rounded-full bg-sky-400/25 blur-[150px] dark:bg-fuchsia-500/35" />
+    <section
+      id="integrations"
+      className="section-divider section-divider--full relative w-full scroll-mt-32 overflow-hidden py-20 md:py-32"
+    >
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[color:var(--primary-foreground)] transition-colors dark:hidden" />
+      <div className="pointer-events-none absolute inset-0 -z-10 hidden bg-[color:var(--color-surface)] transition-colors dark:block" />
 
       <div className="container relative z-10 mx-auto px-4">
         {/* Header */}

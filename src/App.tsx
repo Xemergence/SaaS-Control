@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app-shell isolate flex min-h-screen flex-col text-foreground transition-colors duration-300">
       <Navigation />
-      <main className="relative z-10 flex-1">
+      <main className="relative z-10 flex-1 pb-24 md:pb-0">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/3d-products" element={<ProductStore />} />
