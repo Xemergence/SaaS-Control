@@ -6,7 +6,7 @@ import NFCKeychains from "./pages/NFCKeychains";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#121219] text-white">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <Navigation />
       <main>
         <Routes>

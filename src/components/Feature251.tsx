@@ -18,16 +18,17 @@ const Feature251: React.FC = () => {
   const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="py-20 md:py-24">
-      <div className="container">
+    <section className="relative overflow-hidden py-20 md:py-24">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/5 to-transparent dark:via-primary/10" />
+      <div className="container relative">
         <div className="mx-auto flex max-w-6xl flex-wrap items-stretch justify-center gap-5">
           {/* 1st Card */}
-          <Card className="group relative h-96 w-full rounded-3xl border border-gray-700/30 bg-gradient-to-br from-[#1a1e2d]/60 to-[#0e0f15]/50 backdrop-blur-md shadow-xl shadow-purple-500/15 hover:border-purple-500/40 hover:shadow-purple-500/25 transition-all duration-300 md:w-[660px]">
-            <CardHeader className="pb-2">
-              <h3 className="text-2xl font-semibold tracking-tight text-white">
+          <Card className="group relative h-96 w-full rounded-3xl border border-border/60 bg-gradient-to-br from-muted/50 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-60px_rgba(147,51,234,0.35)] transition-all duration-300 hover:border-primary/50 hover:shadow-primary/30 md:w-[660px]">
+            <CardHeader className="pb-2 text-left">
+              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
                 Customizable Workflows
               </h3>
-              <p className="mt-2 text-sm text-gray-400/90">
+              <p className="mt-2 max-w-sm text-sm text-muted-foreground">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt Lorem ipsum dolor sit amet,
                 consectetur
@@ -102,12 +103,12 @@ const Feature251: React.FC = () => {
           </Card>
 
           {/* 2nd Card */}
-          <Card className="group h-96 w-full rounded-3xl border border-gray-700/30 bg-gradient-to-br from-[#1a1e2d]/60 to-[#0e0f15]/50 backdrop-blur-md shadow-xl shadow-blue-500/15 hover:border-blue-500/40 hover:shadow-blue-500/25 transition-all duration-300 md:w-[332px]">
-            <CardHeader className="pb-2">
-              <h3 className="text-2xl font-semibold tracking-tight text-white">
+          <Card className="group h-96 w-full rounded-3xl border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-70px_rgba(59,130,246,0.35)] transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/30 md:w-[332px]">
+            <CardHeader className="pb-2 text-left">
+              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
                 Smart Task Tracking
               </h3>
-              <p className="text-sm text-gray-400/90">
+              <p className="text-sm text-muted-foreground">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               </p>
             </CardHeader>
@@ -139,31 +140,31 @@ const Feature251: React.FC = () => {
           </Card>
 
           {/* 3rd Card */}
-          <Card className="group relative flex h-96 w-full flex-col rounded-3xl border border-gray-700/30 bg-gradient-to-br from-[#1a1e2d]/60 to-[#0e0f15]/50 backdrop-blur-md shadow-xl shadow-green-500/15 hover:border-green-500/40 hover:shadow-green-500/25 transition-all duration-300 md:w-[332px]">
-            <CardContent>
+          <Card className="group relative flex h-96 w-full flex-col rounded-3xl border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-70px_rgba(34,197,94,0.25)] transition-all duration-300 hover:border-emerald-400/60 hover:shadow-emerald-400/20 md:w-[332px]">
+            <CardContent className="flex-1">
               <img
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
                 className="mt-5 size-32 drop-shadow-lg"
                 alt="Integration placeholder"
               />
             </CardContent>
-            <CardHeader className="mt-auto">
-              <h3 className="text-2xl font-semibold tracking-tight text-white">
+            <CardHeader className="mt-auto text-left">
+              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
                 Seamless Integration & Real-Time Collaboration
               </h3>
-              <p className="text-sm text-gray-400/90">
+              <p className="text-sm text-muted-foreground">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               </p>
             </CardHeader>
           </Card>
 
           {/* 4th Card */}
-          <Card className="group relative h-96 w-full overflow-hidden rounded-3xl border border-gray-700/30 bg-gradient-to-br from-[#1a1e2d]/60 to-[#0e0f15]/50 backdrop-blur-md shadow-xl shadow-purple-500/15 hover:border-purple-500/40 hover:shadow-purple-500/25 transition-all duration-300 md:w-[660px]">
-            <CardHeader className="pb-2 relative z-10">
-              <h3 className="text-2xl font-semibold tracking-tight text-white">
+          <Card className="group relative h-96 w-full overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-muted/40 via-card to-background/80 backdrop-blur-xl shadow-[0_40px_120px_-60px_rgba(147,51,234,0.35)] transition-all duration-300 hover:border-primary/50 hover:shadow-primary/30 md:w-[660px]">
+            <CardHeader className="relative z-10 pb-2 text-left">
+              <h3 className="text-2xl font-semibold tracking-tight text-foreground">
                 Trusted by 100k Users
               </h3>
-              <p className="text-sm text-gray-400/90">
+              <p className="text-sm text-muted-foreground">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt Lorem ipsum dolor sit amet,
                 consectetur
@@ -171,7 +172,7 @@ const Feature251: React.FC = () => {
             </CardHeader>
             <CardContent className="relative">
               {/* Position the globe peeking from the bottom right, similar to the reference */}
-              <Globe className="-top-6 left-auto right-[-10%] translate-x-0 opacity-60" />
+              <Globe className="-top-6 left-auto right-[-10%] translate-x-0 opacity-70 saturate-[1.15]" />
             </CardContent>
           </Card>
         </div>
@@ -191,15 +192,15 @@ const IconCard = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative z-10 flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-md border border-gray-700/40 shadow-lg hover:shadow-purple-500/40 hover:border-purple-500/60 transition-all duration-300",
+        "relative z-10 flex size-14 items-center justify-center rounded-xl border border-border/60 bg-muted/50 backdrop-blur-md shadow-lg shadow-primary/10 transition-all duration-300 hover:border-primary/50 hover:shadow-primary/30 dark:bg-muted/60",
         className,
       )}
     >
       <img src={src} alt="Icon" className="size-5 drop-shadow-md" />
-      <HandleIcon className="absolute -top-3 left-1/2 size-6 -translate-x-1/2 opacity-40" />
-      <HandleIcon className="absolute -bottom-3 left-1/2 size-6 -translate-x-1/2 opacity-40" />
-      <HandleIcon className="absolute -left-3 top-1/2 size-6 -translate-y-1/2 rotate-90 opacity-40" />
-      <HandleIcon className="absolute -right-3 top-1/2 size-6 -translate-y-1/2 rotate-90 opacity-40" />
+      <HandleIcon className="absolute -top-3 left-1/2 size-6 -translate-x-1/2 text-muted-foreground/40" />
+      <HandleIcon className="absolute -bottom-3 left-1/2 size-6 -translate-x-1/2 text-muted-foreground/40" />
+      <HandleIcon className="absolute -left-3 top-1/2 size-6 -translate-y-1/2 rotate-90 text-muted-foreground/40" />
+      <HandleIcon className="absolute -right-3 top-1/2 size-6 -translate-y-1/2 rotate-90 text-muted-foreground/40" />
     </div>
   );
 });
@@ -219,32 +220,32 @@ const HandleIcon = (props: React.SVGProps<SVGSVGElement>) => (
       y1="0.972656"
       x2="0.543457"
       y2="4.625"
-      stroke="black"
-      strokeOpacity="0.2"
+      stroke="currentColor"
+      strokeOpacity="0.4"
     />
     <line
       x1="4.54346"
       y1="0.972656"
       x2="4.54346"
       y2="4.625"
-      stroke="black"
-      strokeOpacity="0.2"
+      stroke="currentColor"
+      strokeOpacity="0.4"
     />
     <line
       x1="8.54346"
       y1="0.972656"
       x2="8.54346"
       y2="4.625"
-      stroke="black"
-      strokeOpacity="0.2"
+      stroke="currentColor"
+      strokeOpacity="0.4"
     />
     <line
       x1="12.5435"
       y1="0.972656"
       x2="12.5435"
       y2="4.625"
-      stroke="black"
-      strokeOpacity="0.2"
+      stroke="currentColor"
+      strokeOpacity="0.4"
     />
   </svg>
 );

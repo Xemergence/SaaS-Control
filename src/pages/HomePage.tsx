@@ -148,34 +148,34 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#121219] text-white">
+    <div className="min-h-screen w-full bg-background text-foreground transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a0a0f] via-[#121219] to-[#1a1b2e]">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/40 to-background dark:from-[#0a0a0f] dark:via-[#121219] dark:to-[#1a1b2e]">
         {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent dark:from-purple-900/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sky-400/15 via-transparent to-transparent dark:from-blue-900/25" />
 
-        <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
+        <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
+          <div className="mx-auto max-w-5xl text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/30 border border-purple-500/50 mb-8">
-              <Badge className="bg-gradient-to-r from-purple-600 to-blue-600">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 backdrop-blur">
+              <Badge className="bg-gradient-to-r from-primary to-fuchsia-500 text-primary-foreground">
                 POWERING PROGRESS
               </Badge>
-              <span className="text-sm text-gray-300">
+              <span className="text-sm text-muted-foreground">
                 For Innovators, Small Teams & Local Businesses
               </span>
             </div>
 
             {/* Main Heading */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-fuchsia-500 to-sky-500 bg-clip-text text-transparent">
                 Empowering Small Teams & Local Businesses
               </span>
             </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="mx-auto mb-12 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
               Transform your data into digital solutions with our comprehensive
               control tower platform. Aggregate and visualize critical business
               metrics from your digital components, enabling real-time insights,
@@ -188,7 +188,7 @@ const HomePage = () => {
               <Link to="/3d-products">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                  className="bg-gradient-to-r from-primary to-fuchsia-500 px-8 py-6 text-lg text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-200 hover:from-primary/90 hover:to-fuchsia-500/90 hover:shadow-primary/40"
                 >
                   Explore Products
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -197,34 +197,34 @@ const HomePage = () => {
             </div>
 
             {/* Feature Badges */}
-            <div className="flex flex-wrap justify-center gap-4 mb-16">
+            <div className="mb-16 flex flex-wrap justify-center gap-4">
               <Badge
                 variant="outline"
-                className="px-4 py-2 text-sm bg-purple-900/20 border-purple-500/30 text-purple-300"
+                className="border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary"
               >
                 For Innovators
               </Badge>
               <Badge
                 variant="outline"
-                className="px-4 py-2 text-sm bg-blue-900/20 border-blue-500/30 text-blue-300"
+                className="border border-sky-500/30 bg-sky-400/10 px-4 py-2 text-sm text-sky-600 dark:text-sky-300"
               >
                 Digital Integrations
               </Badge>
               <Badge
                 variant="outline"
-                className="px-4 py-2 text-sm bg-purple-900/20 border-purple-500/30 text-purple-300"
+                className="border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary"
               >
                 For Small Teams
               </Badge>
             </div>
 
             {/* Dashboard Preview Image */}
-            <div className="relative max-w-4xl mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-3xl"></div>
+            <div className="relative mx-auto max-w-4xl">
+              <div className="absolute inset-0 blur-3xl bg-gradient-to-r from-primary/20 via-fuchsia-500/10 to-sky-500/20" />
               <img
                 src="/images/Dashboard Example.png"
                 alt="Dashboard Preview"
-                className="relative rounded-lg shadow-2xl border border-gray-700/50"
+                className="relative rounded-3xl border border-border/70 shadow-2xl shadow-primary/10"
               />
             </div>
           </div>

@@ -1,170 +1,147 @@
+import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+
+const TIMELINE_STEPS = [
+  {
+    id: "01",
+    label: "Ideation",
+    heading: "Brainstorm and validate your concept",
+    description:
+      "Gather insights from market research, customer interviews, and competitor analysis to refine your product idea.",
+    progress: 15,
+    duration: "~2 weeks",
+  },
+  {
+    id: "02",
+    label: "Development",
+    heading: "Build your MVP",
+    description:
+      "Design, prototype, and develop the minimum viable product. Iterate quickly based on early feedback and testing.",
+    progress: 85,
+    duration: "~6 weeks",
+  },
+  {
+    id: "03",
+    label: "Launch",
+    heading: "Go to market",
+    description:
+      "Execute your launch plan with marketing campaigns, outreach, and customer support to maximize impact and adoption.",
+    progress: 100,
+    duration: "Launch complete",
+  },
+];
 
 const Timeline13 = () => {
   return (
-    <section className="py-20 md:py-32">
-      <div className="container">
-        <div className="flex flex-col mb-8">
-          <h1 className="mb-2 text-3xl font-semibold text-white md:text-5xl">
+    <section className="relative overflow-hidden py-20 md:py-32">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-background via-background to-background dark:from-slate-950 dark:via-slate-950 dark:to-slate-950" />
+      <div className="absolute inset-0 -z-10 opacity-60 blur-3xl">
+        <div className="pointer-events-none absolute inset-y-16 inset-x-6 rounded-full bg-gradient-to-r from-primary/20 via-purple-500/10 to-blue-500/20 dark:from-primary/40 dark:via-purple-500/30 dark:to-blue-500/40" />
+      </div>
+      <div className="container relative">
+        <div className="flex flex-col gap-3 text-center md:text-left">
+          <h1 className="text-3xl font-semibold tracking-tight md:text-5xl">
             Journey to Product Launch
           </h1>
-          <p className="text-muted-foreground max-w-2xl text-gray-400">
+          <p className="mx-auto max-w-2xl text-balance text-base text-muted-foreground md:mx-0">
             Follow the essential steps to bring your innovative idea to market
             and ensure a successful product debut.
           </p>
         </div>
-        <div className="border-border bg-card mt-8 flex flex-col gap-6 rounded-2xl border border-gray-700/30 bg-gradient-to-br from-[#1a1e2d]/60 to-[#0e0f15]/50 backdrop-blur-md shadow-xl shadow-purple-500/15 p-4 sm:p-8 lg:p-11">
-          <div className="contents items-center justify-between sm:flex">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
-              Guidance from industry leaders
-            </h2>
+
+        <div className="border-border/70 bg-card/80 mt-12 flex flex-col gap-8 rounded-3xl border p-6 shadow-lg shadow-primary/10 backdrop-blur-md transition-colors sm:p-12 lg:p-16">
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="space-y-2 text-left">
+              <p className="text-sm font-medium uppercase tracking-[0.3em] text-muted-foreground">
+                Guidance from industry leaders
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                Map your path from concept to launch-day victory.
+              </h2>
+            </div>
+            <Button className="order-last rounded-full px-6 py-2 text-sm font-semibold shadow-lg shadow-primary/25">
+              Request a demo
+            </Button>
           </div>
-          <div className="mt-3 flex gap-4 sm:flex-col">
-            <div className="relative">
-              <div className="grid h-full w-4 justify-center gap-10 sm:h-4 sm:w-auto sm:grid-cols-3 sm:items-center">
-                <div className="bg-ring absolute inset-0 left-1/2 w-px -translate-x-1/2 bg-gray-700/50 sm:inset-auto sm:left-auto sm:h-px sm:w-full sm:-translate-x-0" />
-                <span className="bg-ring relative top-3 size-2 rounded-full bg-gray-700/50 sm:top-0" />
-                <span className="bg-ring relative top-3 size-2 rounded-full bg-gray-700/50 sm:top-0" />
-                <span className="bg-ring relative top-3 size-2 rounded-full bg-gray-700/50 sm:top-0" />
+
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
+            <div className="relative mx-auto w-full max-w-[6rem] lg:mx-0 lg:h-full lg:w-auto">
+              <div className="grid h-full w-4 justify-center gap-10 lg:h-4 lg:w-[640px] lg:grid-cols-3 lg:items-center">
+                <div className="absolute inset-0 left-1/2 w-px -translate-x-1/2 bg-muted lg:static lg:h-px lg:w-full lg:translate-x-0" />
+                <span className="relative top-3 size-2 rounded-full bg-muted lg:top-0" />
+                <span className="relative top-3 size-2 rounded-full bg-muted lg:top-0" />
+                <span className="relative top-3 size-2 rounded-full bg-muted lg:top-0" />
               </div>
-              <div className="animate-timeline-reveal absolute inset-0 grid h-full w-4 justify-center gap-10 sm:h-4 sm:w-auto sm:grid-cols-3 sm:items-center">
-                <div className="bg-primary absolute inset-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg shadow-purple-500/50 sm:inset-auto sm:left-auto sm:h-px sm:w-full sm:-translate-x-0" />
-                <span className="bg-primary relative top-3 size-2 rounded-full bg-purple-600 shadow-lg shadow-purple-500/50 sm:top-0" />
-                <span className="bg-primary relative top-3 size-2 rounded-full bg-blue-600 shadow-lg shadow-blue-500/50 sm:top-0" />
-                <span className="bg-primary relative top-3 size-2 rounded-full bg-purple-600 shadow-lg shadow-purple-500/50 sm:top-0" />
+              <div className="animate-timeline-reveal absolute inset-0 grid h-full w-4 justify-center gap-10 lg:h-4 lg:w-[640px] lg:grid-cols-3 lg:items-center">
+                <div className="absolute inset-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-primary via-fuchsia-500 to-sky-500 lg:static lg:h-px lg:w-full lg:translate-x-0" />
+                <span className="relative top-3 size-2 rounded-full bg-primary shadow-lg shadow-primary/40 lg:top-0" />
+                <span className="relative top-3 size-2 rounded-full bg-fuchsia-500 shadow-lg shadow-fuchsia-500/40 lg:top-0" />
+                <span className="relative top-3 size-2 rounded-full bg-sky-500 shadow-lg shadow-sky-500/40 lg:top-0" />
               </div>
             </div>
-            <div className="grid gap-10 sm:grid-cols-3">
-              <div className="flex h-full flex-col justify-between gap-4">
-                <div className="flex flex-col">
-                  <div className="bg-border border-border flex h-8 w-fit items-center gap-px overflow-hidden rounded-md border border-gray-700/40 text-sm font-medium shadow-md">
-                    <span className="bg-background grid h-full place-items-center bg-[#0e0f15] px-2 text-white">
-                      01
-                    </span>
-                    <span className="bg-background grid h-full place-items-center bg-[#0e0f15] px-2 text-white">
-                      Ideation
-                    </span>
+
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {TIMELINE_STEPS.map((step) => (
+                <article
+                  key={step.id}
+                  className="flex h-full flex-col justify-between gap-5 rounded-2xl border border-border/40 bg-background/40 p-6 shadow-inner shadow-primary/5 transition hover:border-primary/40 hover:shadow-primary/20 dark:bg-background/60"
+                >
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center gap-px overflow-hidden rounded-md border border-border/40 text-xs font-semibold uppercase tracking-wider">
+                      <span className="bg-background px-3 py-1 text-muted-foreground">
+                        {step.id}
+                      </span>
+                      <span className="bg-muted/50 px-3 py-1 text-foreground">
+                        {step.label}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold leading-snug">
+                      {step.heading}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {step.description}
+                    </p>
                   </div>
-                  <h3 className="mt-5 font-medium text-white">
-                    Brainstorm and validate your concept
-                  </h3>
-                  <p className="text-muted-foreground mt-2 text-sm text-gray-400">
-                    Gather insights from market research, customer interviews,
-                    and competitor analysis to refine your product idea.
-                  </p>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <Progress
-                      value={15}
-                      className="h-1.5 flex-1 bg-gray-800/50 [&>div]:bg-gradient-to-r [&>div]:from-purple-600 [&>div]:to-purple-500 [&>div]:shadow-lg [&>div]:shadow-purple-500/50"
-                    />
-                    <span className="text-muted-foreground w-8 text-right text-xs text-gray-400 font-medium">
-                      15%
-                    </span>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <Progress
+                        value={step.progress}
+                        className="h-1.5 flex-1 bg-muted [&>div]:bg-gradient-to-r [&>div]:from-primary [&>div]:to-purple-500"
+                      />
+                      <span className="w-10 text-right text-xs font-medium text-muted-foreground">
+                        {step.progress}%
+                      </span>
+                    </div>
+                    <p className="text-xs font-medium text-muted-foreground/80">
+                      {step.duration}
+                    </p>
                   </div>
-                  <p className="text-muted-foreground mt-1 text-xs text-gray-500">
-                    ~2 weeks
-                  </p>
-                </div>
-              </div>
-              <div className="flex h-full flex-col justify-between gap-4">
-                <div className="flex flex-col">
-                  <div className="bg-border border-border flex h-8 w-fit items-center gap-px overflow-hidden rounded-md border border-gray-700/40 text-sm font-medium shadow-md">
-                    <span className="bg-background grid h-full place-items-center bg-[#0e0f15] px-2 text-white">
-                      02
-                    </span>
-                    <span className="bg-background grid h-full place-items-center bg-[#0e0f15] px-2 text-white">
-                      Development
-                    </span>
-                  </div>
-                  <h3 className="mt-5 font-medium text-white">
-                    Build your MVP
-                  </h3>
-                  <p className="text-muted-foreground mt-2 text-sm text-gray-400">
-                    Design, prototype, and develop the minimum viable product.
-                    Iterate quickly based on early feedback and testing.
-                  </p>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <Progress
-                      value={85}
-                      className="h-1.5 flex-1 bg-gray-800/50 [&>div]:bg-gradient-to-r [&>div]:from-blue-600 [&>div]:to-blue-500 [&>div]:shadow-lg [&>div]:shadow-blue-500/50"
-                    />
-                    <span className="text-muted-foreground w-8 text-right text-xs text-gray-400 font-medium">
-                      85%
-                    </span>
-                  </div>
-                  <p className="text-muted-foreground mt-1 text-xs text-gray-500">
-                    ~6 weeks
-                  </p>
-                </div>
-              </div>
-              <div className="flex h-full flex-col justify-between gap-4">
-                <div className="flex flex-col">
-                  <div className="bg-border border-border flex h-8 w-fit items-center gap-px overflow-hidden rounded-md border border-gray-700/40 text-sm font-medium shadow-md">
-                    <span className="bg-background grid h-full place-items-center bg-[#0e0f15] px-2 text-white">
-                      03
-                    </span>
-                    <span className="bg-background grid h-full place-items-center bg-[#0e0f15] px-2 text-white">
-                      Launch
-                    </span>
-                  </div>
-                  <h3 className="mt-5 font-medium text-white">Go to market</h3>
-                  <p className="text-muted-foreground mt-2 text-sm text-gray-400">
-                    Execute your launch plan with marketing campaigns, outreach,
-                    and customer support to maximize impact and adoption.
-                  </p>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <Progress
-                      value={100}
-                      className="h-1.5 flex-1 bg-gray-800/50 [&>div]:bg-gradient-to-r [&>div]:from-purple-600 [&>div]:to-blue-600 [&>div]:shadow-lg [&>div]:shadow-purple-500/50"
-                    />
-                    <span className="text-muted-foreground w-8 text-right text-xs text-gray-400 font-medium">
-                      100%
-                    </span>
-                  </div>
-                  <p className="text-muted-foreground mt-1 text-xs text-gray-500">
-                    Launch complete
-                  </p>
-                </div>
-              </div>
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </div>
       <style>
         {`
-        /* Mobile: Top to bottom animation */
         @keyframes timeline-reveal-mobile {
-          from {
-            clip-path: inset(0 0 100% 0);
-          }
-          to {
-            clip-path: inset(0% 0 0 0);
-          }
+          from { clip-path: inset(0 0 100% 0); }
+          to { clip-path: inset(0 0 0 0); }
         }
-        
-        /* Desktop: Left to right animation */
+
         @keyframes timeline-reveal-desktop {
-          from {
-            clip-path: inset(0 100% 0 0);
-          }
-          to {
-            clip-path: inset(0 0% 0 0);
-          }
+          from { clip-path: inset(0 100% 0 0); }
+          to { clip-path: inset(0 0 0 0); }
         }
-        
+
         .animate-timeline-reveal {
-          animation: timeline-reveal-mobile 5s linear;
+          animation: timeline-reveal-mobile 6s ease forwards;
         }
-        
-        @media (min-width: 640px) {
+
+        @media (min-width: 1024px) {
           .animate-timeline-reveal {
-            animation: timeline-reveal-desktop 5s linear;
+            animation: timeline-reveal-desktop 6s ease forwards;
           }
         }
         `}

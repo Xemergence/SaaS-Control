@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,20 +39,20 @@ const Navigation = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-[#121219]/95 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-xl">
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link to="/" className="flex items-center gap-2">
           <img
             src="/images/logo-black.png"
             alt="Logo"
-            className="h-10 w-10 rounded-full border border-gray-700 object-cover bg-black"
+            className="h-10 w-10 rounded-full border border-border/60 bg-muted object-cover"
           />
-          <span className="text-xl font-bold">xEmergence</span>
+          <span className="text-xl font-bold text-foreground">xEmergence</span>
         </Link>
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="text-foreground transition-colors hover:text-primary focus:outline-none md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -62,50 +63,54 @@ const Navigation = () => {
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center space-x-6 flex-1">
+        <nav className="hidden flex-1 items-center justify-center space-x-6 md:flex">
           <Link
             to="/"
-            className={`text-sm transition-colors ${isActive("/") ? "text-purple-400" : "text-white hover:text-purple-400"}`}
+            className={`text-sm font-medium transition-colors ${isActive("/") ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
           >
             Home
           </Link>
           <a
             href="#features"
             onClick={(e) => handleSectionClick("features", e)}
-            className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
+            className="cursor-pointer text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Features
           </a>
           <a
             href="#pricing"
             onClick={(e) => handleSectionClick("pricing", e)}
-            className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
+            className="cursor-pointer text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Pricing
           </a>
           <a
             href="#team"
             onClick={(e) => handleSectionClick("team", e)}
-            className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
+            className="cursor-pointer text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Team
           </a>
-          <div className="h-4 w-px bg-gray-600 mx-2"></div>
+          <div className="mx-2 h-4 w-px bg-border/60" />
           <Link
             to="/3d-products"
-            className={`text-sm transition-colors ${isActive("/3d-products") ? "text-purple-400" : "text-white hover:text-purple-400"}`}
+            className={`text-sm font-medium transition-colors ${isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
           >
             3D Products
           </Link>
         </nav>
 
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
+        </div>
+
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-[#1a1e2d] border-t border-gray-800 p-4 shadow-lg">
-            <nav className="flex flex-col space-y-4">
+          <div className="absolute left-0 right-0 top-full border-t border-border/60 bg-background/98 p-4 shadow-lg shadow-primary/10 md:hidden">
+            <nav className="flex flex-col space-y-4 text-foreground">
               <Link
                 to="/"
-                className={`text-sm transition-colors ${isActive("/") ? "text-purple-400" : "text-white hover:text-purple-400"}`}
+                className={`text-sm font-medium transition-colors ${isActive("/") ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
@@ -113,32 +118,35 @@ const Navigation = () => {
               <a
                 href="#features"
                 onClick={(e) => handleSectionClick("features", e)}
-                className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
+                className="cursor-pointer text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 Features
               </a>
               <a
                 href="#pricing"
                 onClick={(e) => handleSectionClick("pricing", e)}
-                className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
+                className="cursor-pointer text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 Pricing
               </a>
               <a
                 href="#team"
                 onClick={(e) => handleSectionClick("team", e)}
-                className="text-sm text-white hover:text-purple-400 transition-colors cursor-pointer"
+                className="cursor-pointer text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 Team
               </a>
-              <div className="border-t border-gray-700 pt-4 mt-4">
+              <div className="mt-4 border-t border-border/60 pt-4">
                 <Link
                   to="/3d-products"
-                  className={`text-sm transition-colors ${isActive("/3d-products") ? "text-purple-400" : "text-white hover:text-purple-400"}`}
+                  className={`text-sm font-medium transition-colors ${isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   3D Products
                 </Link>
+              </div>
+              <div className="pt-2">
+                <ThemeToggle />
               </div>
             </nav>
           </div>
