@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTheme } from "@/components/theme-provider";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -43,9 +45,9 @@ const Navigation = () => {
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="/images/logo-black.png"
-            alt="Logo"
-            className="h-10 w-10 rounded-full border border-border/60 bg-muted object-cover"
+            src={theme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
+            alt="xEmergence Logo"
+            className="h-10 w-10 rounded-full object-cover transition-all duration-300"
           />
           <span className="text-xl font-bold text-foreground">xEmergence</span>
         </Link>

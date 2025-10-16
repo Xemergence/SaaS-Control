@@ -20,14 +20,12 @@ const STORAGE_KEY = "xe-theme";
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const getPreferredTheme = (): Theme => {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored === "light" || stored === "dark") {
     return stored;
   }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return "dark";
 };
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {

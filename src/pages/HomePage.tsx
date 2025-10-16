@@ -148,12 +148,27 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground transition-colors duration-300">
+    <div className="relative min-h-screen w-full overflow-hidden bg-background text-foreground transition-colors duration-300">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-100 dark:hidden">
+        <div className="absolute inset-0 bg-[#fefcff]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%), radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)",
+          }}
+        />
+      </div>
+      <div className="pointer-events-none absolute inset-0 -z-10 hidden dark:block">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#05040d] via-[#101328] to-[#1a1030]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(99,102,241,0.22),_transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(236,72,153,0.2),_transparent_55%)]" />
+      </div>
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/40 to-background dark:from-[#0a0a0f] dark:via-[#121219] dark:to-[#1a1b2e]">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-transparent dark:bg-gradient-to-br dark:from-[#0b0b19] dark:via-[#171a2f] dark:to-[#1f1433]">
         {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent dark:from-purple-900/30" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sky-400/15 via-transparent to-transparent dark:from-blue-900/25" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#fde5ff]/40 via-transparent to-transparent dark:from-purple-500/25 dark:via-transparent dark:to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#c9f1ff]/35 via-transparent to-transparent dark:from-sky-500/25 dark:via-transparent dark:to-transparent" />
 
         <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
           <div className="mx-auto max-w-5xl text-center">
