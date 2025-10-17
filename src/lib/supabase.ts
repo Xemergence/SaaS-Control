@@ -1,13 +1,34 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error("Missing Supabase environment variables");
-}
+// Provide a safe stub in environments (like previews) without env vars,
+// so the UI can render without crashing.
+const createStubClient = () => {
+  const chain: any = {
+    select: async () => ({ data: [], error: null }),
+    insert: async () => ({ data: null, error: null }),
+    update: async () => ({ data: null, error: null }),
+    single: async () => ({ data: null, error: null }),
+    eq() { return chain },
+    gte() { return chain },
+    lte() { return chain },
+    order() { return chain },
+    limit() { return chain },
+  };
+  const client: any = {
+    auth: {
+      getUser: async () => ({ data: { user: null }, error: null })
+    },
+    from() { return chain },
+  };
+  return client;
+};
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = (supabaseUrl && supabaseAnonKey)
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : createStubClient();
 
 export type UserRole = 'admin' | 'subadmin' | 'user';
 
@@ -220,67 +241,6 @@ export const summarizeFinance = async (from: string, to: string, opts?: { userId
   const totalIncome = incomeTotal + stripeRevenue;
   const net = totalIncome - expenseTotal - taxesTotal - mileageCost;
   return { expenseTotal, incomeTotal, taxesTotal, mileageCost, stripeRevenue, totalIncome, net };
-};
-
-export type UserRole = 'admin' | 'subadmin' | 'user';
-
-export type User = {
-  id: string;
-  email: string;
-  full_name?: string;
-  avatar_url?: string;
-  created_at: string;
-  updated_at: string;
-};
-
-export type UserProfile = {
-  id: string;
-  email: string;
-  full_name?: string;
-  role: UserRole;
-  avatar_url?: string;
-  company_name?: string;
-  industry?: string;
-  team_size?: number;
-  subscription_tier: string;
-  created_at: string;
-  updated_at: string;
-};
-
-export type Order = {
-  id: string;
-  user_id: string;
-  order_number: string;
-  product_type: string;
-  product_name: string;
-  quantity: number;
-  price: number;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-  design_file_url?: string;
-  notes?: string;
-  created_at: string;
-  updated_at: string;
-};
-
-export type FinancialMetrics = {
-  id: string;
-  date: string;
-  total_revenue: number;
-  total_orders: number;
-  new_users: number;
-  active_subscriptions: number;
-  created_at: string;
-  updated_at: string;
-};
-
-export type SignInLog = {
-  id: string;
-  user_id: string;
-  email: string;
-  ip_address?: string;
-  user_agent?: string;
-  success: boolean;
-  created_at: string;
 };
 
 // Helper functions for role management
