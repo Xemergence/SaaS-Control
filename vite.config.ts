@@ -26,9 +26,11 @@ export default defineConfig({
     },
   },
   resolve: {
-    preserveSymlinks: true,
+    // Ensure a single React instance across symlinked deps and blocks
     dedupe: ["react", "react-dom"],
     alias: {
+      "react": path.resolve(__dirname, "./node_modules/react"),
+      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
       "@": path.resolve(__dirname, "./src"),
     },
   },
