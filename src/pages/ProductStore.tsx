@@ -106,8 +106,7 @@ const ProductStore = () => {
       imageFallback:
         "https://storage.googleapis.com/tempo-image-previews/github%7C145282054-1756348109835-20250409_1752_Social%20Media%20Keychains_remix_01jre8m26bfsfbyn3ad255arhg.png",
       tags: ["NFC", "Custom Design"],
-      comingSoon: false,
-      sale: true,
+      comingSoon: true,
       route: "/nfc-keychains",
       category: "nfc",
     },
@@ -244,7 +243,7 @@ const ProductStore = () => {
             onValueChange={(value) => setSelectedCategory(value as CategoryValue)}
             className="w-full"
           >
-            <TabsList className="flex w-full flex-wrap justify-center gap-2 rounded-2xl border border-border/40 bg-card/70 p-1 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.05] sm:justify-start">
+            <TabsList className="flex w-full min-h-[3.25rem] flex-wrap items-center justify-center gap-2 rounded-2xl border border-border/40 bg-card/70 px-2 py-1.5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.05] sm:justify-start">
               {categoryOptions.map((category) => (
                 <TabsTrigger
                   key={category.value}
@@ -276,31 +275,34 @@ const ProductStore = () => {
         </div>
       </section>
 
-      <section className="container mx-auto max-w-6xl px-4 pb-24">
-        {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onSelect={handleProductSelect}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-border/70 bg-card/60 px-8 py-24 text-center backdrop-blur-md dark:border-white/10 dark:bg-white/[0.02]">
-            <Badge className="mb-4 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs uppercase tracking-[0.25em] text-primary">
-              Coming Soon
-            </Badge>
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-              New products are in the works
-            </h2>
-            <p className="mt-3 max-w-xl text-sm text-muted-foreground md:text-base">
-              We&apos;re expanding into additional IoT and manufacturing solutions. Check
-              back soon or reach out to the team for early access.
-            </p>
-          </div>
-        )}
+      <section className="relative isolate pb-24 pt-12 sm:pt-16">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(126,87,255,0.14),transparent_60%),radial-gradient(circle_at_86%_18%,rgba(59,130,246,0.14),transparent_62%),radial-gradient(circle_at_48%_95%,rgba(236,72,153,0.16),transparent_70%)] opacity-90 dark:bg-[radial-gradient(circle_at_18%_8%,rgba(126,87,255,0.22),transparent_68%),radial-gradient(circle_at_82%_24%,rgba(59,130,246,0.24),transparent_70%),radial-gradient(circle_at_52%_92%,rgba(236,72,153,0.26),transparent_72%)]" />
+        <div className="container mx-auto max-w-6xl px-4">
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              {filteredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onSelect={handleProductSelect}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-border/70 bg-card/60 px-8 py-24 text-center backdrop-blur-md dark:border-white/10 dark:bg-white/[0.02]">
+              <Badge className="mb-4 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs uppercase tracking-[0.25em] text-primary">
+                Coming Soon
+              </Badge>
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+                New products are in the works
+              </h2>
+              <p className="mt-3 max-w-xl text-sm text-muted-foreground md:text-base">
+                We&apos;re expanding into additional IoT and manufacturing solutions. Check
+                back soon or reach out to the team for early access.
+              </p>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Footer */}
