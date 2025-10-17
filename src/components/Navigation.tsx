@@ -198,7 +198,7 @@ const Navigation = () => {
           <img
             src={preferredLogo}
             alt="xEmergence Logo"
-            className="h-6 w-6 sm:h-7 sm:w-7 rounded-[1.2rem] object-contain transition-transform duration-300 ease-out hover:scale-[1.02]"
+            className="h-6 w-auto sm:h-7 object-contain transition-transform duration-300 ease-out hover:scale-[1.02]"
             onError={(e) => {
               if (!e.currentTarget.src.includes("logo-black.png")) {
                 e.currentTarget.src = fallbackLogo;

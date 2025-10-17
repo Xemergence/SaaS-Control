@@ -38,7 +38,7 @@ const BentoGrid = () => {
         </div>
 
         <MotionPreset fade blur transition={{ duration: 0.5 }} delay={0.6}>
-          <div className='bg-muted/40 backdrop-blur-sm grid grid-cols-1 gap-6 rounded-xl p-6 max-sm:p-2 sm:grid-cols-2 lg:grid-cols-6'>
+          <div className='bg-muted/20 backdrop-blur-sm grid grid-cols-1 gap-6 rounded-xl p-6 max-sm:p-2 sm:grid-cols-2 lg:grid-cols-6'>
             {/* Smart Data Insights */}
             <MotionPreset
               fade
@@ -48,13 +48,13 @@ const BentoGrid = () => {
               className='h-full sm:col-span-2 lg:col-span-3'
               delay={0.7}
             >
-              <Card className='border-none shadow-none bg-card/50 backdrop-blur-sm'>
-                <CardContent>
+              <Card className='border border-border/40 shadow-md shadow-primary/5 bg-card/30 backdrop-blur-md rounded-2xl overflow-hidden'>
+                <CardContent className='p-4'>
                   <SmartData />
                 </CardContent>
-                <CardHeader className='mt-4 gap-4'>
-                  <CardTitle className='text-2xl'>Smart Data Insights</CardTitle>
-                  <CardDescription className='text-lg font-medium'>
+                <CardHeader className='gap-3 px-4 pb-4'>
+                  <CardTitle className='text-lg'>Smart Data Insights</CardTitle>
+                  <CardDescription className='text-sm font-medium leading-relaxed'>
                     Turn raw metrics into interactive visual stories with powerful analytics tools.
                   </CardDescription>
                 </CardHeader>
@@ -70,8 +70,8 @@ const BentoGrid = () => {
               className='h-full lg:col-span-3'
               delay={0.85}
             >
-              <Card className='justify-between border-none shadow-none bg-card/50 backdrop-blur-sm lg:col-span-3'>
-                <CardContent>
+              <Card className='justify-between border border-border/40 shadow-md shadow-primary/5 bg-card/30 backdrop-blur-md rounded-2xl overflow-hidden lg:col-span-3'>
+                <CardContent className='p-4'>
                   <div className='max-h-90 w-full overflow-hidden rounded-lg'>
                     <img
                       src='https://cdn.shadcnstudio.com/ss-assets/blocks/marketing/features/image-1.png'
@@ -80,9 +80,9 @@ const BentoGrid = () => {
                     />
                   </div>
                 </CardContent>
-                <CardHeader className='gap-4'>
-                  <CardTitle className='text-2xl'>Modular Dashboards</CardTitle>
-                  <CardDescription className='text-lg font-medium'>
+                <CardHeader className='gap-3 px-4 pb-4'>
+                  <CardTitle className='text-lg'>Modular Dashboards</CardTitle>
+                  <CardDescription className='text-sm font-medium leading-relaxed'>
                     Build personalized dashboards with flexible layouts for deep data visibility.
                   </CardDescription>
                 </CardHeader>
@@ -98,8 +98,8 @@ const BentoGrid = () => {
               className='h-full lg:col-span-2'
               delay={1}
             >
-              <Card className='h-full justify-between border-none shadow-none bg-card/50 backdrop-blur-sm'>
-                <CardContent className='relative flex h-60 w-full items-center justify-center'>
+              <Card className='h-full justify-between border border-border/40 shadow-md shadow-primary/5 bg-card/30 backdrop-blur-md rounded-2xl overflow-hidden'>
+                <CardContent className='relative flex h-60 w-full items-center justify-center p-4'>
                   <motion.svg
                     width='1em'
                     height='1em'
@@ -198,9 +198,9 @@ const BentoGrid = () => {
                   </motion.svg>
                   <Collaboration />
                 </CardContent>
-                <CardHeader className='gap-4'>
-                  <CardTitle className='text-2xl'>Live Collaboration</CardTitle>
-                  <CardDescription className='text-lg font-medium'>
+                <CardHeader className='gap-3 px-4 pb-4'>
+                  <CardTitle className='text-lg'>Live Collaboration</CardTitle>
+                  <CardDescription className='text-sm font-medium leading-relaxed'>
                     Work with your team in real time to explore data and uncover patterns.
                   </CardDescription>
                 </CardHeader>
@@ -216,13 +216,13 @@ const BentoGrid = () => {
               className='h-full lg:col-span-2'
               delay={1.15}
             >
-              <Card className='h-full justify-between border-none shadow-none bg-card/50 backdrop-blur-sm lg:col-span-2'>
-                <CardContent>
+              <Card className='h-full justify-between border border-border/40 shadow-md shadow-primary/5 bg-card/30 backdrop-blur-md rounded-2xl overflow-hidden lg:col-span-2'>
+                <CardContent className='p-4'>
                   <WorkflowAutomation />
                 </CardContent>
-                <CardHeader className='gap-4'>
-                  <CardTitle className='text-2xl'>Workflow Automation</CardTitle>
-                  <CardDescription className='text-lg font-medium'>
+                <CardHeader className='gap-3 px-4 pb-4'>
+                  <CardTitle className='text-lg'>Workflow Automation</CardTitle>
+                  <CardDescription className='text-sm font-medium leading-relaxed'>
                     Automate tasks and connect tools using drag-and-drop logic flows.
                   </CardDescription>
                 </CardHeader>
@@ -238,13 +238,13 @@ const BentoGrid = () => {
               className='h-full lg:col-span-2'
               delay={1.3}
             >
-              <Card className='h-full justify-between border-none shadow-none bg-card/50 backdrop-blur-sm lg:col-span-2'>
-                <CardContent className='flex items-center'>
-                  <ShieldCheck className='max-h-50 w-full sm:max-h-69' />
+              <Card className='h-full justify-between border border-border/40 shadow-md shadow-primary/5 bg-card/30 backdrop-blur-md rounded-2xl overflow-hidden lg:col-span-2'>
+                <CardContent className='flex items-center p-4'>
+                  <ShieldCheck className='max-h-50 w-full sm:max-h-60' />
                 </CardContent>
-                <CardHeader className='gap-4'>
-                  <CardTitle className='text-2xl'>Integrated Data Security</CardTitle>
-                  <CardDescription className='text-lg font-medium'>
+                <CardHeader className='gap-3 px-4 pb-4'>
+                  <CardTitle className='text-lg'>Integrated Data Security</CardTitle>
+                  <CardDescription className='text-sm font-medium leading-relaxed'>
                     Secure information with encrypted pipelines and unified data governance.
                   </CardDescription>
                 </CardHeader>

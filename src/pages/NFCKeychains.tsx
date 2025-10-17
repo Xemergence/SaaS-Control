@@ -111,9 +111,9 @@ const items: KeychainItem[] = [
 ];
 
 const InfoCard = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) => (
-  <Card className="border border-border/60 bg-card/80 backdrop-blur dark:border-white/10 dark:bg-white/[0.04]">
+  <Card className="border border-border/50 bg-card dark:border-white/10 dark:bg-white/[0.06]">
     <CardContent className="flex items-start gap-3 p-5">
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/40 text-primary">
         {icon}
       </div>
       <div>
@@ -126,8 +126,7 @@ const InfoCard = ({ icon, label, value }: { icon: React.ReactNode; label: string
 
 const NFCProductCard = ({ item }: { item: KeychainItem }) => {
   return (
-    <Card className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/60 bg-card/85 shadow-[0_28px_80px_-48px_rgba(64,45,145,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_38px_110px_-42px_rgba(78,51,182,0.5)] dark:border-white/10 dark:bg-white/[0.05]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(126,87,255,0.2),transparent_60%),radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.2),transparent_62%)] opacity-90" />
+    <Card className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/50 bg-card shadow-xl transition-transform duration-400 hover:-translate-y-1.5 hover:shadow-2xl dark:border-white/10 dark:bg-white/[0.06]">
       <CardContent className="relative flex h-full flex-col gap-5 p-8">
         <div className="flex items-center justify-between">
           <Badge className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-primary">
@@ -140,7 +139,7 @@ const NFCProductCard = ({ item }: { item: KeychainItem }) => {
           )}
         </div>
 
-        <div className="relative flex h-44 items-center justify-center overflow-hidden rounded-[1.25rem] border border-border/60 bg-background/70 p-6 backdrop-blur dark:border-white/10 dark:bg-white/[0.02]">
+        <div className="relative flex h-44 items-center justify-center overflow-hidden rounded-[1.25rem] border border-border/60 bg-background/80 p-6 dark:border-white/10 dark:bg-white/[0.04]">
           <img
             src={sbImage(item.image ?? "", 600, 80, "product-images")}
             data-fallback={sbObjectUrl(item.image ?? "", "product-images")}
@@ -163,13 +162,19 @@ const NFCProductCard = ({ item }: { item: KeychainItem }) => {
 
         <div className="mt-auto flex items-center justify-between gap-4">
           <span className="text-sm font-semibold text-primary">From $14.99</span>
-          <Button
-            type="button"
-            disabled={item.comingSoon}
-            className="rounded-full bg-primary px-5 text-primary-foreground shadow-[0_12px_28px_-14px_rgba(78,51,182,0.5)] transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_18px_42px_-14px_rgba(78,51,182,0.58)] disabled:cursor-not-allowed disabled:border disabled:border-border/60 disabled:bg-transparent disabled:text-muted-foreground"
-          >
-            {item.comingSoon ? "Notify Me" : "Buy"}
-          </Button>
+          {item.comingSoon ? (
+            <Button
+              type="button"
+              disabled
+              className="rounded-full border border-border/60 bg-transparent px-5 text-muted-foreground"
+            >
+              Join Waitlist
+            </Button>
+          ) : (
+            <Button asChild className="rounded-full bg-primary px-5 text-primary-foreground shadow-md transition-colors hover:bg-primary/90 hover:shadow-lg">
+              <Link to="/contact">Request Info</Link>
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>
@@ -182,19 +187,15 @@ export default function NFCKeychains() {
   const preferredLogo =
     theme === "dark" ? "/images/logo-dark.svg" : "/images/logo-light.svg";
   const logoFrameClasses = cn(
-    "grid size-12 place-items-center rounded-[1.4rem] border transition-all duration-300 backdrop-blur-sm",
-    "shadow-[0_16px_44px_-28px_rgba(86,72,198,0.45)] hover:shadow-[0_22px_48px_-24px_rgba(130,104,255,0.5)]",
+    "grid size-12 place-items-center rounded-[1.4rem] border transition-colors duration-300",
     theme === "dark"
-      ? "border-white/12 bg-slate-900/80"
-      : "border-slate-200 bg-white/95"
+      ? "border-white/30 text-white"
+      : "border-slate-300 text-slate-900"
   );
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-85">
-        <div className="absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(126,87,255,0.28),_transparent_65%)] blur-3xl" />
-        <div className="absolute bottom-[-20%] right-[-10%] h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.24),_transparent_60%)] blur-3xl" />
-      </div>
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_10%,rgba(126,87,255,0.16),transparent_60%),radial-gradient(circle_at_85%_85%,rgba(59,130,246,0.18),transparent_65%)]" />
 
       <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Header */}
@@ -213,7 +214,7 @@ export default function NFCKeychains() {
               <img
                 src={preferredLogo}
                 alt="xEmergence Logo"
-                className="h-9 w-9 rounded-[1.1rem] object-contain"
+                className="h-9 w-auto object-contain"
                 onError={(e) => {
                   if (!e.currentTarget.src.includes("logo-black.png")) {
                     e.currentTarget.src = fallbackLogo;
@@ -310,39 +311,18 @@ export default function NFCKeychains() {
         </div>
 
         {/* Product list (5 variations) */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4">Available Variations</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="mb-20">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+              Available Variations
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Choose your platform and unlock instant tap-to-share experiences.
+            </p>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => (
-              <Card key={item.id} className="bg-[#1c1c24] border-gray-800">
-                <CardContent className="p-5 flex flex-col h-full text-white">
-                  <div className="relative mb-4 h-44 w-full rounded-md overflow-hidden bg-black flex items-center justify-center">
-                    <img
-                      src={sbImage(item.image!, 600, 80, "product-images")}
-                      data-fallback={sbObjectUrl(item.image!, "product-images")}
-                      data-fallback2={localPublicImage(item.image!)}
-                      onError={handleImgError}
-                      loading="lazy"
-                      alt={`${item.platform} keychain`}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-1 text-white">
-                    {item.name}
-                  </h3>
-                  <p className="text-white text-sm mb-4 flex-1">
-                    {item.description}
-                  </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-purple-400 font-semibold">
-                      From $14.99
-                    </span>
-                    <Button className="bg-purple-600 hover:bg-purple-700 h-10">
-                      Buy
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              <NFCProductCard key={item.id} item={item} />
             ))}
           </div>
         </section>

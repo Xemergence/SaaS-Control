@@ -162,16 +162,10 @@ const ProductStore = () => {
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-80"
-      >
-        <div className="absolute -right-32 -top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,_rgba(126,87,255,0.25),_transparent_60%)] blur-3xl" />
-        <div className="absolute -left-16 bottom-[-30%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.2),_transparent_62%)] blur-3xl" />
-      </div>
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(126,87,255,0.16),transparent_58%),radial-gradient(circle_at_78%_18%,rgba(59,130,246,0.16),transparent_65%),radial-gradient(circle_at_85%_88%,rgba(236,72,153,0.15),transparent_65%)]"
+      />
 
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 opacity-90">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_15%_20%,rgba(126,87,255,0.18),transparent_55%),radial-gradient(circle_at_85%_15%,rgba(59,130,246,0.2),transparent_60%),radial-gradient(circle_at_80%_85%,rgba(236,72,153,0.2),transparent_65%)] dark:bg-[radial-gradient(circle_at_15%_20%,rgba(126,87,255,0.22),transparent_60%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.26),transparent_65%),radial-gradient(circle_at_80%_90%,rgba(226,74,255,0.24),transparent_68%)]" />
-        </div>
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_12%_18%,rgba(126,87,255,0.12),transparent_62%),radial-gradient(circle_at_82%_82%,rgba(236,72,153,0.14),transparent_65%)]">
 
         <div className="container relative mx-auto flex max-w-6xl flex-col gap-12 px-4 py-20 sm:py-28">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
@@ -199,7 +193,7 @@ const ProductStore = () => {
                   Back to Home
                 </Button>
                 <Button
-                  className="bg-primary shadow-[0_18px_45px_-18px_rgba(78,51,182,0.55)] transition-shadow hover:bg-primary/90 hover:shadow-[0_24px_60px_-18px_rgba(78,51,182,0.6)]"
+                  className="bg-primary shadow-md transition-colors hover:bg-primary/90 hover:shadow-lg"
                   onClick={() => setSelectedCategory("nfc")}
                 >
                   <ShoppingCart className="mr-2 h-4 w-4" />
@@ -208,7 +202,7 @@ const ProductStore = () => {
               </div>
             </div>
 
-            <div className="grid w-full max-w-sm gap-4 rounded-3xl border border-border/70 bg-card/85 p-6 shadow-[0_28px_80px_-48px_rgba(64,45,145,0.35)] backdrop-blur-md dark:border-white/10 dark:bg-white/[0.05]">
+            <div className="grid w-full max-w-sm gap-4 rounded-3xl border border-border/60 bg-card/90 p-6 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.06]">
               <div className="flex items-start gap-3">
                 <Upload className="mt-1 h-5 w-5 text-primary" />
                 <div>
@@ -250,13 +244,13 @@ const ProductStore = () => {
             onValueChange={(value) => setSelectedCategory(value as CategoryValue)}
             className="w-full"
           >
-            <TabsList className="flex w-full flex-wrap gap-2 rounded-full border border-border/60 bg-background/80 p-1 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.04]">
+            <TabsList className="flex w-full flex-wrap justify-center gap-2 rounded-2xl border border-border/40 bg-card/70 p-1 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.05] sm:justify-start">
               {categoryOptions.map((category) => (
                 <TabsTrigger
                   key={category.value}
                   value={category.value}
                   className={cn(
-                    "group flex items-center gap-2 rounded-full px-5 py-2 text-sm transition-all duration-200",
+                    "group flex items-center gap-2 rounded-full px-5 py-2 text-sm transition-colors duration-200",
                     "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-[0_12px_35px_-18px_rgba(78,51,182,0.65)]",
                     "data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:text-foreground data-[state=inactive]:hover:bg-primary/10",
                   )}
@@ -313,7 +307,7 @@ const ProductStore = () => {
       <footer className="border-t border-border/60 bg-background/80">
         <div className="container mx-auto flex flex-col items-center gap-4 px-4 py-12 text-center">
           <div className="flex items-center gap-3">
-            <div className="grid size-8 place-items-center rounded-full bg-gradient-to-br from-primary to-fuchsia-500 text-xs font-semibold text-primary-foreground shadow-[0_12px_32px_-12px_rgba(86,72,198,0.6)]">
+            <div className="grid size-8 place-items-center rounded-full border border-primary/60 text-xs font-semibold text-primary">
               xE
             </div>
             <span className="text-lg font-medium tracking-tight text-foreground">
@@ -351,7 +345,7 @@ const ProductCard = ({
   const isComingSoon = Boolean(product.comingSoon);
 
   return (
-    <Card className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/60 bg-card/85 shadow-[0_28px_80px_-48px_rgba(64,45,145,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_38px_110px_-42px_rgba(78,51,182,0.48)] dark:border-white/10 dark:bg-white/[0.05]">
+    <Card className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/50 bg-card shadow-xl transition-transform duration-400 hover:-translate-y-1.5 hover:shadow-2xl dark:border-white/10 dark:bg-white/[0.06]">
       <div className="relative h-56 overflow-hidden">
         <img
           src={product.image}
@@ -361,7 +355,7 @@ const ProductCard = ({
           onError={handleImgError}
           loading="lazy"
         />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background via-background/60 via-20% to-transparent dark:from-black/80" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background via-background/70 via-30% to-transparent dark:from-black/80" />
         {product.comingSoon && (
           <Badge className="absolute left-4 top-4 rounded-full border border-amber-500/40 bg-amber-500/20 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-amber-400 backdrop-blur-md">
             Coming Soon
@@ -411,10 +405,10 @@ const ProductCard = ({
             disabled={isComingSoon}
             variant={isComingSoon ? "outline" : "default"}
             className={cn(
-              "h-10 rounded-full px-5 transition-all duration-200",
+              "h-10 rounded-full px-5 transition-colors duration-200",
               isComingSoon
                 ? "cursor-not-allowed border-border/60 bg-transparent text-muted-foreground"
-                : "bg-primary text-primary-foreground shadow-[0_12px_28px_-14px_rgba(78,51,182,0.5)] hover:bg-primary/90 hover:shadow-[0_18px_42px_-14px_rgba(78,51,182,0.58)]",
+                : "bg-primary text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg",
             )}
           >
             {buttonLabel}

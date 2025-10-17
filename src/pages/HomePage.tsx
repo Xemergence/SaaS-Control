@@ -405,7 +405,7 @@ const HomePage = () => {
           <div className="mx-auto mb-12 grid w-full max-w-7xl gap-10 justify-items-center md:grid-cols-4 md:justify-items-start">
             <div className="max-w-md">
               <div className="mb-4 flex items-center justify-center gap-2 md:justify-start">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-fuchsia-500 text-xs font-bold text-primary-foreground">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/60 text-xs font-bold text-primary">
                   xE
                 </div>
                 <span className="font-bold text-foreground">xEmergence</span>
