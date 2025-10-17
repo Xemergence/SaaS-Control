@@ -4,7 +4,7 @@ import BentoGrid from '@/components/shadcn-studio/blocks/bento-grid-07/bento-gri
 // Feature251 section – Our Approach with Bento Grid
 const Feature251: React.FC = () => {
   return (
-    <section id="innovation" className="relative isolate overflow-hidden py-20 sm:py-28">
+    <section id="innovation" className="relative isolate overflow-hidden py-24 sm:py-32">
       <div
         className="absolute inset-0 -z-30 bg-[linear-gradient(160deg,_rgba(248,246,255,0.92)_0%,_rgba(240,244,255,0.78)_32%,_rgba(247,242,255,0.92)_64%,_rgba(250,248,255,0.98)_100%)] transition-opacity duration-500 dark:hidden"
         aria-hidden

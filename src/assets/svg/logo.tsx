@@ -1,7 +1,7 @@
 // React Imports
-import type { SVGAttributes } from 'react'
+import type { FC, SVGProps } from 'react'
 
-const Logo = (props: SVGAttributes<SVGElement>) => {
+const Logo: FC<SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg width='1em' height='1em' viewBox='0 0 328 329' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
       <rect y='0.5' width='328' height='328' rx='164' fill='black' className='dark:fill-white' />

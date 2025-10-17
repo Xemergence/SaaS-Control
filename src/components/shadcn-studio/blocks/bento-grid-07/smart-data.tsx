@@ -39,7 +39,7 @@ const SmartData = () => {
             <img
               src='https://cdn.shadcnstudio.com/ss-assets/brand-logo/shadcn-logo.png'
               alt='shadcn'
-              className='size-4.5 rounded-full dark:invert'
+              className='h-3.5 w-3.5 rounded-full dark:invert'
             />
             <span className='text-card-foreground text-sm max-sm:hidden'>ShadCN</span>
           </div>
@@ -51,7 +51,7 @@ const SmartData = () => {
             <img
               src='https://cdn.shadcnstudio.com/ss-assets/brand-logo/react-logo.png'
               alt='react'
-              className='size-4.5 rounded-full'
+              className='h-3.5 w-3.5 rounded-full'
             />
             <span className='text-card-foreground text-sm max-sm:hidden'>React</span>
           </div>
@@ -63,7 +63,7 @@ const SmartData = () => {
             <img
               src='https://cdn.shadcnstudio.com/ss-assets/brand-logo/nextjs-logo.png'
               alt='nextjs'
-              className='size-4.5 rounded-full dark:invert'
+              className='h-3.5 w-3.5 rounded-full dark:invert'
             />
             <span className='text-card-foreground text-sm max-sm:hidden'>Next js</span>
           </div>
@@ -75,7 +75,7 @@ const SmartData = () => {
             <img
               src='https://cdn.shadcnstudio.com/ss-assets/brand-logo/claude-icon.png'
               alt='claude'
-              className='size-4.5 rounded-full'
+              className='h-3.5 w-3.5 rounded-full'
             />
             <span className='text-card-foreground text-sm max-sm:hidden'>Claude</span>
           </div>

@@ -16,7 +16,7 @@ const BentoGrid = () => {
         {/* Header Section */}
         <div className='mx-auto max-w-3xl space-y-4 text-center'>
           <div className='flex justify-center'>
-            <Badge className='transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow hover:bg-primary/80 inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary'>
+            <Badge className='inline-flex items-center rounded-full border border-primary/40 bg-background px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-primary shadow-[0_0_0_1px_rgba(99,102,241,0.35)] transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/10 dark:border-white/20 dark:bg-white/10 dark:text-white'>
               Our Approach
             </Badge>
           </div>
@@ -252,7 +252,7 @@ const BentoGrid = () => {
                 </CardHeader>
               </Card>
             </MotionPreset>
-          </div>
+            </div>
           </div>
         </MotionPreset>
       </div>

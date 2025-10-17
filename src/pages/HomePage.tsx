@@ -266,103 +266,9 @@ const HomePage = () => {
       {/* CTA Section - Explore Our Products */}
       <section className="section-divider section-divider--short relative isolate overflow-hidden py-16 md:py-24">
         {/* Dashed Center Fade Grid Background */}
-        <div
-          className="absolute inset-0 z-0"
-          aria-hidden="true"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-              linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
-            `,
-            backgroundSize: "20px 20px",
-            backgroundPosition: "0 0, 0 0",
-            maskImage: `
-              repeating-linear-gradient(
-                to right,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              repeating-linear-gradient(
-                to bottom,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
-            `,
-            WebkitMaskImage: `
-              repeating-linear-gradient(
-                to right,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              repeating-linear-gradient(
-                to bottom,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
-            `,
-            maskComposite: "intersect",
-            WebkitMaskComposite: "source-in",
-          }}
-        />
+        <div className="absolute inset-0 z-0 cta-grid-light" aria-hidden="true" />
         {/* Dark theme grid - adjust color for dark mode */}
-        <div
-          className="absolute inset-0 z-0 hidden dark:block"
-          aria-hidden="true"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(52, 56, 92, 0.55) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(52, 56, 92, 0.55) 1px, transparent 1px)
-            `,
-            backgroundSize: "20px 20px",
-            backgroundPosition: "0 0, 0 0",
-            maskImage: `
-              repeating-linear-gradient(
-                to right,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              repeating-linear-gradient(
-                to bottom,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
-            `,
-            WebkitMaskImage: `
-              repeating-linear-gradient(
-                to right,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              repeating-linear-gradient(
-                to bottom,
-                black 0px,
-                black 3px,
-                transparent 3px,
-                transparent 8px
-              ),
-              radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
-            `,
-            maskComposite: "intersect",
-            WebkitMaskComposite: "source-in",
-          }}
-        />
+        <div className="absolute inset-0 z-0 hidden cta-grid-dark dark:block" aria-hidden="true" />
         <div className="container relative z-10 mx-auto max-w-8xl px-4 text-center">
           <div className="mb-4 font-medium uppercase tracking-[0.4em] text-primary">
             EXPLORE OUR PRODUCTS
@@ -401,105 +307,30 @@ const HomePage = () => {
       </section>
       {/* Footer */}
       <footer className="border-t border-border/60 bg-background py-12 md:py-16">
-        <div className="container mx-auto flex max-w-8xl flex-col items-center px-4 text-center md:text-left">
-          <div className="mx-auto mb-12 grid w-full max-w-7xl gap-10 justify-items-center md:grid-cols-4 md:justify-items-start">
-            <div className="max-w-md">
-              <div className="mb-4 flex items-center justify-center gap-2 md:justify-start">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/60 text-xs font-bold text-primary">
-                  xE
-                </div>
-                <span className="font-bold text-foreground">xEmergence</span>
-              </div>
-
-              <p className="text-sm text-muted-foreground">
-                Unleash the full potential of your ideas with our accelerated
-                digital solutions, transforming data into actionable insights
-                and driving your success forward through innovative technology
-                and US-manufactured products.
-              </p>
+        <div className="container mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center">
+          <div className="flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/60 text-xs font-bold text-primary">
+              xE
             </div>
+            <span className="text-lg font-semibold tracking-tight text-foreground">xEmergence</span>
+          </div>
 
-            <div>
-              <h3 className="mb-4 font-bold text-foreground">Product</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/designers"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    For Designers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/developers"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    For Developers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/managers"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    For Managers
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <p className="text-sm text-muted-foreground">
+            Unleash the full potential of your ideas with our accelerated digital solutions, transforming data into
+            actionable insights and driving your success forward through innovative technology and US-manufactured
+            products.
+          </p>
 
-            <div>
-              <h3 className="mb-4 font-bold text-foreground">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/about"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/careers"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/contact"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-4 font-bold text-foreground">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/privacy"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/terms"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Terms and Conditions
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground transition-colors">
+            <Link to="/" className="hover:text-foreground">
+              Home
+            </Link>
+            <Link to="/contact" className="hover:text-foreground">
+              Contact
+            </Link>
+            <Link to="/support" className="hover:text-foreground">
+              Support
+            </Link>
           </div>
         </div>
       </footer>

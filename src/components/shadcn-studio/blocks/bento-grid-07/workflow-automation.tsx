@@ -30,48 +30,48 @@ const WorkflowAutomation = () => {
       <div className='flex flex-col items-center justify-between gap-6'>
         <div
           ref={div1Ref}
-          className='bg-card flex w-fit items-center gap-1.5 rounded-full border px-1.5 py-1 shadow-md'
+          className='bg-card flex w-fit items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'
         >
-          <FigmaIcon className='size-4.5' />
-          <span className='text-card-foreground text-sm'>Design</span>
+          <FigmaIcon className='h-6 w-6' />
+          <span className='text-card-foreground text-base font-medium'>Design</span>
         </div>
         <div className='w-ful flex items-center justify-between gap-15.5'>
           <span ref={span1Ref} className='size-0.5' />
-          <div ref={div2Ref} className='bg-card size-4.5 rotate-45 rounded-xs border'></div>
+          <div ref={div2Ref} className='bg-card h-5 w-5 rotate-45 rounded-xs border'></div>
           <span ref={span2Ref} className='size-0.5' />
         </div>
         <div className='flex items-center justify-between gap-6'>
           <div ref={div3Ref} className='flex w-30 justify-center'>
-            <div className='bg-card flex items-center gap-1.5 rounded-full border px-1.5 py-1 shadow-md'>
-              <BrainCircuitIcon className='size-4.5' />
-              <span className='text-card-foreground text-sm'>AI</span>
+            <div className='bg-card flex items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'>
+              <BrainCircuitIcon className='h-6 w-6' />
+              <span className='text-card-foreground text-base font-medium'>AI</span>
             </div>
           </div>
           <div ref={div4Ref} className='flex w-30 justify-center'>
-            <div className='bg-card flex items-center gap-1.5 rounded-full border px-1.5 py-1 shadow-md'>
-              <NotepadTextIcon className='size-4.5' />
-              <span className='text-card-foreground text-sm'>Instructions</span>
+            <div className='bg-card flex items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'>
+              <NotepadTextIcon className='h-6 w-6' />
+              <span className='text-card-foreground text-base font-medium'>Instructions</span>
             </div>
           </div>
         </div>
         <div className='flex items-center justify-between gap-15.5'>
           <span ref={span3Ref} className='size-0.5' />
-          <div ref={div5Ref} className='bg-card size-4.5 rotate-45 rounded-xs border'></div>
+          <div ref={div5Ref} className='bg-card h-5 w-5 rotate-45 rounded-xs border'></div>
           <span ref={span4Ref} className='size-0.5' />
         </div>
         <div
           ref={div6Ref}
-          className='bg-card flex w-fit items-center gap-1.5 rounded-full border px-1.5 py-1 shadow-md'
+          className='bg-card flex w-fit items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'
         >
-          <CodeIcon className='size-4.5' />
-          <span className='text-card-foreground text-sm'>Code</span>
+          <CodeIcon className='h-6 w-6' />
+          <span className='text-card-foreground text-base font-medium'>Code</span>
         </div>
         <div
           ref={div7Ref}
-          className='bg-card flex w-fit items-center gap-1.5 rounded-full border px-1.5 py-1 shadow-md'
+          className='bg-card flex w-fit items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'
         >
-          <LayoutDashboardIcon className='size-4.5' />
-          <span className='text-card-foreground text-sm'>Result</span>
+          <LayoutDashboardIcon className='h-6 w-6' />
+          <span className='text-card-foreground text-base font-medium'>Result</span>
         </div>
       </div>
 
