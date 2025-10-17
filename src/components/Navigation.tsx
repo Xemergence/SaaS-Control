@@ -213,7 +213,7 @@ const Navigation = () => {
           type="button"
           className="p-3 text-foreground transition-colors hover:text-primary focus:outline-none md:hidden"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={mobileMenuOpen}
+          aria-expanded={mobileMenuOpen ? "true" : "false"}
           aria-controls="mobile-navigation"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >

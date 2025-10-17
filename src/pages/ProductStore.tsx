@@ -347,8 +347,8 @@ const ProductCard = ({
   const isComingSoon = Boolean(product.comingSoon);
 
   return (
-    <Card className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/50 bg-card shadow-xl transition-transform duration-400 hover:-translate-y-1.5 hover:shadow-2xl dark:border-white/10 dark:bg-white/[0.06]">
-      <div className="relative h-56 overflow-hidden">
+    <Card className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/50 bg-card shadow-xl transition-shadow duration-300 will-change-[transform] hover:-translate-y-1.5 hover:shadow-2xl dark:border-white/10 dark:bg-white/[0.06]">
+      <div className="relative h-56 overflow-hidden rounded-t-[1.75rem]">
         <img
           src={product.image}
           data-fallback={product.imageFallback ?? undefined}
@@ -381,7 +381,7 @@ const ProductCard = ({
           ))}
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 min-h-[96px]">
           <h3 className="text-xl font-semibold tracking-tight text-foreground lg:text-2xl">
             {product.name}
           </h3>

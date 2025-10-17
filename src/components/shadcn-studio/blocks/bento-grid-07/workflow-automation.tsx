@@ -32,7 +32,7 @@ const WorkflowAutomation = () => {
           ref={div1Ref}
           className='bg-card flex w-fit items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'
         >
-          <FigmaIcon className='h-6 w-6' />
+          <FigmaIcon className='h-[21.6px] w-[21.6px]' />
           <span className='text-card-foreground text-base font-medium'>Design</span>
         </div>
         <div className='w-ful flex items-center justify-between gap-15.5'>
@@ -43,13 +43,13 @@ const WorkflowAutomation = () => {
         <div className='flex items-center justify-between gap-6'>
           <div ref={div3Ref} className='flex w-30 justify-center'>
             <div className='bg-card flex items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'>
-              <BrainCircuitIcon className='h-6 w-6' />
+              <BrainCircuitIcon className='h-[21.6px] w-[21.6px]' />
               <span className='text-card-foreground text-base font-medium'>AI</span>
             </div>
           </div>
           <div ref={div4Ref} className='flex w-30 justify-center'>
             <div className='bg-card flex items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'>
-              <NotepadTextIcon className='h-6 w-6' />
+              <NotepadTextIcon className='h-[21.6px] w-[21.6px]' />
               <span className='text-card-foreground text-base font-medium'>Instructions</span>
             </div>
           </div>
@@ -63,14 +63,14 @@ const WorkflowAutomation = () => {
           ref={div6Ref}
           className='bg-card flex w-fit items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'
         >
-          <CodeIcon className='h-6 w-6' />
+          <CodeIcon className='h-[21.6px] w-[21.6px]' />
           <span className='text-card-foreground text-base font-medium'>Code</span>
         </div>
         <div
           ref={div7Ref}
           className='bg-card flex w-fit items-center gap-2 rounded-full border px-2.5 py-1.5 shadow-md'
         >
-          <LayoutDashboardIcon className='h-6 w-6' />
+          <LayoutDashboardIcon className='h-[21.6px] w-[21.6px]' />
           <span className='text-card-foreground text-base font-medium'>Result</span>
         </div>
       </div>

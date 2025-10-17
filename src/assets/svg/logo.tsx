@@ -58,3 +58,4 @@ const Logo: FC<SVGProps<SVGSVGElement>> = (props) => {
 }
 
 export default Logo
+export { Logo }
