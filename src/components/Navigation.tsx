@@ -69,6 +69,7 @@ const Navigation = () => {
   useEffect(() => {
     if (typeof document === "undefined") return;
     const originalOverflow = document.body.style.overflow;
+
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -79,6 +80,7 @@ const Navigation = () => {
       document.body.style.overflow = originalOverflow;
     };
   }, [mobileMenuOpen]);
+
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -211,7 +213,7 @@ const Navigation = () => {
           type="button"
           className="p-3 text-foreground transition-colors hover:text-primary focus:outline-none md:hidden"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={mobileMenuOpen ? "true" : "false"}
+          aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -228,7 +230,7 @@ const Navigation = () => {
             to="/"
             onClick={handleHomeClick}
             className={cn(
-              "flex items-center gap-2 text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 text-[1.08rem] font-normal tracking-tight transition-colors",
               isHomeRoute
                 ? activeSection === "hero"
                   ? "text-primary"
@@ -245,7 +247,7 @@ const Navigation = () => {
             href="#features"
             onClick={(e) => handleSectionClick("features", e)}
             className={cn(
-              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-normal tracking-tight transition-colors",
               isFeaturesActive
                 ? "text-primary"
                 : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
@@ -258,7 +260,7 @@ const Navigation = () => {
             href="#team"
             onClick={(e) => handleSectionClick("team", e)}
             className={cn(
-              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-normal tracking-tight transition-colors",
               isTeamActive
                 ? "text-primary"
                 : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
@@ -271,7 +273,7 @@ const Navigation = () => {
             href="#integrations"
             onClick={(e) => handleSectionClick("integrations", e)}
             className={cn(
-              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 cursor-pointer text-[1.08rem] font-normal tracking-tight transition-colors",
               isIndustryActive
                 ? "text-primary"
                 : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
@@ -284,7 +286,7 @@ const Navigation = () => {
           <Link
             to="/3d-products"
             className={cn(
-              "flex items-center gap-2 text-[1.08rem] font-semibold tracking-tight transition-colors",
+              "flex items-center gap-2 text-[1.08rem] font-normal tracking-tight transition-colors",
               isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
             )}
           >
@@ -299,17 +301,10 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <>
-            {/* Backdrop overlay to prevent content interaction */}
-            <div
-              className="fixed inset-0 top-[var(--header-height,4rem)] z-40 bg-black/20 backdrop-blur-sm md:hidden"
-              onClick={() => setMobileMenuOpen(false)}
-              aria-hidden="true"
-            />
-            <div
-              id="mobile-navigation"
-              className="absolute left-0 right-0 top-full z-50 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border/60 bg-background/98 p-4 shadow-lg shadow-primary/10 backdrop-blur-xl md:hidden"
-            >
+          <div
+            id="mobile-navigation"
+            className="w-full border-t border-border/60 bg-background/98 p-4 shadow-lg shadow-primary/10 backdrop-blur-xl md:hidden"
+          >
               <nav className="flex flex-col space-y-3 text-foreground">
                 <Link
                   to="/"
@@ -318,7 +313,7 @@ const Navigation = () => {
                     setMobileMenuOpen(false);
                   }}
                   className={cn(
-                    "flex items-center gap-3 text-base font-semibold transition-colors",
+                    "flex items-center gap-3 text-base font-normal transition-colors",
                     isHomeRoute
                       ? activeSection === "hero"
                         ? "text-primary"
@@ -335,7 +330,7 @@ const Navigation = () => {
                   href="#features"
                   onClick={(e) => handleSectionClick("features", e)}
                   className={cn(
-                    "flex items-center gap-3 cursor-pointer text-base font-semibold transition-colors",
+                    "flex items-center gap-3 cursor-pointer text-base font-normal transition-colors",
                     isFeaturesActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
@@ -348,7 +343,7 @@ const Navigation = () => {
                   href="#team"
                   onClick={(e) => handleSectionClick("team", e)}
                   className={cn(
-                    "flex items-center gap-3 cursor-pointer text-base font-semibold transition-colors",
+                    "flex items-center gap-3 cursor-pointer text-base font-normal transition-colors",
                     isTeamActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
@@ -361,7 +356,7 @@ const Navigation = () => {
                   href="#integrations"
                   onClick={(e) => handleSectionClick("integrations", e)}
                   className={cn(
-                    "flex items-center gap-3 cursor-pointer text-base font-semibold transition-colors",
+                    "flex items-center gap-3 cursor-pointer text-base font-normal transition-colors",
                     isIndustryActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
@@ -374,7 +369,7 @@ const Navigation = () => {
                   <Link
                     to="/3d-products"
                     className={cn(
-                      "flex items-center gap-3 text-base font-semibold transition-colors",
+                      "flex items-center gap-3 text-base font-normal transition-colors",
                       isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary"
                     )}
                     onClick={() => setMobileMenuOpen(false)}
@@ -388,7 +383,6 @@ const Navigation = () => {
                 </div>
               </nav>
             </div>
-          </>
         )}
       </div>
     </header>
@@ -396,3 +390,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+

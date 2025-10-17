@@ -110,6 +110,72 @@ const items: KeychainItem[] = [
   },
 ];
 
+const InfoCard = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) => (
+  <Card className="border border-border/60 bg-card/80 backdrop-blur dark:border-white/10 dark:bg-white/[0.04]">
+    <CardContent className="flex items-start gap-3 p-5">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+        {icon}
+      </div>
+      <div>
+        <p className="text-sm font-medium text-foreground">{label}</p>
+        <p className="text-sm text-muted-foreground">{value}</p>
+      </div>
+    </CardContent>
+  </Card>
+);
+
+const NFCProductCard = ({ item }: { item: KeychainItem }) => {
+  return (
+    <Card className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/60 bg-card/85 shadow-[0_28px_80px_-48px_rgba(64,45,145,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_38px_110px_-42px_rgba(78,51,182,0.5)] dark:border-white/10 dark:bg-white/[0.05]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(126,87,255,0.2),transparent_60%),radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.2),transparent_62%)] opacity-90" />
+      <CardContent className="relative flex h-full flex-col gap-5 p-8">
+        <div className="flex items-center justify-between">
+          <Badge className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-primary">
+            {item.platform}
+          </Badge>
+          {item.comingSoon && (
+            <Badge className="rounded-full border border-amber-500/40 bg-amber-500/20 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-amber-400 backdrop-blur">
+              Coming Soon
+            </Badge>
+          )}
+        </div>
+
+        <div className="relative flex h-44 items-center justify-center overflow-hidden rounded-[1.25rem] border border-border/60 bg-background/70 p-6 backdrop-blur dark:border-white/10 dark:bg-white/[0.02]">
+          <img
+            src={sbImage(item.image ?? "", 600, 80, "product-images")}
+            data-fallback={sbObjectUrl(item.image ?? "", "product-images")}
+            data-fallback2={localPublicImage(item.image ?? "")}
+            onError={handleImgError}
+            loading="lazy"
+            alt={`${item.platform} keychain`}
+            className="max-h-full w-full object-contain transition duration-500 group-hover:scale-105"
+          />
+        </div>
+
+        <div className="space-y-3">
+          <h3 className="text-xl font-semibold tracking-tight text-foreground">
+            {item.name}
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            {item.description}
+          </p>
+        </div>
+
+        <div className="mt-auto flex items-center justify-between gap-4">
+          <span className="text-sm font-semibold text-primary">From $14.99</span>
+          <Button
+            type="button"
+            disabled={item.comingSoon}
+            className="rounded-full bg-primary px-5 text-primary-foreground shadow-[0_12px_28px_-14px_rgba(78,51,182,0.5)] transition-all duration-200 hover:bg-primary/90 hover:shadow-[0_18px_42px_-14px_rgba(78,51,182,0.58)] disabled:cursor-not-allowed disabled:border disabled:border-border/60 disabled:bg-transparent disabled:text-muted-foreground"
+          >
+            {item.comingSoon ? "Notify Me" : "Buy"}
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
 export default function NFCKeychains() {
   const { theme } = useTheme();
   const fallbackLogo = "/images/logo-black.png";
@@ -124,16 +190,22 @@ export default function NFCKeychains() {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-6xl mx-auto px-4 md:px-8 py-8">
+    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-85">
+        <div className="absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(126,87,255,0.28),_transparent_65%)] blur-3xl" />
+        <div className="absolute bottom-[-20%] right-[-10%] h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.24),_transparent_60%)] blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <Link to="/3d-products" className="inline-flex items-center">
             <Button
               variant="ghost"
-              className="text-white hover:text-white hover:bg-gray-800"
+              className="group border border-border/60 bg-background/60 px-5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-foreground"
             >
-              <ArrowLeft className="h-4 w-4 mr-2" /> Back to Store
+              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to Store
             </Button>
           </Link>
           <div className="flex items-center gap-3">
@@ -149,38 +221,43 @@ export default function NFCKeychains() {
                 }}
               />
             </span>
-            <span className="text-xl font-bold">NFC Keychains</span>
+            <span className="text-xl font-semibold tracking-tight text-foreground">
+              NFC Keychains
+            </span>
           </div>
         </div>
 
         {/* Hero + Specs */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-12">
-          <div className="border border-gray-800 rounded-lg overflow-hidden bg-[#121219]">
-            <img
-              src={sbImage(
-                "nfc/nfc_keychains_bulk.png",
-                1200,
-                80,
-                "product-images",
-              )}
-              data-fallback={sbObjectUrl(
-                "nfc/nfc_keychains_bulk.png",
-                "product-images",
-              )}
-              data-fallback2={localPublicImage("nfc_keychains_bulk.png")}
-              onError={handleImgError}
-              loading="lazy"
-              alt="Bulk NFC Keychains"
-              className="w-full h-[420px] object-contain bg-black"
-            />
+        <div className="mb-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
+          <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card/85 p-6 shadow-[0_38px_120px_-60px_rgba(72,56,149,0.45)] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.05]">
+            <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_18%_18%,rgba(126,87,255,0.24),transparent_62%),radial-gradient(circle_at_82%_28%,rgba(59,130,246,0.24),transparent_65%)] opacity-90" />
+            <div className="relative flex h-[420px] items-center justify-center rounded-[1.5rem] border border-border/60 bg-background/70 p-8 backdrop-blur-lg dark:border-white/10 dark:bg-white/[0.02]">
+              <img
+                src={sbImage(
+                  "nfc/nfc_keychains_bulk.png",
+                  1200,
+                  80,
+                  "product-images",
+                )}
+                data-fallback={sbObjectUrl(
+                  "nfc/nfc_keychains_bulk.png",
+                  "product-images",
+                )}
+                data-fallback2={localPublicImage("nfc_keychains_bulk.png")}
+                onError={handleImgError}
+                loading="lazy"
+                alt="Bulk NFC Keychains"
+                className="max-h-full w-full object-contain"
+              />
+            </div>
           </div>
 
-          <div className="space-y-6">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
                 3D Printed NFC Keychains
               </h1>
-              <p className="text-white">
+              <p className="text-base text-muted-foreground md:text-lg">
                 Tap-to-share keychains that instantly open your social profile,
                 store, link-in-bio, or contact card. Designed for creators,
                 small businesses, and event networking.
@@ -273,3 +350,7 @@ export default function NFCKeychains() {
     </div>
   );
 }
+
+
+
+

@@ -401,10 +401,10 @@ const HomePage = () => {
       </section>
       {/* Footer */}
       <footer className="border-t border-border/60 bg-background py-12 md:py-16">
-        <div className="container mx-auto max-w-8xl px-4">
-          <div className="mx-auto mb-12 grid max-w-7xl gap-8 md:grid-cols-4">
-            <div>
-              <div className="mb-4 flex items-center gap-2">
+        <div className="container mx-auto flex max-w-8xl flex-col items-center px-4 text-center md:text-left">
+          <div className="mx-auto mb-12 grid w-full max-w-7xl gap-10 justify-items-center md:grid-cols-4 md:justify-items-start">
+            <div className="max-w-md">
+              <div className="mb-4 flex items-center justify-center gap-2 md:justify-start">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-fuchsia-500 text-xs font-bold text-primary-foreground">
                   xE
                 </div>
@@ -501,7 +501,6 @@ const HomePage = () => {
               </ul>
             </div>
           </div>
-
         </div>
       </footer>
     </div>
@@ -771,3 +770,4 @@ const AwardIcon = ({ className }: { className?: string }) => (
     <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
   </svg>
 );
+

@@ -10,6 +10,10 @@
     "cssVariables": true,
     "prefix": ""
   },
+  "registries": {
+    "@ss-blocks": "https://www.shadcn.io/api/registry/blocks/{name}",
+    "@ss-components": "https://www.shadcn.io/api/registry/components/{name}"
+  },
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils"

@@ -84,18 +84,18 @@ const Timeline13 = () => {
               {TIMELINE_STEPS.map((step) => (
                 <article
                   key={step.id}
-                  className="relative flex h-full flex-col gap-6 rounded-2xl border-[1.25px] border-[color:var(--color-border-strong)] bg-white/85 p-6 pt-14 text-left shadow-[0_28px_60px_-48px_rgba(64,45,145,0.5)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_36px_72px_-40px_rgba(103,63,201,0.55)] dark:bg-white/[0.04]"
+                  className="relative flex h-full flex-col gap-6 rounded-2xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-surface-elevated)] p-6 pt-14 text-left shadow-[0_28px_60px_-48px_rgba(64,45,145,0.45)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_36px_84px_-42px_rgba(103,63,201,0.5)] dark:border-white/12 dark:bg-white/[0.08] dark:shadow-[0_44px_120px_-64px_rgba(9,10,40,0.85)]"
                 >
                   <span className="absolute left-[1.25rem] top-8 size-3 rounded-full border border-primary/50 bg-gradient-to-br from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:hidden" />
                   <span className="absolute left-1/2 top-8 hidden size-3 -translate-x-1/2 rounded-full border border-white/60 bg-gradient-to-r from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:block" />
 
                   <div
-                    className="inline-flex items-center gap-px overflow-hidden rounded-full border-[1.25px] border-[color:var(--color-border-soft)] bg-transparent text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground backdrop-blur-sm dark:text-white/70"
+                    className="inline-flex items-center gap-px overflow-hidden rounded-full border border-[color:var(--color-border-soft)] bg-white/85 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.05] dark:text-white/70"
                   >
-                    <span className="bg-transparent px-3 py-1 text-foreground dark:text-white/90">
+                    <span className="bg-white/90 px-3 py-1 text-foreground dark:bg-white/[0.1] dark:text-white/90">
                       {step.id}
                     </span>
-                    <span className="bg-transparent px-3 py-1 text-muted-foreground dark:text-white/80">
+                    <span className="bg-white/70 px-3 py-1 text-muted-foreground dark:bg-white/[0.08] dark:text-white/80">
                       {step.label}
                     </span>
                   </div>
@@ -104,7 +104,7 @@ const Timeline13 = () => {
                     <h3 className="text-lg font-semibold leading-snug text-foreground md:text-xl">
                       {step.heading}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground dark:text-white/80">
                       {step.description}
                     </p>
                   </div>
@@ -115,11 +115,11 @@ const Timeline13 = () => {
                         value={step.progress}
                         className="h-1.5 flex-1 overflow-hidden rounded-full border border-[color:var(--color-border-soft)] bg-muted/60 [&>div]:bg-gradient-to-r [&>div]:from-primary [&>div]:via-fuchsia-500 [&>div]:to-sky-500"
                       />
-                      <span className="w-12 text-right text-xs font-medium text-muted-foreground">
+                      <span className="w-12 text-right text-xs font-medium text-muted-foreground opacity-90 dark:text-white/70">
                         {step.progress}%
                       </span>
                     </div>
-                    <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/80">
+                    <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground opacity-80 dark:text-white/60">
                       {step.duration}
                     </p>
                   </div>

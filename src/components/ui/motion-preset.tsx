@@ -10,7 +10,7 @@ import {
   type UseInViewOptions,
   type Transition,
   type Variant
-} from 'framer-motion'
+} from 'motion/react'
 
 type MotionComponent = keyof typeof motion
 
