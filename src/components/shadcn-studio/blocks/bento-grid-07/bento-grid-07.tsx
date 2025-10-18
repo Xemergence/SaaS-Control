@@ -1,4 +1,4 @@
-import * as motion from 'motion/react-client'
+import { motion } from 'motion/react'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
