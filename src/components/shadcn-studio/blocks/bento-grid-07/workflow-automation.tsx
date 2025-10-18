@@ -26,7 +26,7 @@ const WorkflowAutomation = () => {
   const span4Ref = useRef<HTMLSpanElement>(null)
 
   return (
-    <div ref={containerRef} className='relative z-1 px-8'>
+    <div ref={containerRef} className='relative z-10 px-8'>
       <div className='flex flex-col items-center justify-between gap-6'>
         <div
           ref={div1Ref}
@@ -79,7 +79,7 @@ const WorkflowAutomation = () => {
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={div2Ref}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -87,14 +87,14 @@ const WorkflowAutomation = () => {
         fromRef={div2Ref}
         toRef={span1Ref}
         reverse
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div2Ref}
         toRef={span2Ref}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -102,14 +102,14 @@ const WorkflowAutomation = () => {
         fromRef={span1Ref}
         toRef={div3Ref}
         reverse
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={span2Ref}
         toRef={div4Ref}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -117,14 +117,14 @@ const WorkflowAutomation = () => {
         fromRef={div3Ref}
         toRef={span3Ref}
         reverse
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div4Ref}
         toRef={span4Ref}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -132,7 +132,7 @@ const WorkflowAutomation = () => {
         fromRef={span3Ref}
         toRef={div5Ref}
         delay={1.85}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -141,7 +141,7 @@ const WorkflowAutomation = () => {
         toRef={div5Ref}
         reverse
         delay={1.85}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -149,7 +149,7 @@ const WorkflowAutomation = () => {
         fromRef={div5Ref}
         toRef={div6Ref}
         delay={1.85}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -157,7 +157,7 @@ const WorkflowAutomation = () => {
         fromRef={div6Ref}
         toRef={div7Ref}
         delay={1.85}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={4}
       />
     </div>

@@ -84,7 +84,7 @@ const Timeline13 = () => {
               {TIMELINE_STEPS.map((step) => (
                 <article
                   key={step.id}
-                  className="relative flex h-full flex-col gap-6 rounded-2xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-surface-elevated)] p-6 pt-14 text-left shadow-[0_28px_60px_-48px_rgba(64,45,145,0.45)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_36px_84px_-42px_rgba(103,63,201,0.5)] dark:border-white/12 dark:bg-white/[0.08] dark:shadow-[0_44px_120px_-64px_rgba(9,10,40,0.85)]"
+                  className="relative flex h-full flex-col gap-6 rounded-2xl border border-[color:var(--color-border-strong)] bg-[color:var(--color-surface-elevated)] p-6 pt-14 text-left shadow-[0_28px_60px_-48px_rgba(64,45,145,0.45)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_36px_84px_-42px_rgba(103,63,201,0.5)] dark:border-white/25 dark:bg-white/[0.08] dark:shadow-[0_44px_120px_-64px_rgba(9,10,40,0.85)]"
                 >
                   <span className="absolute left-[1.25rem] top-8 size-3 rounded-full border border-primary/50 bg-gradient-to-br from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:hidden" />
                   <span className="absolute left-1/2 top-8 hidden size-3 -translate-x-1/2 rounded-full border border-white/60 bg-gradient-to-r from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:block" />
@@ -101,7 +101,7 @@ const Timeline13 = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-lg font-semibold leading-snug text-foreground md:text-xl">
+                    <h3 className="text-[0.96rem] font-semibold leading-snug text-foreground md:text-[1.06rem]">
                       {step.heading}
                     </h3>
                     <p className="text-sm text-muted-foreground dark:text-white/80">

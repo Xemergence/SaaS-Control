@@ -205,13 +205,13 @@ const Navigation = () => {
               }
             }}
           />
-          <span className="text-base sm:text-lg font-bold text-foreground">xEmergence</span>
+          <span className="hidden md:inline text-base lg:text-lg font-normal text-foreground">xEmergence</span>
         </Link>
 
         {/* Mobile menu button */}
         <button
           type="button"
-          className="p-3 text-foreground transition-colors hover:text-primary focus:outline-none md:hidden"
+          className="p-3 text-foreground transition-colors hover:text-primary focus:outline-none sm:hidden"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={mobileMenuOpen ? "true" : "false"}
           aria-controls="mobile-navigation"
@@ -224,8 +224,8 @@ const Navigation = () => {
           )}
         </button>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden flex-1 items-center justify-center space-x-7 md:flex">
+        {/* Icon Navigation (from small screens upward) */}
+        <nav className="hidden flex-1 items-center justify-center space-x-5 sm:flex md:space-x-7">
           <Link
             to="/"
             onClick={handleHomeClick}

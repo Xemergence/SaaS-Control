@@ -29,7 +29,7 @@ const SmartData = () => {
   const span5Ref = useRef<HTMLSpanElement>(null)
 
   return (
-    <div ref={containerRef} className='relative z-1'>
+    <div ref={containerRef} className='relative z-10'>
       <div className='flex w-full flex-col items-center gap-6'>
         <div className='grid w-full grid-cols-4 place-items-center gap-4'>
           <div
@@ -280,7 +280,7 @@ const SmartData = () => {
               <Logo className='[&_line]:stroke-primary-foreground [&_path]:stroke-primary-foreground [&_rect]:fill-primary absolute -bottom-17 left-1/2 size-16 -translate-x-1/2 -translate-y-1/2' />
             </CardContent>
           </Card>
-          <Card className='bg-muted absolute inset-x-12 -bottom-4 -z-1 h-25' />
+          <Card className='bg-muted absolute inset-x-12 -bottom-4 -z-10 h-25' />
           <div className='absolute inset-x-0 top-6'>
             <div className='bg-background flex items-center gap-4 rounded-xl border px-5 py-2 shadow-lg'>
               <SparklesIcon className='size-8 shrink-0' />
@@ -296,14 +296,14 @@ const SmartData = () => {
         containerRef={containerRef}
         fromRef={div1Ref}
         toRef={span1Ref}
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div2Ref}
         toRef={span2Ref}
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -311,7 +311,7 @@ const SmartData = () => {
         fromRef={div3Ref}
         toRef={span3Ref}
         reverse
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
@@ -319,14 +319,14 @@ const SmartData = () => {
         fromRef={div4Ref}
         toRef={span4Ref}
         reverse
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={span1Ref}
         toRef={span5Ref}
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
         curvature={-10}
       />
@@ -334,7 +334,7 @@ const SmartData = () => {
         containerRef={containerRef}
         fromRef={span2Ref}
         toRef={span5Ref}
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
         curvature={-10}
       />
@@ -343,7 +343,7 @@ const SmartData = () => {
         fromRef={span3Ref}
         toRef={span5Ref}
         reverse
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
         curvature={-10}
       />
@@ -352,7 +352,7 @@ const SmartData = () => {
         fromRef={span4Ref}
         toRef={span5Ref}
         reverse
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
         curvature={-10}
       />
@@ -360,14 +360,14 @@ const SmartData = () => {
         containerRef={containerRef}
         fromRef={span5Ref}
         toRef={div5Ref}
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div5Ref}
         toRef={div6Ref}
-        className='text-primary -z-2'
+        className='text-primary -z-10'
         duration={4}
       />
     </div>

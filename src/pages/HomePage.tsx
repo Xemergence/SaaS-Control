@@ -161,7 +161,7 @@ const HomePage = () => {
       {/* Hero Section */}
       <section
         id="hero"
-        className="section-divider section-divider--full relative isolate flex min-h-[calc(100vh-5.5rem)] items-center justify-center bg-transparent pt-24 sm:pt-28 dark:bg-gradient-to-br dark:from-[#0b0b19] dark:via-[#171a2f] dark:to-[#1f1433]"
+      className="section-divider section-divider--full relative isolate flex min-h-[calc(100vh-5.5rem)] items-center justify-center bg-transparent pt-12 sm:pt-16 dark:bg-gradient-to-br dark:from-[#0b0b19] dark:via-[#171a2f] dark:to-[#1f1433]"
       >
         {/* Background decorative elements */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#fde5ff]/40 via-transparent to-transparent dark:from-purple-500/25 dark:via-transparent dark:to-transparent" />

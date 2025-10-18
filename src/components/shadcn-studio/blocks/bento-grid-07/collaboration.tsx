@@ -21,7 +21,7 @@ const Collaboration = () => {
   const span6Ref = useRef<HTMLSpanElement>(null)
 
   return (
-    <div ref={containerRef} className='absolute inset-0 z-1 flex w-full flex-col justify-center gap-9.5 px-6'>
+    <div ref={containerRef} className='absolute inset-0 z-10 flex w-full flex-col justify-center gap-9.5 px-6'>
       <div className='mx-9.5 flex items-center justify-between gap-6'>
         <span ref={span1Ref} className='bg-card flex size-8 shrink-0 items-center justify-center rounded-full border'>
           <img
@@ -77,7 +77,7 @@ const Collaboration = () => {
         containerRef={containerRef}
         fromRef={span1Ref}
         toRef={logoRef}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={3}
         curvature={25}
       />
@@ -85,14 +85,14 @@ const Collaboration = () => {
         containerRef={containerRef}
         fromRef={span2Ref}
         toRef={logoRef}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={3}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={span3Ref}
         toRef={logoRef}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={3}
         curvature={-25}
       />
@@ -100,7 +100,7 @@ const Collaboration = () => {
         containerRef={containerRef}
         fromRef={span4Ref}
         toRef={logoRef}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={3}
         curvature={25}
         reverse
@@ -109,7 +109,7 @@ const Collaboration = () => {
         containerRef={containerRef}
         fromRef={span5Ref}
         toRef={logoRef}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={3}
         reverse
       />
@@ -117,7 +117,7 @@ const Collaboration = () => {
         containerRef={containerRef}
         fromRef={span6Ref}
         toRef={logoRef}
-        className='text-primary -z-1'
+        className='text-primary -z-10'
         duration={3}
         curvature={-25}
         reverse
