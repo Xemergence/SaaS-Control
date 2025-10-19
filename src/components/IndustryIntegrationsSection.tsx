@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Home, Package, Baby } from "lucide-react";
@@ -12,6 +13,8 @@ interface IndustryCardProps {
   shadowColor: string;
   delay: number;
   onClick: () => void;
+  statusLabel?: string;
+  statusClassName?: string;
 }
 
 const INDUSTRY_DELAY_CLASSES: Record<number, string> = {
@@ -32,6 +35,8 @@ const IndustryCard = ({
   shadowColor,
   delay,
   onClick,
+  statusLabel,
+  statusClassName,
 }: IndustryCardProps) => {
   const delayClass = INDUSTRY_DELAY_CLASSES[delay] ?? "delay-0ms";
 
@@ -55,9 +60,17 @@ const IndustryCard = ({
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-bold mb-3 text-foreground transition-colors duration-300 group-hover:text-primary">
+        <h3 className="text-xl font-bold mb-1 text-foreground transition-colors duration-300 group-hover:text-primary">
           {title}
         </h3>
+        {statusLabel && (
+          <span className={cn(
+            "mb-2 inline-flex items-center rounded-full border px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.25em]",
+            statusClassName
+          )}>
+            {statusLabel}
+          </span>
+        )}
         <p className="text-sm leading-relaxed text-muted-foreground">
           {description}
         </p>
@@ -113,16 +126,20 @@ const IndustryIntegrationsSection = ({
       iconBgColor: "bg-green-600",
       borderColor: "hover:border-green-500/50",
       shadowColor: "hover:shadow-green-500/20",
+      statusLabel: "In Development",
+      statusClassName: "border-amber-500/40 bg-amber-500/15 text-amber-700 dark:text-amber-300",
     },
     {
       id: "realestate",
       icon: <Home className="h-7 w-7" color="white" strokeWidth={2.5} />,
-      title: "Real Estate Solutions",
+      title: "Real Estate Solution",
       description:
         "Property management, listing automation, client relationship tools, and market analytics for real estate professionals.",
       iconBgColor: "bg-purple-600",
       borderColor: "hover:border-purple-500/50",
       shadowColor: "hover:shadow-purple-500/20",
+      statusLabel: "In Development",
+      statusClassName: "border-amber-500/40 bg-amber-500/15 text-amber-700 dark:text-amber-300",
     },
     {
       id: "services",
@@ -133,16 +150,20 @@ const IndustryIntegrationsSection = ({
       iconBgColor: "bg-blue-600",
       borderColor: "hover:border-blue-500/50",
       shadowColor: "hover:shadow-blue-500/20",
+      statusLabel: "In Development",
+      statusClassName: "border-amber-500/40 bg-amber-500/15 text-amber-700 dark:text-amber-300",
     },
     {
       id: "pregnancy",
       icon: <Baby className="h-7 w-7" color="white" strokeWidth={2.5} />,
-      title: "Pregnancy Platform",
+      title: "Wellness Platform",
       description:
-        "Holistic pregnancy journey tracker with health monitoring, appointment scheduling, and community support features.",
+        "Holistic wellness tracker with health monitoring, appointment scheduling, and community support features.",
       iconBgColor: "bg-red-600",
       borderColor: "hover:border-red-500/50",
       shadowColor: "hover:shadow-red-500/20",
+      statusLabel: "In Research",
+      statusClassName: "border-slate-400/40 bg-slate-400/15 text-slate-700 dark:text-slate-300",
     },
   ];
 

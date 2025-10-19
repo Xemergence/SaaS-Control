@@ -166,7 +166,7 @@ const ProductStore = () => {
 
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_12%_18%,rgba(126,87,255,0.12),transparent_62%),radial-gradient(circle_at_82%_82%,rgba(236,72,153,0.14),transparent_65%)]">
 
-        <div className="container relative mx-auto flex max-w-6xl flex-col gap-12 px-4 py-20 sm:py-28">
+        <div className="container relative mx-auto flex max-w-6xl flex-col gap-12 px-4 pt-10 pb-16 sm:pt-12 sm:pb-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
             <div className="space-y-6 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start">
@@ -243,13 +243,16 @@ const ProductStore = () => {
             onValueChange={(value) => setSelectedCategory(value as CategoryValue)}
             className="w-full"
           >
-            <TabsList className="flex w-full min-h-[3.25rem] items-center gap-2 overflow-x-auto whitespace-nowrap rounded-2xl border border-border/40 bg-card/70 px-2 py-1.5 pr-3 shadow-sm backdrop-blur-sm md:justify-start dark:border-white/10 dark:bg-white/[0.05] lg:flex-wrap">
+            <TabsList
+              className="flex w-full min-h-[3.25rem] flex-wrap items-center justify-center gap-2 rounded-2xl border border-border/40 bg-card/70 px-2 py-1.5 shadow-sm backdrop-blur-sm md:justify-start dark:border-white/10 dark:bg-white/[0.05]"
+              style={{ height: "auto" }}
+            >
               {categoryOptions.map((category) => (
                 <TabsTrigger
                   key={category.value}
                   value={category.value}
                   className={cn(
-                    "group inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-border/40 bg-card/60 px-3 py-2 text-sm transition-colors duration-200 md:px-5",
+                    "group inline-flex items-center justify-center gap-2 rounded-full border border-border/40 bg-card/60 px-3 py-2 text-sm transition-colors duration-200 md:px-5",
                     "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-[0_12px_35px_-18px_rgba(78,51,182,0.65)] data-[state=active]:ring-1 data-[state=active]:ring-primary/60",
                     "data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:text-foreground data-[state=inactive]:hover:bg-primary/10",
                   )}
@@ -262,7 +265,7 @@ const ProductStore = () => {
                 <div
                   key={category.value}
                   aria-disabled
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-dashed border-rose-500/40 bg-rose-500/10 px-3 py-2 text-sm text-rose-500/80 cursor-not-allowed md:px-5"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-dashed border-rose-500/40 bg-rose-500/10 px-3 py-2 text-sm text-rose-500/80 cursor-not-allowed md:px-5"
                 >
                   <category.icon className="h-4 w-4" />
                   <span className="hidden md:inline">{category.label}</span>
