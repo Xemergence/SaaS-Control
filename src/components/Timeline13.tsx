@@ -78,7 +78,7 @@ const Timeline13 = () => {
           </div>
 
           <div className="relative mt-14">
-            <div className="pointer-events-none absolute left-[1.25rem] top-10 h-[calc(100%-2.5rem)] w-px rounded-full bg-gradient-to-b from-primary/40 via-fuchsia-500/40 to-sky-500/40 md:left-0 md:top-10 md:h-px md:w-full md:bg-gradient-to-r" />
+            <div className="pointer-events-none absolute left-[1.25rem] top-10 h-[calc(100%-2.5rem)] w-px rounded-full bg-gradient-to-b from-primary/60 via-fuchsia-500/60 to-sky-500/60 md:left-0 md:top-10 md:h-px md:w-full md:bg-gradient-to-r" />
 
             <div className="relative grid gap-12 md:grid-cols-3">
               {TIMELINE_STEPS.map((step) => (
@@ -90,7 +90,7 @@ const Timeline13 = () => {
                   <span className="absolute left-1/2 top-8 hidden size-3 -translate-x-1/2 rounded-full border border-white/60 bg-gradient-to-r from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:block" />
 
                   <div
-                    className="inline-flex items-center gap-px overflow-hidden rounded-full border border-[color:var(--color-border-soft)] bg-white/85 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.05] dark:text-white/70"
+                    className="inline-flex items-center gap-px overflow-hidden rounded-full border border-[color:var(--color-border-strong)] bg-white/85 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground shadow-sm backdrop-blur-sm dark:border-white/25 dark:bg-white/[0.08] dark:text-white/80"
                   >
                     <span className="bg-white/90 px-3 py-1 text-foreground dark:bg-white/[0.1] dark:text-white/90">
                       {step.id}
@@ -113,7 +113,7 @@ const Timeline13 = () => {
                     <div className="flex items-center gap-3">
                       <Progress
                         value={step.progress}
-                        className="h-1.5 flex-1 overflow-hidden rounded-full border border-[color:var(--color-border-soft)] bg-muted/60 [&>div]:bg-gradient-to-r [&>div]:from-primary [&>div]:via-fuchsia-500 [&>div]:to-sky-500"
+                        className="h-1.5 flex-1 overflow-hidden rounded-full border border-[color:var(--color-border-strong)] bg-muted/50 dark:border-white/30 [&>div]:bg-gradient-to-r [&>div]:from-primary [&>div]:via-fuchsia-500 [&>div]:to-sky-500"
                       />
                       <span className="w-12 text-right text-xs font-medium text-muted-foreground opacity-90 dark:text-white/70">
                         {step.progress}%

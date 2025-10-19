@@ -243,31 +243,29 @@ const ProductStore = () => {
             onValueChange={(value) => setSelectedCategory(value as CategoryValue)}
             className="w-full"
           >
-            <TabsList className="flex w-full min-h-[3.25rem] flex-wrap items-center justify-center gap-2 rounded-2xl border border-border/40 bg-card/70 px-2 py-1.5 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.05] sm:justify-start">
+            <TabsList className="flex w-full min-h-[3.25rem] items-center gap-2 overflow-x-auto whitespace-nowrap rounded-2xl border border-border/40 bg-card/70 px-2 py-1.5 pr-3 shadow-sm backdrop-blur-sm md:justify-start dark:border-white/10 dark:bg-white/[0.05] lg:flex-wrap">
               {categoryOptions.map((category) => (
                 <TabsTrigger
                   key={category.value}
                   value={category.value}
                   className={cn(
-                    "group flex items-center gap-2 rounded-full px-5 py-2 text-sm transition-colors duration-200",
-                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-[0_12px_35px_-18px_rgba(78,51,182,0.65)]",
+                    "group inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-border/40 bg-card/60 px-3 py-2 text-sm transition-colors duration-200 md:px-5",
+                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-[0_12px_35px_-18px_rgba(78,51,182,0.65)] data-[state=active]:ring-1 data-[state=active]:ring-primary/60",
                     "data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:text-foreground data-[state=inactive]:hover:bg-primary/10",
                   )}
                 >
                   <category.icon className="h-4 w-4 transition-transform group-data-[state=active]:scale-110" />
-                  <span>{category.label}</span>
+                  <span className="hidden md:inline">{category.label}</span>
                 </TabsTrigger>
               ))}
               {upcomingCategoryOptions.map((category) => (
                 <div
                   key={category.value}
-                  className="flex items-center gap-2 rounded-full border border-dashed border-border/60 px-5 py-2 text-sm text-muted-foreground/70"
+                  aria-disabled
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-dashed border-rose-500/40 bg-rose-500/10 px-3 py-2 text-sm text-rose-500/80 cursor-not-allowed md:px-5"
                 >
                   <category.icon className="h-4 w-4" />
-                  <span>{category.label}</span>
-                  <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground/60">
-                    Coming Soon
-                  </span>
+                  <span className="hidden md:inline">{category.label}</span>
                 </div>
               ))}
             </TabsList>

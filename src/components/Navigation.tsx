@@ -198,7 +198,7 @@ const Navigation = () => {
           <img
             src={preferredLogo}
             alt="xEmergence Logo"
-            className="h-6 w-auto sm:h-7 object-contain transition-transform duration-300 ease-out hover:scale-[1.02]"
+            className="h-[1.875rem] w-auto sm:h-[2.1875rem] object-contain transition-transform duration-300 ease-out hover:scale-[1.02]"
             onError={(e) => {
               if (!e.currentTarget.src.includes("logo-black.png")) {
                 e.currentTarget.src = fallbackLogo;
@@ -208,24 +208,13 @@ const Navigation = () => {
           <span className="hidden md:inline text-base lg:text-lg font-normal text-foreground">xEmergence</span>
         </Link>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          className="p-3 text-foreground transition-colors hover:text-primary focus:outline-none sm:hidden"
-          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </button>
+        {/* Mobile menu button removed in favor of always-on icon nav */}
+        <div className="hidden" aria-hidden>
+          <button type="button" />
+        </div>
 
-        {/* Icon Navigation (from small screens upward) */}
-        <nav className="hidden flex-1 items-center justify-center space-x-5 sm:flex md:space-x-7">
+        {/* Icon Navigation (visible at all breakpoints; labels hidden below lg) */}
+        <nav className="flex flex-1 items-center justify-center space-x-3 md:space-x-7">
           <Link
             to="/"
             onClick={handleHomeClick}
@@ -299,91 +288,7 @@ const Navigation = () => {
           <ThemeToggle />
         </div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div
-            id="mobile-navigation"
-            className="w-full border-t border-border/60 bg-background/98 p-4 shadow-lg shadow-primary/10 backdrop-blur-xl md:hidden"
-          >
-              <nav className="flex flex-col space-y-3 text-foreground">
-                <Link
-                  to="/"
-                  onClick={(event) => {
-                    handleHomeClick(event);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={cn(
-                    "flex items-center gap-3 text-base font-normal transition-colors",
-                    isHomeRoute
-                      ? activeSection === "hero"
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary"
-                      : isActive("/")
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
-                  )}
-                >
-                  <Home className="h-5 w-5" />
-                  <span>Home</span>
-                </Link>
-                <a
-                  href="#features"
-                  onClick={(e) => handleSectionClick("features", e)}
-                  className={cn(
-                    "flex items-center gap-3 cursor-pointer text-base font-normal transition-colors",
-                    isFeaturesActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
-                  )}
-                >
-                  <Sparkles className="h-5 w-5" />
-                  <span>Features</span>
-                </a>
-                <a
-                  href="#team"
-                  onClick={(e) => handleSectionClick("team", e)}
-                  className={cn(
-                    "flex items-center gap-3 cursor-pointer text-base font-normal transition-colors",
-                    isTeamActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
-                  )}
-                >
-                  <Users className="h-5 w-5" />
-                  <span>Team</span>
-                </a>
-                <a
-                  href="#integrations"
-                  onClick={(e) => handleSectionClick("integrations", e)}
-                  className={cn(
-                    "flex items-center gap-3 cursor-pointer text-base font-normal transition-colors",
-                    isIndustryActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary",
-                  )}
-                >
-                  <HeartHandshake className="h-5 w-5" />
-                  <span>Industry Solutions</span>
-                </a>
-                <div className="mt-4 border-t border-border/60 pt-4">
-                  <Link
-                    to="/3d-products"
-                    className={cn(
-                      "flex items-center gap-3 text-base font-normal transition-colors",
-                      isActive("/3d-products") ? "text-primary" : "text-muted-foreground hover:text-foreground dark:text-white dark:hover:text-primary"
-                    )}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <ShoppingCart className="h-5 w-5" />
-                    <span>3D Products</span>
-                  </Link>
-                </div>
-                <div className="pt-2">
-                  <ThemeToggle />
-                </div>
-              </nav>
-            </div>
-        )}
+        {/* Mobile menu removed; icon nav is always visible */}
       </div>
     </header>
   );

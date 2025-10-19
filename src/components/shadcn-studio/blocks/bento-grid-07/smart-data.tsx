@@ -277,18 +277,9 @@ const SmartData = () => {
                 <span className='text-card-foreground text-sm max-sm:hidden'>Billie</span>
               </MotionPreset>
 
-              <Logo className='[&_line]:stroke-primary-foreground [&_path]:stroke-primary-foreground [&_rect]:fill-primary absolute -bottom-17 left-1/2 size-16 -translate-x-1/2 -translate-y-1/2' />
             </CardContent>
           </Card>
           <Card className='bg-muted absolute inset-x-12 -bottom-4 -z-10 h-25' />
-          <div className='absolute inset-x-0 top-6'>
-            <div className='bg-background flex items-center gap-4 rounded-xl border px-5 py-2 shadow-lg'>
-              <SparklesIcon className='size-8 shrink-0' />
-              <span className='text-sm max-sm:text-xs'>
-                Create a dashboard layout with a sidebar, top bar, and three widgets.
-              </span>
-            </div>
-          </div>
         </div>
       </div>
 

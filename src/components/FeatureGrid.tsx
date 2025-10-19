@@ -28,6 +28,17 @@ const DELAY_CLASS_MAP: Record<number, string> = {
   500: "delay-500ms",
 };
 
+const bosDetail = (title: string) => {
+  const t = title.toLowerCase();
+  if (t.includes("focus")) return "Automated triage, routing, and nudges reduce noise so teams act on the right work at the right time.";
+  if (t.includes("time")) return "Workflow orchestration and AI copilots remove repetitive steps across tools to accelerate delivery.";
+  if (t.includes("ai")) return "Prompt orchestration, data connectors, and secure model access enable co-creation with context.";
+  if (t.includes("monitor") || t.includes("engage")) return "Unified analytics from web, app, and sensors flow into dashboards with alerts and lifecycle engagement.";
+  if (t.includes("documentation") || t.includes("hub")) return "Knowledge, metrics, and assets stay linked and searchable—synced to the systems where work happens.";
+  if (t.includes("competitive")) return "Trend detection and KPI baselines surface risks and opportunities before they impact revenue.";
+  return "Automation, AI, and data integrations streamline operations and provide clear visibility for small teams.";
+};
+
 const Feature = ({ icon, title, description, iconBgColor, delay }: FeatureProps) => {
   const delayClass = DELAY_CLASS_MAP[delay] ?? "delay-0ms";
 
@@ -71,8 +82,14 @@ const Feature = ({ icon, title, description, iconBgColor, delay }: FeatureProps)
           {description}
         </p>
 
-        {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+        {/* BOS enhancement copy on hover */}
+        <div className="mt-4 space-y-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <p className="text-xs font-medium text-primary">Enhanced by Emergence BOS integrations and applications.</p>
+          <p className="text-xs text-muted-foreground">{bosDetail(title)}</p>
+        </div>
+
+        {/* Decorative gradient overlay (behind, non-interactive) */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
       </CardContent>
     </Card>
   );
