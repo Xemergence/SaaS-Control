@@ -26,8 +26,15 @@ export default defineConfig({
     },
   },
   resolve: {
-    // Ensure a single React instance across symlinked deps and blocks
-    dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
+    // Ensure a single instance across symlinked deps and blocks
+    dedupe: [
+      "react",
+      "react-dom",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      "motion",
+      "framer-motion",
+    ],
     alias: {
       "react": path.resolve(__dirname, "./node_modules/react"),
       "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
