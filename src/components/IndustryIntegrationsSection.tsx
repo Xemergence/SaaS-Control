@@ -96,13 +96,15 @@ const IndustryIntegrationsSection = ({
       case "education":
         window.open(
           "https://tempo-deployment-dfa3f0dc-dfe0-4b42.vercel.app/",
-          "_blank"
+          "_blank",
+          "noopener,noreferrer"
         );
         break;
       case "realestate":
         window.open(
           "https://tempo-deployment-0d4445fa-fe2d-4801.vercel.app/",
-          "_blank"
+          "_blank",
+          "noopener,noreferrer"
         );
         break;
       case "pregnancy":

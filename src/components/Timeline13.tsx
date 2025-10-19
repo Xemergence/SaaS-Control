@@ -1,3 +1,4 @@
+import React from "react";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 
@@ -30,6 +31,75 @@ const TIMELINE_STEPS = [
     duration: "Launch complete",
   },
 ];
+
+type TimelineStep = (typeof TIMELINE_STEPS)[number];
+
+const TimelineStepCard = ({ step }: { step: TimelineStep }) => {
+  const pillRef = React.useRef<HTMLDivElement | null>(null);
+  const [barWidth, setBarWidth] = React.useState<number | undefined>(undefined);
+
+  React.useEffect(() => {
+    const measure = () => {
+      if (pillRef.current) {
+        setBarWidth(pillRef.current.offsetWidth);
+      }
+    };
+    measure();
+    const ro = new ResizeObserver(() => measure());
+    if (pillRef.current) ro.observe(pillRef.current);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  return (
+    <article
+      className="relative flex min-w-0 h-full flex-col gap-6 rounded-2xl border border-[color:var(--color-border-strong)] bg-[color:var(--color-surface-elevated)] p-6 pt-14 text-left shadow-[0_28px_60px_-48px_rgba(64,45,145,0.45)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_36px_84px_-42px_rgba(103,63,201,0.5)] dark:border-white/25 dark:bg-white/[0.08] dark:shadow-[0_44px_120px_-64px_rgba(9,10,40,0.85)]"
+    >
+      <span className="absolute left-[1.25rem] top-8 size-3 rounded-full border border-primary/50 bg-gradient-to-br from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:hidden" />
+      <span className="absolute left-1/2 top-8 hidden size-3 -translate-x-1/2 rounded-full border border-white/60 bg-gradient-to-r from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:block" />
+
+      <div
+        ref={pillRef}
+        className="inline-flex items-center gap-px whitespace-nowrap rounded-full border border-[color:var(--color-border-strong)] bg-white/85 text-[0.62rem] sm:text-[0.7rem] font-semibold uppercase tracking-[0.16em] sm:tracking-[0.24em] text-muted-foreground shadow-sm backdrop-blur-sm dark:border-white/25 dark:bg-white/[0.08] dark:text-white/80"
+      >
+        <span className="bg-white/90 px-3 sm:px-3.5 py-1 text-foreground dark:bg-white/[0.1] dark:text-white/90">
+          {step.id}
+        </span>
+        <span className="bg-white/70 px-3 sm:px-3.5 py-1 text-muted-foreground dark:bg-white/[0.08] dark:text-white/80">
+          {step.label}
+        </span>
+      </div>
+
+      <div className="space-y-3">
+        <h3 className="text-pretty break-words text-[0.95rem] font-semibold leading-snug text-foreground md:text-[1.04rem]">
+          {step.heading}
+        </h3>
+        <p className="text-sm text-muted-foreground dark:text-white/80">
+          {step.description}
+        </p>
+      </div>
+
+      <div className="mt-auto space-y-3">
+        <div className="flex items-center gap-3">
+          <Progress
+            value={step.progress}
+            className="h-1.5 overflow-hidden rounded-full border border-[color:var(--color-border-strong)] bg-muted/50 dark:border-white/30 [&>div]:bg-gradient-to-r [&>div]:from-primary [&>div]:via-fuchsia-500 [&>div]:to-sky-500"
+            style={barWidth ? { width: barWidth } : undefined}
+          />
+          <span className="w-12 text-right text-xs font-medium text-muted-foreground opacity-90 dark:text-white/70">
+            {step.progress}%
+          </span>
+        </div>
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground opacity-80 dark:text-white/60">
+          {step.duration}
+        </p>
+      </div>
+    </article>
+  );
+};
 
 const Timeline13 = () => {
   return (
@@ -82,48 +152,7 @@ const Timeline13 = () => {
 
             <div className="relative grid gap-12 md:grid-cols-3">
               {TIMELINE_STEPS.map((step) => (
-                <article
-                  key={step.id}
-                  className="relative flex min-w-0 h-full flex-col gap-6 rounded-2xl border border-[color:var(--color-border-strong)] bg-[color:var(--color-surface-elevated)] p-6 pt-14 text-left shadow-[0_28px_60px_-48px_rgba(64,45,145,0.45)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_36px_84px_-42px_rgba(103,63,201,0.5)] dark:border-white/25 dark:bg-white/[0.08] dark:shadow-[0_44px_120px_-64px_rgba(9,10,40,0.85)]"
-                >
-                  <span className="absolute left-[1.25rem] top-8 size-3 rounded-full border border-primary/50 bg-gradient-to-br from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:hidden" />
-                  <span className="absolute left-1/2 top-8 hidden size-3 -translate-x-1/2 rounded-full border border-white/60 bg-gradient-to-r from-primary/80 via-fuchsia-500/80 to-sky-500/80 shadow-[0_0_25px_rgba(126,87,255,0.55)] md:block" />
-
-                  <div
-                    className="inline-flex items-center gap-px whitespace-nowrap rounded-full border border-[color:var(--color-border-strong)] bg-white/85 text-[0.62rem] sm:text-[0.7rem] font-semibold uppercase tracking-[0.16em] sm:tracking-[0.24em] text-muted-foreground shadow-sm backdrop-blur-sm dark:border-white/25 dark:bg-white/[0.08] dark:text-white/80"
-                  >
-                    <span className="bg-white/90 px-3 sm:px-3.5 py-1 text-foreground dark:bg-white/[0.1] dark:text-white/90">
-                      {step.id}
-                    </span>
-                    <span className="bg-white/70 px-3 sm:px-3.5 py-1 text-muted-foreground dark:bg-white/[0.08] dark:text-white/80">
-                      {step.label}
-                    </span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="text-pretty break-words text-[0.95rem] font-semibold leading-snug text-foreground md:text-[1.04rem]">
-                      {step.heading}
-                    </h3>
-                    <p className="text-sm text-muted-foreground dark:text-white/80">
-                      {step.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-auto space-y-3">
-                    <div className="flex items-center gap-3">
-                      <Progress
-                        value={step.progress}
-                        className="h-1.5 flex-1 overflow-hidden rounded-full border border-[color:var(--color-border-strong)] bg-muted/50 dark:border-white/30 [&>div]:bg-gradient-to-r [&>div]:from-primary [&>div]:via-fuchsia-500 [&>div]:to-sky-500"
-                      />
-                      <span className="w-12 text-right text-xs font-medium text-muted-foreground opacity-90 dark:text-white/70">
-                        {step.progress}%
-                      </span>
-                    </div>
-                    <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground opacity-80 dark:text-white/60">
-                      {step.duration}
-                    </p>
-                  </div>
-                </article>
+                <TimelineStepCard key={step.id} step={step} />
               ))}
             </div>
           </div>
